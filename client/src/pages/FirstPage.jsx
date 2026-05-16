@@ -1,9 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-
 function FirstPage() {
   return (
-    <div className="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden dark min-h-screen">
+    <div className="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden dark min-h-screen md:pl-72">
       
     {/*  Top Navigation Bar  */}
     <header
