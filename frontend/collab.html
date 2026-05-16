@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&amp;family=Atkinson+Hyperlegible+Next:wght@600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#faf9f8",
+                        "on-secondary-fixed": "#001e30",
+                        "on-primary-fixed-variant": "#2f4d40",
+                        "surface-variant": "#e3e2e1",
+                        "background": "#faf9f8",
+                        "tertiary-container": "#6d7972",
+                        "on-tertiary-container": "#ffffff",
+                        "secondary": "#3f627d",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#ffffff",
+                        "surface-container-highest": "#e3e2e1",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed": "#022016",
+                        "primary-container": "#5e7d6f",
+                        "secondary-container": "#badefd",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#264a64",
+                        "surface-container-high": "#e9e8e7",
+                        "inverse-primary": "#adcebe",
+                        "on-background": "#1a1c1c",
+                        "surface": "#faf9f8",
+                        "outline-variant": "#c1c8c3",
+                        "on-error": "#ffffff",
+                        "on-surface-variant": "#414844",
+                        "surface-tint": "#466557",
+                        "primary-fixed-dim": "#adcebe",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#131e19",
+                        "inverse-surface": "#2f3130",
+                        "inverse-on-surface": "#f1f0ef",
+                        "tertiary-fixed": "#d8e6dd",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#54605a",
+                        "on-surface": "#1a1c1c",
+                        "on-tertiary-fixed-variant": "#3d4943",
+                        "primary-fixed": "#c8ead9",
+                        "surface-dim": "#dadad9",
+                        "surface-container": "#eeeeed",
+                        "surface-container-low": "#f4f3f2",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#bccac1",
+                        "on-secondary": "#ffffff",
+                        "outline": "#727974",
+                        "secondary-fixed": "#cae6ff",
+                        "on-secondary-container": "#40637d",
+                        "secondary-fixed-dim": "#a7cbe9",
+                        "primary": "#466457"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "48px",
+                        "xl": "80px",
+                        "xs": "4px",
+                        "container-max": "1120px",
+                        "sm": "12px",
+                        "base": "8px",
+                        "gutter": "24px",
+                        "md": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Public Sans"],
+                        "body-md": ["Public Sans"],
+                        "body-lg": ["Public Sans"],
+                        "label-md": ["Atkinson Hyperlegible Next"],
+                        "headline-lg": ["Public Sans"],
+                        "display": ["Public Sans"],
+                        "headline-md": ["Public Sans"],
+                        "label-sm": ["Atkinson Hyperlegible Next"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "display": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c1c8c3;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-background min-h-screen">
+    <!-- TopAppBar -->
+    <header
+        class="sticky top-0 z-50 flex justify-between items-center w-full px-gutter max-w-container-max mx-auto h-16 bg-surface-bright dark:bg-surface-dim border-b border-outline-variant dark:border-outline">
+        <div class="flex items-center gap-4">
+            <span
+                class="font-headline-md text-headline-md-mobile md:text-headline-md font-bold text-primary dark:text-primary-fixed-dim">ConnectAI</span>
+        </div>
+        <div class="flex items-center gap-gutter">
+            <div class="hidden md:flex gap-6">
+                <button
+                    class="font-label-md text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low transition-colors px-2 py-1">Discovery</button>
+                <button
+                    class="font-label-md text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low transition-colors px-2 py-1">Dashboard</button>
+                <button
+                    class="font-label-md text-primary dark:text-primary-fixed-dim font-bold border-b-2 border-primary px-2 py-1">Collab
+                    Hub</button>
+            </div>
+            <div class="flex items-center gap-2">
+                <span
+                    class="material-symbols-outlined text-on-surface-variant cursor-pointer p-2 hover:bg-surface-container-low rounded-full">notifications</span>
+                <span
+                    class="material-symbols-outlined text-on-surface-variant cursor-pointer p-2 hover:bg-surface-container-low rounded-full">account_circle</span>
+            </div>
+        </div>
+    </header>
+    <!-- Main Layout -->
+    <div class="flex max-w-container-max mx-auto">
+        <!-- SideNavBar (Desktop Only) -->
+        <aside
+            class="hidden md:flex flex-col h-[calc(100vh-64px)] fixed left-0 top-16 p-md w-64 bg-surface-container-low dark:bg-surface-container-highest border-r border-outline-variant dark:border-outline">
+            <div class="mb-xl">
+                <p class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">
+                    Professional Hub</p>
+                <p class="font-label-sm text-label-sm text-on-surface-variant">AI-Powered Matching</p>
+            </div>
+            <nav class="flex flex-col gap-2">
+                <div
+                    class="flex items-center gap-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-variant px-4 py-2 rounded-lg cursor-pointer transition-all">
+                    <span class="material-symbols-outlined">search_check</span>
+                    <span class="font-label-md text-label-md">Discovery</span>
+                </div>
+                <div
+                    class="flex items-center gap-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-variant px-4 py-2 rounded-lg cursor-pointer transition-all">
+                    <span class="material-symbols-outlined">analytics</span>
+                    <span class="font-label-md text-label-md">Smart Dashboard</span>
+                </div>
+                <div
+                    class="flex items-center gap-3 text-primary dark:text-primary-fixed-dim bg-primary-fixed dark:bg-primary-fixed-dim font-bold rounded-lg px-4 py-2 translate-x-1 transition-transform">
+                    <span class="material-symbols-outlined">hub</span>
+                    <span class="font-label-md text-label-md">Collaboration Hub</span>
+                </div>
+                <div
+                    class="flex items-center gap-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-variant px-4 py-2 rounded-lg cursor-pointer transition-all">
+                    <span class="material-symbols-outlined">monitoring</span>
+                    <span class="font-label-md text-label-md">Analytics</span>
+                </div>
+            </nav>
+            <div class="mt-auto">
+                <button
+                    class="w-full bg-primary text-on-primary py-3 rounded-lg font-label-md hover:opacity-90 transition-opacity">
+                    Start New Search
+                </button>
+            </div>
+        </aside>
+        <!-- Main Content Canvas -->
+        <main class="flex-1 md:ml-64 p-gutter pb-32 md:pb-gutter">
+            <!-- Collaboration Hub Header -->
+            <section class="mb-lg">
+                <h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-2">Collaboration Hub</h1>
+                <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">Manage your active teams and
+                    track collaborative performance with AI-enhanced insights.</p>
+            </section>
+            <!-- Bento Layout Content -->
+            <div class="grid grid-cols-12 gap-gutter">
+                <!-- Sidebar: Active Projects List (Col 1-4) -->
+                <div class="col-span-12 lg:col-span-4 space-y-md">
+                    <h2 class="font-label-md text-label-md uppercase tracking-wider text-outline">Active Projects</h2>
+                    <!-- Project Card 1 -->
+                    <div
+                        class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl hover:bg-surface-container transition-colors cursor-pointer group">
+                        <div class="flex justify-between items-start mb-sm">
+                            <div>
+                                <h3 class="font-headline-md text-headline-md text-primary">EcoGrid 2.0</h3>
+                                <p class="font-label-sm text-label-sm text-on-surface-variant">4 Active Members</p>
+                            </div>
+                            <span
+                                class="bg-primary-fixed text-primary px-2 py-1 rounded text-[10px] font-bold uppercase tracking-tighter">Priority</span>
+                        </div>
+                        <div class="flex -space-x-2 overflow-hidden mb-md">
+                            <img alt="Team member" class="inline-block h-8 w-8 rounded-full ring-2 ring-white"
+                                data-alt="Close-up portrait of a professional woman with a warm, confident expression, soft natural lighting in a modern airy office environment. The image uses a palette of soft sage and warm neutrals to convey a sense of calm competence and collaborative spirit."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNti0JyA1-YxyHyhiNzQkJzQJ4pumSa36a7B0E2haIG1DfF3vMiV0cj1-s2Ywvgj0SlGw1MpasuL2etzZv8iIi7MNfRwPMvAKpIZRsuN2ZN_NShfXSuea0fE-XMZ-Rt0xHVNvKU1ulQbufPNRW6k97_xrfnlr-p9Fv3ZLBxo-y2Meh4eXOcXMlG-gO1yPWqcuy1UyTef2i1i8q5YrgEwqgLjqNxghakDXKCe484oyS1IWmwqImX0sVeuGpYnwbyof-PCUNtrOIDLI" />
+                            <img alt="Team member" class="inline-block h-8 w-8 rounded-full ring-2 ring-white"
+                                data-alt="A professional man in his 30s with glasses looking thoughtfully at a screen, illuminated by the gentle blue glow of a monitor. The background is a blurred, high-end minimalist co-working space with wooden accents. High-quality corporate lifestyle photography."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnDuLDyYSbv3d5jB2_nYqqPzPvO3x9VODOFGU4m3EfZ-0Sd8BHglU84F2rI3PGJORE1cebGy0DupcTf_kfshLwOiGUP93IqPAq71UqiVlDWeYhEUBj9qW0QktFgWH1FoHO1i20CxsW6JEFmDJfGtqEe4k0FxPFPi3tPR1b5EPeDmMMi_WzYvXACbRogCXvtVmLh6UKG-m5UK-mOufZkeCbiKRbXT2Hhf852IiPHbhQEVc1WpZ3h-s1bZlJp8KHpHSJhoRqscf8VJI" />
+                            <img alt="Team member" class="inline-block h-8 w-8 rounded-full ring-2 ring-white"
+                                data-alt="A focused young professional of Asian descent working in a bright, modern studio. The lighting is clean and high-key, emphasizing a productive and low-anxiety workspace. The visual style is crisp, minimalist, and professional."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8jGTd3ExvAAO3igwLmyxPbX6AdkUy7t96i0JFOvrpyBJcHsX222dZlveQ4tLvf4FkMBXVp9XF5zuhStkmOR3sOCypCTZ38dCPJAOHdsRSsX2MhLAOLIRxOUeXWDT-UgthpNWLkMkdYEjLhqVzh8P-Eg4e0NSPMrwy-CNGJmMQ-NFShBIH9a6pL6bP6ayGKuuLxhIpDPRF-GyDHbCp8dvtDHVtR_4tXMZL19nDFJXvEghttCb17jEeObtyl2urunZOUPSxHP5jXAU" />
+                            <div
+                                class="flex items-center justify-center h-8 w-8 rounded-full bg-surface-container-high ring-2 ring-white text-[10px] font-bold">
+                                +1</div>
+                        </div>
+                        <div class="w-full bg-surface-container-high rounded-full h-1.5">
+                            <div class="bg-primary h-1.5 rounded-full" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <!-- Project Card 2 -->
+                    <div
+                        class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl hover:bg-surface-container transition-colors cursor-pointer opacity-70 hover:opacity-100">
+                        <div class="flex justify-between items-start mb-sm">
+                            <div>
+                                <h3 class="font-headline-md text-headline-md text-primary">Quantum Analytics</h3>
+                                <p class="font-label-sm text-label-sm text-on-surface-variant">3 Active Members</p>
+                            </div>
+                        </div>
+                        <div class="flex -space-x-2 overflow-hidden mb-md">
+                            <img alt="Team member" class="inline-block h-8 w-8 rounded-full ring-2 ring-white"
+                                data-alt="Portrait of a smiling professional with grey hair, exuding experience and reliability. Soft focus background of a library or quiet office. The image has a calm, naturalistic tone with a muted color palette of slate blue and beige."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkU_AnQe3a1aCB02Bh2ww6kWp79qQiqoqgfLWRIrOra51g91QY9BS6ClZIImjqyFSU6NYQdvDMZr8ns5cYfQoXo_zbvX3uKqYK4u7QAC2ABGiQZUG5QoDj7fbuTFnYV4O0JIob8hJqsGYVXVqfTTyjfXyR0y_Y_eBxjedap7rUkmd17LQal3vlGj8G0uWHNmr64vqrFwZGH5HO0I6F6Pm9aCvB_NE_-2oFlZL24go9UMg55HNvPOegUDm4ls-O7D7F56rhkcqfXCw" />
+                            <img alt="Team member" class="inline-block h-8 w-8 rounded-full ring-2 ring-white"
+                                data-alt="An energetic woman in a creative studio, dressed in professional yet approachable attire. The lighting is bright and cheerful, highlighting a workspace filled with plants and books. The aesthetic is clean and modern, supporting a low-stress networking atmosphere."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDK6ypnjcFjfcqs_x9hTEXN1WbbmV6pA7BfhQSKW8zitQhKZTcDzt1ZVT7YfK6nL98kLiOmU1GgY5uR7eB-FZqV8SYL1jCDxBVL9a1-_Qpjwqs6sMCuuSWHhkl5H2ajY1HnZu57rkgp2SDioDYi8R2QopEnt7-rjVKqcOnfAHHzJU5ERDDwSqJAwkGVsOLdW3uL9rwlXSDyH3NLtxz3husnIdD3tNTagWpQXacR40Yndm6S7cZ3vIpK_c7rcXALvsVcNoFNkVFuCBQ" />
+                        </div>
+                        <div class="w-full bg-surface-container-high rounded-full h-1.5">
+                            <div class="bg-secondary h-1.5 rounded-full" style="width: 30%"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Main Detail View: Team Insight (Col 5-12) -->
+                <div class="col-span-12 lg:col-span-8 space-y-gutter">
+                    <!-- Detailed Header -->
+                    <div
+                        class="flex flex-col md:flex-row md:items-center justify-between gap-md bg-white border border-outline-variant p-gutter rounded-xl">
+                        <div class="flex items-center gap-md">
+                            <div class="w-16 h-16 bg-primary-fixed rounded-2xl flex items-center justify-center">
+                                <span class="material-symbols-outlined text-primary text-3xl">diversity_3</span>
+                            </div>
+                            <div>
+                                <h2 class="font-headline-md text-headline-md">EcoGrid 2.0 Team</h2>
+                                <p class="font-label-md text-label-md text-primary font-bold">System Optimization
+                                    Project</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <button
+                                class="bg-secondary text-on-secondary px-gutter py-2 rounded-lg font-label-md hover:bg-secondary/90 transition-colors">Message
+                                Team</button>
+                            <button
+                                class="border border-outline px-4 py-2 rounded-lg flex items-center hover:bg-surface-container transition-colors"><span
+                                    class="material-symbols-outlined">settings</span></button>
+                        </div>
+                    </div>
+                    <!-- Analysis Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+                        <!-- Skill Balance (Chart) -->
+                        <div class="bg-white border border-outline-variant p-md rounded-xl">
+                            <div class="flex justify-between items-center mb-md">
+                                <h3 class="font-label-md text-label-md">Skill Balance</h3>
+                                <span
+                                    class="text-[10px] text-primary bg-primary-fixed px-2 py-0.5 rounded-full font-bold uppercase">AI
+                                    Analysis</span>
+                            </div>
+                            <!-- Simulated Polar Chart -->
+                            <div class="relative w-full aspect-square flex items-center justify-center">
+                                <div
+                                    class="absolute w-full h-full border border-dashed border-outline-variant rounded-full">
+                                </div>
+                                <div
+                                    class="absolute w-3/4 h-3/4 border border-dashed border-outline-variant rounded-full">
+                                </div>
+                                <div
+                                    class="absolute w-1/2 h-1/2 border border-dashed border-outline-variant rounded-full">
+                                </div>
+                                <svg class="w-full h-full -rotate-90" viewbox="0 0 100 100">
+                                    <polygon fill="rgba(70, 100, 87, 0.15)" points="50,10 85,35 75,80 25,80 15,35"
+                                        stroke="#466457" stroke-width="2"></polygon>
+                                    <circle cx="50" cy="10" fill="#466457" r="3"></circle>
+                                    <circle cx="85" cy="35" fill="#466457" r="3"></circle>
+                                    <circle cx="75" cy="80" fill="#466457" r="3"></circle>
+                                    <circle cx="25" cy="80" fill="#466457" r="3"></circle>
+                                    <circle cx="15" cy="35" fill="#466457" r="3"></circle>
+                                </svg>
+                                <span class="absolute top-0 font-label-sm text-[10px] bg-white px-1">Tech</span>
+                                <span class="absolute right-0 font-label-sm text-[10px] bg-white px-1">Lead</span>
+                                <span
+                                    class="absolute bottom-0 right-4 font-label-sm text-[10px] bg-white px-1">Data</span>
+                                <span
+                                    class="absolute bottom-0 left-4 font-label-sm text-[10px] bg-white px-1">Design</span>
+                                <span class="absolute left-0 font-label-sm text-[10px] bg-white px-1">Comm</span>
+                            </div>
+                            <p class="font-body-md text-label-sm text-on-surface-variant mt-md">Optimal balance in
+                                Technical and Design areas. Slight deficiency detected in Communication frequency.</p>
+                        </div>
+                        <!-- Communication Activity -->
+                        <div class="bg-white border border-outline-variant p-md rounded-xl">
+                            <h3 class="font-label-md text-label-md mb-md">Communication Activity</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-label-sm text-on-surface-variant">Response Rate</span>
+                                    <span class="font-label-md text-primary">92%</span>
+                                </div>
+                                <div class="w-full bg-surface-container-high h-2 rounded-full">
+                                    <div class="bg-primary h-2 rounded-full" style="width: 92%"></div>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="font-label-sm text-on-surface-variant">Meeting Adherence</span>
+                                    <span class="font-label-md text-secondary">85%</span>
+                                </div>
+                                <div class="w-full bg-surface-container-high h-2 rounded-full">
+                                    <div class="bg-secondary h-2 rounded-full" style="width: 85%"></div>
+                                </div>
+                                <div class="mt-xl pt-4 border-t border-outline-variant">
+                                    <p class="font-label-sm text-outline mb-2">Activity Sparkline (Last 7 Days)</p>
+                                    <div class="flex items-end gap-1 h-12">
+                                        <div class="bg-primary-fixed-dim w-full h-1/2 rounded-t-sm"></div>
+                                        <div class="bg-primary-fixed-dim w-full h-3/4 rounded-t-sm"></div>
+                                        <div class="bg-primary-fixed-dim w-full h-full rounded-t-sm"></div>
+                                        <div class="bg-primary-fixed-dim w-full h-2/3 rounded-t-sm"></div>
+                                        <div class="bg-primary-fixed-dim w-full h-4/5 rounded-t-sm"></div>
+                                        <div class="bg-primary-fixed-dim w-full h-1/2 rounded-t-sm"></div>
+                                        <div class="bg-primary-fixed-dim w-full h-3/4 rounded-t-sm"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- AI Mediation Tips & Feedback Section -->
+                    <div class="grid grid-cols-1 md:grid-cols-1 gap-gutter">
+                        <!-- AI Mediation Alert -->
+                        <div class="bg-secondary-container border border-outline-variant p-gutter rounded-xl">
+                            <div class="flex gap-4">
+                                <div
+                                    class="flex-shrink-0 w-10 h-10 bg-white rounded-full flex items-center justify-center text-secondary">
+                                    <span class="material-symbols-outlined"
+                                        style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-label-md text-on-secondary-container mb-1">AI Mediation Insight</h3>
+                                    <p class="font-body-md text-on-secondary-container text-opacity-90 mb-md">Minor
+                                        bottleneck detected in the "Design Review" phase. Sarah and Marcus have
+                                        conflicting feedback styles.</p>
+                                    <div class="bg-white/50 p-md rounded-lg border border-white/40">
+                                        <p class="font-label-sm text-secondary font-bold mb-2">Actionable Tip:</p>
+                                        <p class="font-body-md text-on-secondary-container italic">"Try scheduling a
+                                            synchronous 15-minute alignment call using a 'No-Fault' agenda. Encourage
+                                            Sarah to provide written goals before Marcus begins visual critiques."</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Recent Feedback -->
+                        <div class="bg-white border border-outline-variant p-md rounded-xl">
+                            <h3 class="font-label-md text-label-md mb-md">Recent Team Feedback</h3>
+                            <div class="space-y-4">
+                                <div class="p-sm bg-surface-container-low rounded-lg border-l-4 border-primary">
+                                    <div class="flex justify-between items-center mb-1">
+                                        <span class="font-label-sm text-primary font-bold">Anonymous Member</span>
+                                        <span class="text-[10px] text-outline">Yesterday</span>
+                                    </div>
+                                    <p class="font-body-md text-on-surface-variant italic">"I feel like the technical
+                                        requirements were shifted last minute. A clearer changelog would help."</p>
+                                </div>
+                                <div class="p-sm bg-surface-container-low rounded-lg border-l-4 border-secondary">
+                                    <div class="flex justify-between items-center mb-1">
+                                        <span class="font-label-sm text-secondary font-bold">Project Lead</span>
+                                        <span class="text-[10px] text-outline">2 days ago</span>
+                                    </div>
+                                    <p class="font-body-md text-on-surface-variant italic">"Excellent progress on the
+                                        backend infrastructure. The team synergy is improving."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- BottomNavBar (Mobile Only) -->
+    <nav
+        class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 md:hidden bg-surface-bright dark:bg-surface-dim border-t border-outline-variant dark:border-outline rounded-t-xl">
+        <div
+            class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1 hover:bg-surface-container-low transition-all">
+            <span class="material-symbols-outlined">explore</span>
+            <span class="font-label-sm text-label-sm">Discovery</span>
+        </div>
+        <div
+            class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1 hover:bg-surface-container-low transition-all">
+            <span class="material-symbols-outlined">dashboard</span>
+            <span class="font-label-sm text-label-sm">Dashboard</span>
+        </div>
+        <div
+            class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-xl px-4 py-1 scale-95 transition-transform duration-200">
+            <span class="material-symbols-outlined">diversity_3</span>
+            <span class="font-label-sm text-label-sm">Collab Hub</span>
+        </div>
+        <div
+            class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1 hover:bg-surface-container-low transition-all">
+            <span class="material-symbols-outlined">person</span>
+            <span class="font-label-sm text-label-sm">Profile</span>
+        </div>
+    </nav>
+    <script type="module" src="./app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&amp;family=Atkinson+Hyperlegible+Next:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#faf9f8",
+                        "on-secondary-fixed": "#001e30",
+                        "on-primary-fixed-variant": "#2f4d40",
+                        "surface-variant": "#e3e2e1",
+                        "background": "#faf9f8",
+                        "tertiary-container": "#6d7972",
+                        "on-tertiary-container": "#ffffff",
+                        "secondary": "#3f627d",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#ffffff",
+                        "surface-container-highest": "#e3e2e1",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed": "#022016",
+                        "primary-container": "#5e7d6f",
+                        "secondary-container": "#badefd",
+                        "on-secondary-fixed-variant": "#264a64",
+                        "surface-container-high": "#e9e8e7",
+                        "inverse-primary": "#adcebe",
+                        "on-background": "#1a1c1c",
+                        "surface": "#faf9f8",
+                        "outline-variant": "#c1c8c3",
+                        "on-error": "#ffffff",
+                        "on-surface-variant": "#414844",
+                        "surface-tint": "#466557",
+                        "primary-fixed-dim": "#adcebe",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#131e19",
+                        "inverse-surface": "#2f3130",
+                        "inverse-on-surface": "#f1f0ef",
+                        "tertiary-fixed": "#d8e6dd",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#54605a",
+                        "on-surface": "#1a1c1c",
+                        "on-tertiary-fixed-variant": "#3d4943",
+                        "primary-fixed": "#c8ead9",
+                        "surface-dim": "#dadad9",
+                        "surface-container": "#eeeeed",
+                        "surface-container-low": "#f4f3f2",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#bccac1",
+                        "on-secondary": "#ffffff",
+                        "outline": "#727974",
+                        "secondary-fixed": "#cae6ff",
+                        "on-secondary-container": "#40637d",
+                        "secondary-fixed-dim": "#a7cbe9",
+                        "primary": "#466457"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "48px",
+                        "xl": "80px",
+                        "xs": "4px",
+                        "container-max": "1120px",
+                        "sm": "12px",
+                        "base": "8px",
+                        "gutter": "24px",
+                        "md": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Public Sans"],
+                        "body-md": ["Public Sans"],
+                        "body-lg": ["Public Sans"],
+                        "label-md": ["Atkinson Hyperlegible Next"],
+                        "headline-lg": ["Public Sans"],
+                        "display": ["Public Sans"],
+                        "headline-md": ["Public Sans"],
+                        "label-sm": ["Atkinson Hyperlegible Next"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "display": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .swipe-card-shadow {
+            box-shadow: 0 4px 20px -2px rgba(63, 98, 125, 0.08);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c1c8c3;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body class="bg-surface-bright text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+    <!-- TopAppBar Component -->
+    <header
+        class="sticky top-0 z-50 flex justify-between items-center w-full px-gutter max-w-container-max mx-auto bg-surface-bright border-b border-outline-variant h-16">
+        <div class="flex items-center gap-4">
+            <span class="font-headline-md text-headline-md font-bold text-primary">ConnectAI</span>
+        </div>
+        <div class="hidden md:flex flex-1 max-w-md mx-8">
+            <div class="relative w-full">
+                <span
+                    class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+                <input
+                    class="w-full bg-surface-container-low border border-outline-variant rounded-full py-2 pl-10 pr-4 text-body-md focus:ring-2 focus:ring-secondary focus:outline-none focus:border-transparent"
+                    placeholder="Search professionals..." type="text" />
+            </div>
+        </div>
+        <div class="flex items-center gap-md">
+            <button
+                class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low transition-colors p-2 rounded-full">notifications</button>
+            <button
+                class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low transition-colors p-2 rounded-full">account_circle</button>
+        </div>
+    </header>
+    <div class="flex max-w-container-max mx-auto min-h-[calc(100vh-64px)]">
+        <!-- SideNavBar Component -->
+        <aside
+            class="hidden md:flex flex-col h-[calc(100vh-64px)] sticky top-16 w-64 p-md bg-surface-container-low border-r border-outline-variant">
+            <div class="mb-xl">
+                <div class="flex items-center gap-sm mb-4">
+                    <img class="w-10 h-10 rounded-full object-cover border border-outline-variant"
+                        data-alt="A professional headshot of a person in business attire, looking confident and approachable. The lighting is soft and warm, typical of a professional studio environment. The background is a muted, neutral tone that aligns with a clean, low-anxiety workspace aesthetic using a palette of soft grays and warm whites."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuyrxHzyBkfdkNH_Fw1-k-S86sKNgp-wx4jR_Z93TmUOumPJJI_UQJjOlZ467uE8gz5FivcZ3G99H8A6A4Njy8eR0VKjKnEtVaL52xQ8QAUBW2x7uI1P0ZPT6JlpdOA641Z-0sSMvP8_uQXLMtf-wnENrtrjO8k7odWxaiyPE7KUCJ-mKp96oKfNZ4-Z6y1SRko2E6XGLcmFxsElp8guPYXHXxmBt00syWq8w9c5xXIGom7UzcrBkjbQgIVMdbwy0R2Intu8owcIc" />
+                    <div>
+                        <p class="font-label-md text-label-md text-on-surface">Alex Rivera</p>
+                        <p class="text-[11px] text-on-surface-variant">Product Strategist</p>
+                    </div>
+                </div>
+                <button
+                    class="w-full bg-primary text-on-primary font-label-md text-label-md py-3 rounded-lg hover:opacity-90 transition-opacity">
+                    Start New Search
+                </button>
+            </div>
+            <nav class="flex flex-col gap-xs flex-1">
+                <a class="text-primary bg-primary-fixed font-bold rounded-lg px-4 py-3 flex items-center gap-3 translate-x-1 transition-transform"
+                    href="#">
+                    <span class="material-symbols-outlined">search_check</span>
+                    <span class="font-label-md text-label-md">Discovery</span>
+                </a>
+                <a class="text-on-surface-variant hover:bg-surface-variant px-4 py-3 rounded-lg flex items-center gap-3 transition-all"
+                    href="#">
+                    <span class="material-symbols-outlined">analytics</span>
+                    <span class="font-label-md text-label-md">Smart Dashboard</span>
+                </a>
+                <a class="text-on-surface-variant hover:bg-surface-variant px-4 py-3 rounded-lg flex items-center gap-3 transition-all"
+                    href="#">
+                    <span class="material-symbols-outlined">hub</span>
+                    <span class="font-label-md text-label-md">Collaboration Hub</span>
+                </a>
+                <a class="text-on-surface-variant hover:bg-surface-variant px-4 py-3 rounded-lg flex items-center gap-3 transition-all"
+                    href="#">
+                    <span class="material-symbols-outlined">monitoring</span>
+                    <span class="font-label-md text-label-md">Analytics</span>
+                </a>
+            </nav>
+            <div class="mt-auto pt-md border-t border-outline-variant">
+                <p class="font-label-sm text-label-sm text-on-surface-variant mb-2">NETWORK CATEGORIES</p>
+                <div class="flex flex-col gap-1">
+                    <button
+                        class="text-left font-label-md text-label-md text-on-surface-variant hover:text-primary p-2 transition-colors">Teammates</button>
+                    <button
+                        class="text-left font-label-md text-label-md text-on-surface-variant hover:text-primary p-2 transition-colors">Mentors</button>
+                    <button
+                        class="text-left font-label-md text-label-md text-on-surface-variant hover:text-primary p-2 transition-colors">Startups</button>
+                </div>
+            </div>
+        </aside>
+        <!-- Main Content Canvas -->
+        <main class="flex-1 flex flex-col md:flex-row bg-surface pb-20 md:pb-0">
+            <!-- Discovery Swipe Area -->
+            <section class="flex-1 p-gutter flex flex-col items-center justify-center">
+                <div class="w-full max-w-md relative group">
+                    <!-- Header Labels for Mobile -->
+                    <div class="md:hidden flex justify-between items-center mb-6 w-full">
+                        <h1 class="font-headline-md text-headline-md-mobile text-on-surface">Discovery</h1>
+                        <div class="flex gap-2">
+                            <span
+                                class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full font-label-sm text-label-sm">AI
+                                Match: 98%</span>
+                        </div>
+                    </div>
+                    <!-- The Card -->
+                    <div
+                        class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden swipe-card-shadow transition-transform duration-300">
+                        <div class="relative aspect-[4/3] w-full">
+                            <img class="w-full h-full object-cover"
+                                data-alt="A professional woman with a warm, encouraging smile, sitting in a modern, plant-filled office space. The lighting is bright and airy, emphasizing a low-anxiety and supportive professional atmosphere. The color palette features soft sage greens and warm wood tones, creating a tranquil yet professional setting consistent with a high-end networking app."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAT38KQqOwTjOsmc9JFMDvwcrPIu-3WAQXeZN9KkRUep8lvStydqdnUoVXreVmnRwibvogqtMUh8vMQWPTLHsZCgc0ubTzN1iuOuIJdRYRUI4RlM6rX4o6yYu-LCHi0PxZkGQ7ct_gXYDDM8SYousHPVbAYhMCLONwo7uWbpN7PjqupIZu-foXDEaL8eVQLDc_CbwKLE4brGv0NKM_pBPFGlwwCoXSISgs1WfvkKM5taWLTwZYaDGWQkopuz21R2-PngIIMdjyGYlk" />
+                            <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+                                <div class="bg-white/90 backdrop-blur-sm rounded-lg p-3 border border-outline-variant">
+                                    <h2 class="font-headline-md text-headline-md text-on-surface">Dr. Elena Thorne</h2>
+                                    <p class="font-label-md text-label-md text-on-surface-variant">Senior AI Ethicist •
+                                        Mentor</p>
+                                </div>
+                                <div
+                                    class="hidden md:flex bg-primary text-on-primary px-4 py-2 rounded-full font-label-md text-label-md shadow-lg">
+                                    98% Match
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-md space-y-md">
+                            <div class="space-y-sm">
+                                <h3 class="font-label-md text-label-md text-on-surface uppercase tracking-wider">
+                                    Expertise</h3>
+                                <div class="flex flex-wrap gap-2">
+                                    <span
+                                        class="bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded-full font-label-sm text-label-sm">Natural
+                                        Language Processing</span>
+                                    <span
+                                        class="bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded-full font-label-sm text-label-sm">Ethics
+                                        in Tech</span>
+                                    <span
+                                        class="bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded-full font-label-sm text-label-sm">Strategic
+                                        Governance</span>
+                                </div>
+                            </div>
+                            <div class="space-y-sm">
+                                <h3 class="font-label-md text-label-md text-on-surface uppercase tracking-wider">Why we
+                                    matched</h3>
+                                <p class="font-body-md text-body-md text-on-surface-variant italic">
+                                    "Elena's background in NLP aligns with your current project. Both of you value
+                                    low-ego collaboration and long-term mentorship."
+                                </p>
+                            </div>
+                            <div class="pt-md border-t border-outline-variant flex gap-gutter">
+                                <button
+                                    class="flex-1 flex items-center justify-center gap-2 border border-secondary text-secondary font-label-md text-label-md py-4 rounded-xl hover:bg-secondary-container transition-all">
+                                    <span class="material-symbols-outlined">close</span>
+                                    Skip
+                                </button>
+                                <button
+                                    class="flex-1 flex items-center justify-center gap-2 bg-primary text-on-primary font-label-md text-label-md py-4 rounded-xl hover:opacity-90 transition-all shadow-lg active:scale-95">
+                                    <span class="material-symbols-outlined"
+                                        style="font-variation-settings: 'FILL' 1;">favorite</span>
+                                    Interested
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Hint Indicators -->
+                    <div
+                        class="absolute -left-16 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center gap-2 text-on-surface-variant opacity-40">
+                        <span class="material-symbols-outlined text-4xl">keyboard_double_arrow_left</span>
+                        <span class="font-label-sm text-label-sm">Swipe Left</span>
+                    </div>
+                    <div
+                        class="absolute -right-16 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center gap-2 text-primary opacity-40">
+                        <span class="material-symbols-outlined text-4xl">keyboard_double_arrow_right</span>
+                        <span class="font-label-sm text-label-sm">Swipe Right</span>
+                    </div>
+                </div>
+            </section>
+            <!-- AI-Curated Sidebar (Desktop Only) -->
+            <section class="hidden xl:flex w-80 flex-col bg-surface-container border-l border-outline-variant p-gutter">
+                <h2 class="font-headline-md text-headline-md text-on-surface mb-gutter">Quick Matches</h2>
+                <div class="flex-1 overflow-y-auto custom-scrollbar space-y-md pr-2">
+                    <!-- Quick Match Card -->
+                    <div
+                        class="bg-surface-container-lowest p-sm rounded-xl border border-outline-variant hover:border-primary transition-colors cursor-pointer group">
+                        <div class="flex gap-sm items-start mb-2">
+                            <img class="w-12 h-12 rounded-lg object-cover"
+                                data-alt="A portrait of a male tech professional in a casual denim shirt, looking thoughtfully into the distance. The lighting is soft and natural, suggesting an outdoor or glass-walled workspace. The color palette is composed of soft blues, warm wood tones, and natural grays, reinforcing a tranquil and focused professional environment."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPKznQn2oyM_qnZMxSS0I0jgsegAdpc00r3I_kdw6E5T-23SCMa38ocvs-GJRpXNtu__oiEB-l7p6CGzAnx21MvRH7cy1O-hNwPtGpBLdXFEVijNiZ3QgupFXdQa7aw7I3JaT5rvzRlfepVctmbIuD5d3HuqdopnrjVRUqmxx7-w6fi9_8I-Fax9QgsGj7eRYss7yi2Q35YcXJupJZjA_U9Gd5zE0TjXrNgtv6_jwp0_LipZ5o4n9R5IdaaRbY81EqeI1djkKP9Fc" />
+                            <div class="flex-1">
+                                <div class="flex justify-between items-start">
+                                    <p class="font-label-md text-label-md text-on-surface">Julian Chen</p>
+                                    <span
+                                        class="text-[10px] bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-full font-bold">94%</span>
+                                </div>
+                                <p class="text-[12px] text-on-surface-variant">Full-stack Engineer</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-1 flex-wrap">
+                            <span class="text-[10px] text-primary bg-primary-fixed px-2 py-0.5 rounded-md">Rust</span>
+                            <span class="text-[10px] text-primary bg-primary-fixed px-2 py-0.5 rounded-md">Wasm</span>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-surface-container-lowest p-sm rounded-xl border border-outline-variant hover:border-primary transition-colors cursor-pointer group">
+                        <div class="flex gap-sm items-start mb-2">
+                            <img class="w-12 h-12 rounded-lg object-cover"
+                                data-alt="A professional headshot of a woman with a confident, serene expression, wearing a stylish blazer. The lighting is professional and diffuse, with no harsh shadows. The background is a clean, minimalist studio set with a palette of muted earth tones and soft whites, embodying a professional and approachable brand identity."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDch69k8I9dVdYU92jbGSmDD4NZvYN_2qgsodeatJ9pMMesMNUaDaAp1dI2nlpLJvfBHSGqU906h0oCXQvmAtMubdEomRQl9Gz3JEvJSpnaZJPExCLWWcvHSJsV9ilh9NhWrqKkKLov6ngmX_8qg-sz9ukf44iTSDDkujth37Eyx7ADCbEDn-PlrF8GG_2hN50A69oHLwiCaRzKHJIZgjJnFu0sn5oU6nwRrtC08ZI_qfzNfpryyI1UBLUb9xFb_Pg_HD4XuuxFzhY" />
+                            <div class="flex-1">
+                                <div class="flex justify-between items-start">
+                                    <p class="font-label-md text-label-md text-on-surface">Sarah Jenkins</p>
+                                    <span
+                                        class="text-[10px] bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-full font-bold">91%</span>
+                                </div>
+                                <p class="text-[12px] text-on-surface-variant">Venture Partner</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-1 flex-wrap">
+                            <span
+                                class="text-[10px] text-primary bg-primary-fixed px-2 py-0.5 rounded-md">Fintech</span>
+                            <span class="text-[10px] text-primary bg-primary-fixed px-2 py-0.5 rounded-md">SaaS</span>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-surface-container-lowest p-sm rounded-xl border border-outline-variant hover:border-primary transition-colors cursor-pointer group">
+                        <div class="flex gap-sm items-start mb-2">
+                            <img class="w-12 h-12 rounded-lg object-cover"
+                                data-alt="A male professional with a friendly smile, dressed in a smart-casual sweater. The setting is a bright, modern co-working space with large windows letting in soft, natural light. The aesthetic is clean and low-anxiety, with a color scheme of muted grays, whites, and soft blues, perfectly suited for a modern networking platform."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYfdMi3w62Fu8MdU6rlZXkiBpU-JbUzUnRjbAIInb59eYJf3QDz5X7mBvvkWV2Z4mcRJ1zG583ApHGXlo-6srB2Mdh5NA6mUT-m-f15HG3oFx_M92JaEN87Mihe4p0mzxNJT57vIJSnYZ26Tf-OlmY7pgHgH0ZmBLOoe8w8O9S5pkjHsHf1teBxDBAHdtDQHoDR6oDH3Cf8RyRq5NYv3QxE6Hdz87Dcre0oW23-SXaNQblAS0p7iRR-xZJp9AIblQHlTyG5bgD0mU" />
+                            <div class="flex-1">
+                                <div class="flex justify-between items-start">
+                                    <p class="font-label-md text-label-md text-on-surface">Marcus Tye</p>
+                                    <span
+                                        class="text-[10px] bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-full font-bold">89%</span>
+                                </div>
+                                <p class="text-[12px] text-on-surface-variant">UX Director</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-1 flex-wrap">
+                            <span
+                                class="text-[10px] text-primary bg-primary-fixed px-2 py-0.5 rounded-md">Systems</span>
+                            <span class="text-[10px] text-primary bg-primary-fixed px-2 py-0.5 rounded-md">Design
+                                Ops</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-gutter space-y-sm">
+                    <button
+                        class="w-full text-center font-label-md text-label-md text-secondary border border-secondary py-3 rounded-lg hover:bg-secondary-container transition-all">
+                        View All Potential Matches
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+    <!-- BottomNavBar Component (Mobile Only) -->
+    <nav
+        class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 md:hidden bg-surface-bright border-t border-outline-variant rounded-t-xl">
+        <a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-4 py-1 scale-95 transition-transform duration-200"
+            href="#">
+            <span class="material-symbols-outlined">explore</span>
+            <span class="font-label-sm text-label-sm">Discovery</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-low transition-all"
+            href="#">
+            <span class="material-symbols-outlined">dashboard</span>
+            <span class="font-label-sm text-label-sm">Dashboard</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-low transition-all"
+            href="#">
+            <span class="material-symbols-outlined">diversity_3</span>
+            <span class="font-label-sm text-label-sm">Collab Hub</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-low transition-all"
+            href="#">
+            <span class="material-symbols-outlined">person</span>
+            <span class="font-label-sm text-label-sm">Profile</span>
+        </a>
+    </nav>
+    <script type="module" src="./app.js"></script>
+</body>
+
+</html>

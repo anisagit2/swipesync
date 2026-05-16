@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>ConnectAI - Settings</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&amp;family=Atkinson+Hyperlegible+Next:wght@400;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#badefd",
+                        "surface-container-low": "#f4f3f2",
+                        "primary-container": "#5e7d6f",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#131e19",
+                        "surface-container-highest": "#e3e2e1",
+                        "outline": "#727974",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#40637d",
+                        "surface-dim": "#dadad9",
+                        "primary-fixed-dim": "#adcebe",
+                        "inverse-on-surface": "#f1f0ef",
+                        "on-background": "#1a1c1c",
+                        "on-surface-variant": "#414844",
+                        "surface-tint": "#466557",
+                        "tertiary-fixed": "#d8e6dd",
+                        "on-primary-fixed": "#022016",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#2f3130",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#3d4943",
+                        "tertiary": "#54605a",
+                        "surface-container": "#eeeeed",
+                        "on-tertiary-container": "#ffffff",
+                        "on-primary-fixed-variant": "#2f4d40",
+                        "surface-variant": "#e3e2e1",
+                        "tertiary-fixed-dim": "#bccac1",
+                        "on-secondary-fixed-variant": "#264a64",
+                        "surface-bright": "#faf9f8",
+                        "background": "#faf9f8",
+                        "on-surface": "#1a1c1c",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed": "#cae6ff",
+                        "surface": "#faf9f8",
+                        "inverse-primary": "#adcebe",
+                        "on-secondary-fixed": "#001e30",
+                        "secondary-fixed-dim": "#a7cbe9",
+                        "on-primary-container": "#ffffff",
+                        "tertiary-container": "#6d7972",
+                        "surface-container-high": "#e9e8e7",
+                        "primary": "#466457",
+                        "primary-fixed": "#c8ead9",
+                        "secondary": "#3f627d",
+                        "outline-variant": "#c1c8c3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "80px",
+                        "lg": "48px",
+                        "sm": "12px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "md": "24px",
+                        "gutter": "24px",
+                        "container-max": "1120px"
+                    },
+                    "fontFamily": {
+                        "display": ["Public Sans"],
+                        "body-lg": ["Public Sans"],
+                        "headline-lg": ["Public Sans"],
+                        "label-sm": ["Atkinson Hyperlegible Next"],
+                        "headline-md": ["Public Sans"],
+                        "body-md": ["Public Sans"],
+                        "label-md": ["Atkinson Hyperlegible Next"],
+                        "headline-lg-mobile": ["Public Sans"]
+                    },
+                    "fontSize": {
+                        "display": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .focus-ring:focus-visible {
+            outline: 2px solid #3f627d;
+            outline-offset: 2px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c1c8c3;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-surface font-body-md text-body-md overflow-x-hidden">
+    <!-- Sidebar Navigation Shell -->
+    <aside
+        class="flex flex-col h-screen fixed left-0 top-0 p-md z-40 bg-surface-container-low border-r border-outline-variant w-72 hidden md:flex">
+        <div class="flex items-center gap-sm mb-lg px-xs">
+            <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                <span class="material-symbols-outlined text-on-primary" data-icon="hub">hub</span>
+            </div>
+            <div>
+                <h1 class="font-display text-headline-md font-bold text-primary">ConnectAI</h1>
+                <p class="font-label-md text-label-md text-on-surface-variant -mt-1">AI Collaboration Hub</p>
+            </div>
+        </div>
+        <nav class="flex-1 space-y-xs">
+            <a class="flex items-center gap-sm px-sm py-base text-on-surface-variant hover:bg-surface-container-high transition-all font-label-md text-label-md rounded-lg group active:scale-98"
+                href="#">
+                <span class="material-symbols-outlined group-hover:text-primary transition-colors"
+                    data-icon="dynamic_feed">dynamic_feed</span>
+                Feed
+            </a>
+            <a class="flex items-center gap-sm px-sm py-base text-on-surface-variant hover:bg-surface-container-high transition-all font-label-md text-label-md rounded-lg group active:scale-98"
+                href="#">
+                <span class="material-symbols-outlined group-hover:text-primary transition-colors"
+                    data-icon="group">group</span>
+                Network
+            </a>
+            <a class="flex items-center gap-sm px-sm py-base text-on-surface-variant hover:bg-surface-container-high transition-all font-label-md text-label-md rounded-lg group active:scale-98"
+                href="#">
+                <span class="material-symbols-outlined group-hover:text-primary transition-colors"
+                    data-icon="lightbulb">lightbulb</span>
+                Opportunities
+            </a>
+            <a class="flex items-center gap-sm px-sm py-base text-on-surface-variant hover:bg-surface-container-high transition-all font-label-md text-label-md rounded-lg group active:scale-98"
+                href="#">
+                <span class="material-symbols-outlined group-hover:text-primary transition-colors"
+                    data-icon="analytics">analytics</span>
+                Analytics
+            </a>
+        </nav>
+        <div class="mt-auto border-t border-outline-variant pt-md space-y-xs">
+            <a class="flex items-center gap-sm px-sm py-base bg-primary-container text-on-primary-container font-bold rounded-lg group"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Settings
+            </a>
+            <a class="flex items-center gap-sm px-sm py-base text-on-surface-variant hover:bg-surface-container-high transition-all font-label-md text-label-md rounded-lg group"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="help">help</span>
+                Help
+            </a>
+        </div>
+    </aside>
+    <!-- Main Canvas -->
+    <main class="md:ml-72 min-h-screen">
+        <!-- Top App Bar -->
+        <header
+            class="flex justify-between items-center px-gutter w-full h-16 sticky top-0 z-50 bg-surface border-b border-outline-variant">
+            <div class="flex items-center gap-md">
+                <button class="md:hidden p-xs">
+                    <span class="material-symbols-outlined" data-icon="menu">menu</span>
+                </button>
+                <h2 class="font-display text-headline-md font-bold text-primary">Settings</h2>
+            </div>
+            <div class="flex items-center gap-md">
+                <div class="relative hidden sm:block">
+                    <span
+                        class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant"
+                        data-icon="search">search</span>
+                    <input
+                        class="pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-full text-label-md focus:outline-none focus:border-primary w-64"
+                        placeholder="Search settings..." type="text" />
+                </div>
+                <button
+                    class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container p-xs rounded-full transition-colors"
+                    data-icon="notifications">notifications</button>
+                <div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+                    <img alt="User profile" class="w-full h-full object-cover"
+                        data-alt="Close-up professional portrait of a confident male executive in a well-lit minimalist studio setting. He is wearing a clean charcoal suit, reflecting a professional and composed brand personality. The lighting is soft and natural, emphasizing clarity and trust. The overall aesthetic is serene and high-end, aligned with a modern professional networking platform."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCADLxNgv3s03XMOs7DEjoRnpPdLDYqyEPE-58Qpm8M1kdr38OVX7_1pQC8ARKy8PLW964SFPWP4cMD00vlw_NDtjIdmZdS68cPsF-qNgZvKLPwoj2Ut-5RsnHK4vqf45n7yudqS8b5d4LfWSHdxrtfSH4iC00ngYqm7TgCB85mTbooNiyPN9IXPGqzJSGUYm9-NAPH6T7THgThmowvEwJg3O0zBcv-makSkVS6lKntLxIOq0LIYdIqA5DC12t4juYtdGn0cX5axG8" />
+                </div>
+            </div>
+        </header>
+        <!-- Page Content -->
+        <div class="max-w-container-max mx-auto p-gutter">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+                <!-- Category Navigation -->
+                <div class="lg:col-span-3 space-y-xs">
+                    <button
+                        class="w-full text-left flex items-center gap-sm px-md py-sm rounded-lg bg-primary-container text-on-primary-container font-bold transition-all">
+                        <span class="material-symbols-outlined" data-icon="person">person</span>
+                        Account
+                    </button>
+                    <button
+                        class="w-full text-left flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-all">
+                        <span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+                        Profile
+                    </button>
+                    <button
+                        class="w-full text-left flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-all">
+                        <span class="material-symbols-outlined"
+                            data-icon="notifications_active">notifications_active</span>
+                        Notifications
+                    </button>
+                    <button
+                        class="w-full text-left flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-all">
+                        <span class="material-symbols-outlined" data-icon="security">security</span>
+                        Privacy &amp; Security
+                    </button>
+                    <button
+                        class="w-full text-left flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-all">
+                        <span class="material-symbols-outlined" data-icon="payments">payments</span>
+                        Subscriptions
+                    </button>
+                </div>
+                <!-- Settings Forms Content -->
+                <div class="lg:col-span-9 space-y-lg">
+                    <!-- Account Section -->
+                    <section class="bg-surface-container-lowest border border-outline-variant p-lg rounded-xl">
+                        <div class="mb-lg">
+                            <h3 class="font-headline-md text-headline-md text-primary">Account Information</h3>
+                            <p class="text-on-surface-variant mt-xs">Update your primary account details and security
+                                credentials.</p>
+                        </div>
+                        <div class="space-y-md">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+                                <div class="space-y-xs">
+                                    <label class="block font-label-md text-label-md text-on-surface">Email
+                                        Address</label>
+                                    <input
+                                        class="w-full px-md py-sm bg-surface-bright border border-outline-variant rounded-lg focus-ring"
+                                        type="email" value="alex.morrison@connectai.io" />
+                                </div>
+                                <div class="space-y-xs">
+                                    <label class="block font-label-md text-label-md text-on-surface">Phone
+                                        Number</label>
+                                    <input
+                                        class="w-full px-md py-sm bg-surface-bright border border-outline-variant rounded-lg focus-ring"
+                                        type="tel" value="+1 (555) 123-4567" />
+                                </div>
+                            </div>
+                            <div class="pt-md border-t border-outline-variant">
+                                <h4 class="font-label-md text-label-md text-on-surface mb-md">Password</h4>
+                                <div class="flex flex-wrap items-center gap-md">
+                                    <button
+                                        class="px-lg py-sm bg-secondary text-on-secondary rounded-lg font-label-md text-label-md hover:bg-on-secondary-container transition-colors shadow-sm">
+                                        Change Password
+                                    </button>
+                                    <p class="text-label-sm text-on-surface-variant">Last changed 4 months ago</p>
+                                </div>
+                            </div>
+                            <div class="pt-md border-t border-outline-variant">
+                                <h4 class="font-label-md text-label-md text-error mb-xs">Danger Zone</h4>
+                                <p class="text-label-sm text-on-surface-variant mb-md">Once you delete your account,
+                                    there is no going back. Please be certain.</p>
+                                <button
+                                    class="px-lg py-sm border border-error text-error rounded-lg font-label-md text-label-md hover:bg-error-container transition-colors">
+                                    Deactivate Account
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Notifications Section (Nested for demonstration) -->
+                    <section class="bg-surface-container-lowest border border-outline-variant p-lg rounded-xl">
+                        <div class="mb-lg">
+                            <h3 class="font-headline-md text-headline-md text-primary">Notification Preferences</h3>
+                            <p class="text-on-surface-variant mt-xs">Control when and how you want to be alerted.</p>
+                        </div>
+                        <div class="space-y-sm">
+                            <div
+                                class="flex items-center justify-between p-sm hover:bg-surface-container-low rounded-lg transition-colors">
+                                <div>
+                                    <p class="font-label-md text-label-md text-on-surface">Direct Messages</p>
+                                    <p class="text-label-sm text-on-surface-variant">Receive alerts when someone sends
+                                        you a message.</p>
+                                </div>
+                                <div class="relative inline-flex items-center cursor-pointer">
+                                    <input checked="" class="sr-only peer" type="checkbox" />
+                                    <div
+                                        class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary">
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-center justify-between p-sm hover:bg-surface-container-low rounded-lg transition-colors">
+                                <div>
+                                    <p class="font-label-md text-label-md text-on-surface">Match Alerts</p>
+                                    <p class="text-label-sm text-on-surface-variant">Get notified of potential
+                                        collaborative opportunities.</p>
+                                </div>
+                                <div class="relative inline-flex items-center cursor-pointer">
+                                    <input checked="" class="sr-only peer" type="checkbox" />
+                                    <div
+                                        class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary">
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-center justify-between p-sm hover:bg-surface-container-low rounded-lg transition-colors">
+                                <div>
+                                    <p class="font-label-md text-label-md text-on-surface">Community Updates</p>
+                                    <p class="text-label-sm text-on-surface-variant">Newsletter and platform improvement
+                                        news.</p>
+                                </div>
+                                <div class="relative inline-flex items-center cursor-pointer">
+                                    <input class="sr-only peer" type="checkbox" />
+                                    <div
+                                        class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Subscription Section -->
+                    <section
+                        class="bg-surface-container-lowest border border-outline-variant overflow-hidden rounded-xl">
+                        <div class="bg-primary-container p-lg text-on-primary-container">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <span
+                                        class="inline-block px-sm py-xs bg-surface-bright/20 backdrop-blur-md rounded-full text-label-sm uppercase tracking-wider mb-sm">Current
+                                        Plan</span>
+                                    <h3 class="font-headline-md text-headline-md font-bold">Pro Professional</h3>
+                                    <p class="opacity-90 mt-xs">Next billing cycle: July 12, 2024</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-display font-display leading-none">$19</p>
+                                    <p class="text-label-md">per month</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-lg space-y-md">
+                            <h4 class="font-label-md text-label-md text-on-surface">Billing History</h4>
+                            <div class="border border-outline-variant rounded-lg overflow-hidden">
+                                <table class="w-full text-left text-label-md">
+                                    <thead class="bg-surface-container-low">
+                                        <tr>
+                                            <th class="px-md py-sm font-semibold">Date</th>
+                                            <th class="px-md py-sm font-semibold">Amount</th>
+                                            <th class="px-md py-sm font-semibold">Status</th>
+                                            <th class="px-md py-sm font-semibold text-right">Invoice</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-outline-variant">
+                                        <tr>
+                                            <td class="px-md py-sm text-on-surface-variant">Jun 12, 2024</td>
+                                            <td class="px-md py-sm">$19.00</td>
+                                            <td class="px-md py-sm"><span
+                                                    class="px-xs py-1 bg-tertiary-fixed text-on-tertiary-fixed text-[10px] uppercase rounded">Paid</span>
+                                            </td>
+                                            <td class="px-md py-sm text-right"><span
+                                                    class="material-symbols-outlined text-primary cursor-pointer"
+                                                    data-icon="download">download</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-md py-sm text-on-surface-variant">May 12, 2024</td>
+                                            <td class="px-md py-sm">$19.00</td>
+                                            <td class="px-md py-sm"><span
+                                                    class="px-xs py-1 bg-tertiary-fixed text-on-tertiary-fixed text-[10px] uppercase rounded">Paid</span>
+                                            </td>
+                                            <td class="px-md py-sm text-right"><span
+                                                    class="material-symbols-outlined text-primary cursor-pointer"
+                                                    data-icon="download">download</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="flex justify-end gap-md pt-sm">
+                                <button
+                                    class="px-lg py-sm text-secondary font-label-md border border-secondary rounded-lg hover:bg-surface-container transition-colors">Manage
+                                    Subscription</button>
+                                <button
+                                    class="px-lg py-sm bg-primary text-on-primary font-label-md rounded-lg hover:opacity-90 transition-opacity shadow-sm">Save
+                                    Changes</button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Mobile Bottom Nav -->
+    <nav
+        class="md:hidden fixed bottom-0 left-0 w-full h-16 bg-surface-container-lowest border-t border-outline-variant flex justify-around items-center z-50">
+        <button class="flex flex-col items-center gap-1 text-on-surface-variant">
+            <span class="material-symbols-outlined" data-icon="dynamic_feed">dynamic_feed</span>
+            <span class="text-[10px] font-label-md">Feed</span>
+        </button>
+        <button class="flex flex-col items-center gap-1 text-on-surface-variant">
+            <span class="material-symbols-outlined" data-icon="group">group</span>
+            <span class="text-[10px] font-label-md">Network</span>
+        </button>
+        <button class="flex flex-col items-center gap-1 text-on-surface-variant">
+            <span class="material-symbols-outlined" data-icon="lightbulb">lightbulb</span>
+            <span class="text-[10px] font-label-md">Opps</span>
+        </button>
+        <button class="flex flex-col items-center gap-1 text-primary">
+            <span class="material-symbols-outlined" data-icon="settings" data-weight="fill">settings</span>
+            <span class="text-[10px] font-label-md font-bold">Settings</span>
+        </button>
+    </nav>
+    <script type="module" src="./app.js"></script>
+</body>
+
+</html>

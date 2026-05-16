@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Complete Your Company Profile | SereneNetwork</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&amp;family=Atkinson+Hyperlegible+Next:wght@600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#3f627d",
+                        "on-secondary-fixed": "#001e30",
+                        "background": "#faf9f8",
+                        "primary-fixed-dim": "#adcebe",
+                        "secondary-fixed": "#cae6ff",
+                        "secondary-container": "#badefd",
+                        "on-error-container": "#93000a",
+                        "outline": "#727974",
+                        "on-surface-variant": "#414844",
+                        "tertiary-fixed-dim": "#bccac1",
+                        "surface": "#faf9f8",
+                        "on-primary-container": "#ffffff",
+                        "surface-container-highest": "#e3e2e1",
+                        "on-tertiary-fixed": "#131e19",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#eeeeed",
+                        "on-secondary-container": "#40637d",
+                        "surface-bright": "#faf9f8",
+                        "on-primary-fixed": "#022016",
+                        "on-background": "#1a1c1c",
+                        "surface-container-high": "#e9e8e7",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#c1c8c3",
+                        "primary-fixed": "#c8ead9",
+                        "surface-dim": "#dadad9",
+                        "on-tertiary-fixed-variant": "#3d4943",
+                        "secondary-fixed-dim": "#a7cbe9",
+                        "inverse-primary": "#adcebe",
+                        "on-surface": "#1a1c1c",
+                        "inverse-surface": "#2f3130",
+                        "primary-container": "#5e7d6f",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f4f3f2",
+                        "on-error": "#ffffff",
+                        "tertiary": "#54605a",
+                        "surface-variant": "#e3e2e1",
+                        "on-primary-fixed-variant": "#2f4d40",
+                        "on-tertiary-container": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#f1f0ef",
+                        "tertiary-container": "#6d7972",
+                        "tertiary-fixed": "#d8e6dd",
+                        "surface-tint": "#466557",
+                        "primary": "#466457",
+                        "on-secondary-fixed-variant": "#264a64",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "base": "8px",
+                        "container-max": "1120px",
+                        "xs": "4px",
+                        "md": "24px",
+                        "lg": "48px",
+                        "gutter": "24px",
+                        "xl": "80px"
+                    },
+                    "fontFamily": {
+                        "display": ["Public Sans"],
+                        "body-md": ["Public Sans"],
+                        "label-sm": ["Atkinson Hyperlegible Next"],
+                        "label-md": ["Atkinson Hyperlegible Next"],
+                        "headline-lg": ["Public Sans"],
+                        "headline-md": ["Public Sans"],
+                        "headline-lg-mobile": ["Public Sans"],
+                        "body-lg": ["Public Sans"]
+                    },
+                    "fontSize": {
+                        "display": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            background-color: #faf9f8;
+            color: #1a1c1c;
+        }
+
+        .focus-ring:focus {
+            outline: 2px solid #3f627d;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+
+<body class="antialiased font-body-md text-body-md overflow-x-hidden">
+    <!-- TopAppBar (Suppressed navigation for focused transactional journey) -->
+    <header
+        class="fixed top-0 left-0 w-full z-50 flex justify-center items-center px-gutter h-16 bg-surface/90 backdrop-blur-md border-b border-outline-variant">
+        <div class="w-full max-w-container-max flex justify-between items-center">
+            <span class="font-display text-headline-md font-bold text-primary">SereneNetwork</span>
+            <div class="flex items-center gap-base">
+                <button
+                    class="flex items-center justify-center p-2 text-on-surface-variant hover:bg-surface-container-low transition-colors rounded-full">
+                    <span class="material-symbols-outlined" data-icon="help">help</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <main class="min-h-screen pt-xl pb-lg flex items-center justify-center">
+        <div class="w-full max-w-[1120px] px-gutter grid grid-cols-1 md:grid-cols-12 gap-lg items-center">
+            <!-- Left Side: Visual/Information Content -->
+            <div class="md:col-span-5 flex flex-col gap-md">
+                <div
+                    class="relative w-full aspect-square rounded-xl overflow-hidden bg-surface-container shadow-sm border border-outline-variant">
+                    <img alt="Modern office space" class="w-full h-full object-cover grayscale-[20%] opacity-90"
+                        data-alt="A tranquil and professional office lobby featuring high ceilings, natural wooden accents, and soft warm lighting. The aesthetic is clean and minimalist with large windows looking out onto a serene greenery-filled courtyard. The color palette is composed of soft sages, muted grays, and warm creams, creating a focused and low-anxiety professional atmosphere."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5l7dFiABNwvwRk6JtEhkHFogL9sOIJ7rZ0BvxbSa40uPKSsLw-9cIK8-otS_wghhvl2S6g_zY101rjDJaM0cHRIiOguGvspTtHOXWMimjg6FmjxFscowTCxn5pxX2aIB1yOQ4_a4CviDQINGFaZj0y4D5GJByDyCAYeX57eDyLRsYD1OOrtpH5HfjfPC4rlUK63YYhbAizh4GYGSpY9egtW2R7hNG0yUwck_c-ATXBr-nh9Q89EHv-LWBIptSP3fQo1GXHEaYFjs" />
+                </div>
+                <div class="flex flex-col gap-xs">
+                    <h1 class="font-display text-headline-lg-mobile md:text-headline-lg text-on-surface">Establish your
+                        presence.</h1>
+                    <p class="text-on-surface-variant max-w-md">Adding your company details helps us connect you with
+                        relevant opportunities and peers in your industry. This step is entirely optional and can be
+                        managed later.</p>
+                </div>
+            </div>
+            <!-- Right Side: The Form -->
+            <div
+                class="md:col-span-7 bg-surface-container-lowest p-md md:p-lg rounded-xl border border-outline-variant flex flex-col gap-md">
+                <div class="flex flex-col gap-xs">
+                    <span class="font-label-sm text-primary uppercase tracking-wider">Step 2 of 2</span>
+                    <h2 class="font-display text-headline-md text-on-surface">Company Details</h2>
+                </div>
+                <form class="flex flex-col gap-md">
+                    <!-- Company Name -->
+                    <div class="flex flex-col gap-xs">
+                        <label class="font-label-md text-on-surface" for="company_name">Company Name</label>
+                        <input
+                            class="w-full p-sm bg-surface border border-outline-variant rounded focus-ring outline-none transition-all placeholder:text-outline-variant"
+                            id="company_name" name="company_name" placeholder="e.g. Serene Solutions Ltd."
+                            type="text" />
+                    </div>
+                    <!-- Business Email -->
+                    <div class="flex flex-col gap-xs">
+                        <label class="font-label-md text-on-surface" for="business_email">Business Email</label>
+                        <input
+                            class="w-full p-sm bg-surface border border-outline-variant rounded focus-ring outline-none transition-all placeholder:text-outline-variant"
+                            id="business_email" name="business_email" placeholder="hello@company.com" type="email" />
+                        <p class="font-label-sm text-on-surface-variant">We'll use this to verify your professional
+                            affiliation.</p>
+                    </div>
+                    <!-- Company Website -->
+                    <div class="flex flex-col gap-xs">
+                        <div class="flex justify-between items-center">
+                            <label class="font-label-md text-on-surface" for="website">Company Website</label>
+                            <span class="font-label-sm text-outline">Optional</span>
+                        </div>
+                        <input
+                            class="w-full p-sm bg-surface border border-outline-variant rounded focus-ring outline-none transition-all placeholder:text-outline-variant"
+                            id="website" name="website" placeholder="https://www.company.com" type="url" />
+                    </div>
+                    <!-- Experience Timeline Hint -->
+                    <div
+                        class="flex items-start gap-sm p-sm bg-surface-container-low rounded border border-outline-variant mt-xs">
+                        <span class="material-symbols-outlined text-secondary" data-icon="info">info</span>
+                        <p class="font-label-sm text-on-surface-variant leading-tight">
+                            Building a company profile allows you to post opportunities and manage team memberships on
+                            the SereneNetwork.
+                        </p>
+                    </div>
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-sm pt-base mt-base border-t border-outline-variant">
+                        <button
+                            class="flex-1 px-md py-sm bg-primary text-on-primary font-label-md rounded hover:bg-primary-container transition-colors focus-ring flex justify-center items-center gap-xs"
+                            type="submit">
+                            Complete Profile
+                            <span class="material-symbols-outlined text-[18px]"
+                                data-icon="arrow_forward">arrow_forward</span>
+                        </button>
+                        <button
+                            class="px-md py-sm border border-secondary text-secondary font-label-md rounded hover:bg-surface-container-high transition-colors focus-ring"
+                            type="button">
+                            Skip for now
+                        </button>
+                    </div>
+                </form>
+                <div class="mt-base flex items-center justify-center gap-xs text-outline text-[12px]">
+                    <span class="material-symbols-outlined text-[14px]" data-icon="lock">lock</span>
+                    Your data is secure and handled with professional integrity.
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Footer for focus pages -->
+    <footer class="w-full py-md border-t border-outline-variant bg-surface-container-low">
+        <div
+            class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row justify-between items-center gap-sm">
+            <p class="font-label-sm text-on-surface-variant">© 2024 SereneNetwork Professional Identity</p>
+            <div class="flex gap-md">
+                <a class="font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy
+                    Policy</a>
+                <a class="font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of
+                    Service</a>
+                <a class="font-label-sm text-on-surface-variant hover:text-primary transition-colors"
+                    href="#">Security</a>
+            </div>
+        </div>
+    </footer>
+    <script type="module" src="./app.js"></script>
+</body>
+
+</html>

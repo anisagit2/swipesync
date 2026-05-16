@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Professional Profile - ConnectAI</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&amp;family=Atkinson+Hyperlegible+Next:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#40637d",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#c8ead9",
+                        "tertiary-fixed-dim": "#bccac1",
+                        "tertiary": "#54605a",
+                        "surface-container-highest": "#e3e2e1",
+                        "on-tertiary-container": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#adcebe",
+                        "on-tertiary-fixed-variant": "#3d4943",
+                        "surface-container-high": "#e9e8e7",
+                        "surface-bright": "#faf9f8",
+                        "on-primary-fixed-variant": "#2f4d40",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#6d7972",
+                        "primary": "#466457",
+                        "on-tertiary-fixed": "#131e19",
+                        "outline": "#727974",
+                        "secondary": "#3f627d",
+                        "on-primary-fixed": "#022016",
+                        "surface-tint": "#466557",
+                        "surface-container-low": "#f4f3f2",
+                        "on-secondary-fixed": "#001e30",
+                        "secondary-container": "#badefd",
+                        "error": "#ba1a1a",
+                        "primary-container": "#5e7d6f",
+                        "inverse-on-surface": "#f1f0ef",
+                        "background": "#faf9f8",
+                        "outline-variant": "#c1c8c3",
+                        "on-secondary-fixed-variant": "#264a64",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#e3e2e1",
+                        "on-surface-variant": "#414844",
+                        "secondary-fixed-dim": "#a7cbe9",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#cae6ff",
+                        "tertiary-fixed": "#d8e6dd",
+                        "surface-dim": "#dadad9",
+                        "inverse-primary": "#adcebe",
+                        "on-background": "#1a1c1c",
+                        "on-surface": "#1a1c1c",
+                        "inverse-surface": "#2f3130",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#eeeeed",
+                        "surface": "#faf9f8",
+                        "on-primary-container": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "container-max": "1120px",
+                        "lg": "48px",
+                        "gutter": "24px",
+                        "md": "24px",
+                        "xl": "80px",
+                        "sm": "12px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Atkinson Hyperlegible Next"],
+                        "headline-lg-mobile": ["Public Sans"],
+                        "label-sm": ["Atkinson Hyperlegible Next"],
+                        "headline-lg": ["Public Sans"],
+                        "headline-md": ["Public Sans"],
+                        "display": ["Public Sans"],
+                        "body-md": ["Public Sans"],
+                        "body-lg": ["Public Sans"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .scale-98:active {
+            transform: scale(0.98);
+        }
+
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 24px;
+            bottom: 0;
+            width: 2px;
+            background-color: #c1c8c3;
+        }
+
+        .timeline-item:last-child .timeline-line::before {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-background font-body-md min-h-screen">
+    <!-- SideNavBar (Shared Component) -->
+    <aside
+        class="flex flex-col h-screen fixed left-0 top-0 p-md z-40 bg-surface-container-low border-r border-outline-variant w-72 hidden md:flex">
+        <div class="flex items-center gap-sm mb-xl">
+            <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                <span class="material-symbols-outlined text-on-primary">hub</span>
+            </div>
+            <div>
+                <h1 class="font-display text-headline-md font-bold text-primary">ConnectAI</h1>
+                <p class="font-label-sm text-on-surface-variant">AI Collaboration Hub</p>
+            </div>
+        </div>
+        <nav class="flex-1 space-y-base">
+            <a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg cursor-pointer"
+                href="#">
+                <span class="material-symbols-outlined">dynamic_feed</span>
+                <span class="font-label-md">Feed</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg cursor-pointer"
+                href="#">
+                <span class="material-symbols-outlined">group</span>
+                <span class="font-label-md">Network</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg cursor-pointer"
+                href="#">
+                <span class="material-symbols-outlined">lightbulb</span>
+                <span class="font-label-md">Opportunities</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg cursor-pointer"
+                href="#">
+                <span class="material-symbols-outlined">analytics</span>
+                <span class="font-label-md">Analytics</span>
+            </a>
+        </nav>
+        <div class="mt-auto space-y-base">
+            <a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg cursor-pointer"
+                href="#">
+                <span class="material-symbols-outlined">settings</span>
+                <span class="font-label-md">Settings</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg cursor-pointer"
+                href="#">
+                <span class="material-symbols-outlined">help</span>
+                <span class="font-label-md">Help</span>
+            </a>
+            <!-- Active State Logic applied to Profile/Account context implicitly -->
+            <div
+                class="flex items-center gap-md px-md py-sm bg-primary-container text-on-primary-container font-bold rounded-lg cursor-pointer mt-md">
+                <img alt="Profile" class="w-8 h-8 rounded-full object-cover"
+                    data-alt="A professional studio portrait of a mid-30s researcher with a calm expression, wearing a soft gray knit sweater. The lighting is diffused and natural, set against a blurred minimalist office background with plants. The image conveys intellectual depth, approachability, and professional serenity consistent with a modern tech workspace."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbGD9JoKnxo7c3XD6958aysfW4yPijzPco1hj-IA3jRCrMKYOW-B_jApklfecsPMbrba9C_tppUxDbL3ViuRZArdLVEq6NexS7YWXq17YlpiK_Fz6Rj3K86QicsDLJ08ZmMmEi6pt78cc463VX-GE8SX6dNiTHMiRVVidprkeVuEi25RRfFnS6mI2o-sRGgnx2-xMpfSeJJ8A6Su-JEXLv8D3VviZr39UjTw_0tbiU_FHR1XR-qwAUn0W-S3Zn2xg65UAq_qwfaLM" />
+                <span class="font-label-md">Profile</span>
+            </div>
+        </div>
+    </aside>
+    <!-- TopAppBar (Mobile & Global Actions) -->
+    <header
+        class="flex justify-between items-center px-gutter w-full h-16 sticky top-0 z-50 bg-surface border-b border-outline-variant md:pl-[calc(18rem+24px)]">
+        <div class="flex items-center gap-sm md:hidden">
+            <h1 class="font-display text-headline-md font-bold text-primary">ConnectAI</h1>
+        </div>
+        <div
+            class="hidden md:flex items-center bg-surface-container-low px-md py-xs rounded-full border border-outline-variant w-96">
+            <span class="material-symbols-outlined text-outline">search</span>
+            <input
+                class="bg-transparent border-none focus:ring-0 text-body-md w-full ml-sm placeholder:text-outline-variant"
+                placeholder="Search experts, projects, or insights..." type="text" />
+        </div>
+        <div class="flex items-center gap-md">
+            <button
+                class="material-symbols-outlined text-on-surface-variant p-sm hover:bg-surface-container rounded-full transition-colors">notifications</button>
+            <button
+                class="bg-primary text-on-primary px-gutter py-sm rounded-lg font-label-md hover:brightness-95 transition-all">Connect</button>
+        </div>
+    </header>
+    <!-- Main Content Canvas -->
+    <main class="md:ml-72 min-h-screen p-gutter md:p-lg">
+        <div class="max-w-[1120px] mx-auto">
+            <!-- Hero Profile Section -->
+            <section class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden mb-lg">
+                <div class="h-48 bg-primary-container relative">
+                    <div class="absolute inset-0 opacity-10"
+                        style="background-image: radial-gradient(circle at 2px 2px, #ffffff 1px, transparent 0); background-size: 24px 24px;">
+                    </div>
+                </div>
+                <div class="px-md md:px-lg pb-lg relative">
+                    <div class="flex flex-col md:flex-row gap-gutter -mt-16 items-start md:items-end">
+                        <div class="p-xs bg-surface rounded-xl border border-outline-variant">
+                            <img class="w-32 h-32 md:w-40 md:h-40 rounded-lg object-cover"
+                                data-alt="A professional headshot of Alex Morrison, a senior AI researcher in his late 30s. He has a thoughtful, focused expression and is wearing a dark charcoal blazer over a simple white t-shirt. The portrait is taken in a brightly lit, modern architectural setting with glass and soft wood textures, reflecting a balanced, serene professional identity."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxg1NIAh-Pe4tdC_TM2NeS07gMqIDjx7JZD19CgLGtbW7GHRVQfTl98rspSEeYXre9OinhFFvWiMC-xSKzjkp7g0LU6Y8qxIVHrauVSA8oGfERaddNsFYClOGQVJEupAoEjYSQn9HfjwAofMxx1D7a_oq2bbXot8eFrCwZTeUkieF8X9BSo9A27GOAz1H4U9jP2f4ZkaIvhK48_jOntaRsKIBMgxMDST-GGK2vqEyJIHFV_ELSXzam91lw12yiEdYOiUtVKbtePGc" />
+                        </div>
+                        <div class="flex-1 mb-xs">
+                            <h2 class="font-headline-lg text-headline-lg text-on-surface">Alex Morrison</h2>
+                            <p class="font-body-lg text-primary font-semibold">Senior AI Researcher</p>
+                        </div>
+                        <div class="flex gap-sm mb-xs w-full md:w-auto">
+                            <button
+                                class="flex-1 md:flex-none flex items-center justify-center gap-sm border border-secondary text-secondary px-gutter py-sm rounded-lg font-label-md hover:bg-secondary-container transition-colors focus:ring-2 focus:ring-secondary focus:ring-offset-2">
+                                <span class="material-symbols-outlined text-[20px]">mail</span> Message
+                            </button>
+                            <button
+                                class="flex-1 md:flex-none flex items-center justify-center gap-sm bg-primary text-on-primary px-gutter py-sm rounded-lg font-label-md hover:brightness-95 transition-all">
+                                <span class="material-symbols-outlined text-[20px]">person_add</span> Follow
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mt-md max-w-2xl">
+                        <p class="font-body-md text-on-surface-variant leading-relaxed">
+                            Pioneering human-centric AI systems with a focus on ethical deployment and collaborative
+                            intelligence. Currently leading research initiatives at the intersection of Large Language
+                            Models and specialized domain knowledge. I believe the future of AI is not replacement, but
+                            radical empowerment.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <!-- Bento Layout Content -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+                <!-- Left Column: Core Skills & Achievements -->
+                <div class="md:col-span-4 space-y-gutter">
+                    <!-- Achievements/Impact Metrics -->
+                    <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md">
+                        <h3 class="font-label-md text-on-surface-variant uppercase tracking-wider mb-md">Platform Impact
+                        </h3>
+                        <div class="grid grid-cols-2 gap-md">
+                            <div
+                                class="p-md bg-surface-container-low rounded-lg border border-outline-variant/30 text-center">
+                                <span class="block font-display text-headline-md text-primary">15</span>
+                                <span class="font-label-sm text-on-surface-variant">Collaborations</span>
+                            </div>
+                            <div
+                                class="p-md bg-surface-container-low rounded-lg border border-outline-variant/30 text-center">
+                                <span class="block font-display text-headline-md text-primary">Top 5%</span>
+                                <span class="font-label-sm text-on-surface-variant">Contributor</span>
+                            </div>
+                            <div
+                                class="p-md bg-surface-container-low rounded-lg border border-outline-variant/30 text-center">
+                                <span class="block font-display text-headline-md text-primary">42</span>
+                                <span class="font-label-sm text-on-surface-variant">Insights Shared</span>
+                            </div>
+                            <div
+                                class="p-md bg-surface-container-low rounded-lg border border-outline-variant/30 text-center">
+                                <span class="block font-display text-headline-md text-primary">1.2k</span>
+                                <span class="font-label-sm text-on-surface-variant">Reach</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Core Skills -->
+                    <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md">
+                        <h3 class="font-label-md text-on-surface-variant uppercase tracking-wider mb-md">Core Skills
+                        </h3>
+                        <div class="flex flex-wrap gap-sm">
+                            <span
+                                class="px-md py-xs bg-primary-fixed text-on-primary-fixed-variant rounded-full font-label-md border border-primary/10">Prompt
+                                Engineering</span>
+                            <span
+                                class="px-md py-xs bg-primary-fixed text-on-primary-fixed-variant rounded-full font-label-md border border-primary/10">Data
+                                Visualization</span>
+                            <span
+                                class="px-md py-xs bg-primary-fixed text-on-primary-fixed-variant rounded-full font-label-md border border-primary/10">AI
+                                Strategy</span>
+                            <span
+                                class="px-md py-xs bg-primary-fixed text-on-primary-fixed-variant rounded-full font-label-md border border-primary/10">Ethics</span>
+                            <span
+                                class="px-md py-xs bg-primary-fixed text-on-primary-fixed-variant rounded-full font-label-md border border-primary/10">Neural
+                                Networks</span>
+                            <span
+                                class="px-md py-xs bg-primary-fixed text-on-primary-fixed-variant rounded-full font-label-md border border-primary/10">RAG
+                                Architectures</span>
+                        </div>
+                    </div>
+                    <!-- Collaboration Interests -->
+                    <div class="bg-tertiary text-on-tertiary rounded-xl p-md">
+                        <div class="flex items-center gap-sm mb-sm text-tertiary-fixed">
+                            <span class="material-symbols-outlined">handshake</span>
+                            <h3 class="font-label-md uppercase tracking-wider">Collaboration Interests</h3>
+                        </div>
+                        <ul class="space-y-sm">
+                            <li class="flex gap-sm items-start">
+                                <span
+                                    class="material-symbols-outlined text-[20px] text-primary-fixed mt-xs">check_circle</span>
+                                <span class="font-body-md">Open to mentoring junior AI researchers</span>
+                            </li>
+                            <li class="flex gap-sm items-start">
+                                <span
+                                    class="material-symbols-outlined text-[20px] text-primary-fixed mt-xs">check_circle</span>
+                                <span class="font-body-md">Looking for frontend partners for ethical AI dashboard
+                                    project</span>
+                            </li>
+                            <li class="flex gap-sm items-start">
+                                <span
+                                    class="material-symbols-outlined text-[20px] text-primary-fixed mt-xs">check_circle</span>
+                                <span class="font-body-md">Seeking cross-disciplinary paper collaborations</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Right Column: Professional Background Timeline -->
+                <div class="md:col-span-8">
+                    <div
+                        class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md md:p-lg h-full">
+                        <div class="flex justify-between items-center mb-lg">
+                            <h3 class="font-headline-md text-on-surface">Professional Background</h3>
+                            <button
+                                class="text-primary font-label-md flex items-center gap-xs hover:underline cursor-pointer">
+                                <span class="material-symbols-outlined text-[18px]">edit</span> Edit History
+                            </button>
+                        </div>
+                        <div class="space-y-0">
+                            <!-- Timeline Item 1 -->
+                            <div class="timeline-item flex gap-lg relative pb-lg">
+                                <div class="timeline-line flex flex-col items-center">
+                                    <div class="w-4 h-4 rounded-full bg-primary z-10 border-4 border-surface"></div>
+                                </div>
+                                <div class="flex-1">
+                                    <span class="font-label-sm text-outline mb-xs block">2021 — PRESENT</span>
+                                    <h4 class="font-label-md text-on-surface text-lg">Lead AI Scientist</h4>
+                                    <p class="text-primary font-semibold mb-sm">Aether Systems</p>
+                                    <p class="text-on-surface-variant font-body-md">Directed a team of 12 researchers in
+                                        developing sustainable LLM training protocols. Successfully reduced energy
+                                        consumption of model inference by 40% while maintaining 98% accuracy in
+                                        benchmark tests.</p>
+                                </div>
+                            </div>
+                            <!-- Timeline Item 2 -->
+                            <div class="timeline-item flex gap-lg relative pb-lg">
+                                <div class="timeline-line flex flex-col items-center">
+                                    <div class="w-4 h-4 rounded-full bg-outline-variant z-10 border-4 border-surface">
+                                    </div>
+                                </div>
+                                <div class="flex-1">
+                                    <span class="font-label-sm text-outline mb-xs block">2018 — 2021</span>
+                                    <h4 class="font-label-md text-on-surface text-lg">Senior Machine Learning Engineer
+                                    </h4>
+                                    <p class="text-primary font-semibold mb-sm">Cognitive Cloud</p>
+                                    <p class="text-on-surface-variant font-body-md">Implemented scalable vector database
+                                        solutions for enterprise-grade retrieval systems. Led the "Transparency First"
+                                        initiative for algorithmic bias detection.</p>
+                                </div>
+                            </div>
+                            <!-- Timeline Item 3 -->
+                            <div class="timeline-item flex gap-lg relative">
+                                <div class="timeline-line flex flex-col items-center">
+                                    <div class="w-4 h-4 rounded-full bg-outline-variant z-10 border-4 border-surface">
+                                    </div>
+                                </div>
+                                <div class="flex-1">
+                                    <span class="font-label-sm text-outline mb-xs block">2015 — 2018</span>
+                                    <h4 class="font-label-md text-on-surface text-lg">AI Researcher (Doctoral Fellow)
+                                    </h4>
+                                    <p class="text-primary font-semibold mb-sm">University of Tech Ethics</p>
+                                    <p class="text-on-surface-variant font-body-md">Conducted foundational research on
+                                        human-in-the-loop reinforcement learning. Published 8 peer-reviewed papers in
+                                        top-tier AI journals.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Featured Project Glassmorphism Card -->
+                        <div
+                            class="mt-xl p-lg rounded-xl relative overflow-hidden bg-gradient-to-br from-primary/10 to-secondary/10 border border-white/50 backdrop-blur-md">
+                            <div class="relative z-10">
+                                <h4 class="font-label-md uppercase tracking-wider text-primary mb-md">Featured Project
+                                </h4>
+                                <div class="flex flex-col md:flex-row gap-md">
+                                    <img class="w-full md:w-48 h-32 rounded-lg object-cover border border-outline-variant"
+                                        data-alt="A sophisticated data visualization interface displaying complex network clusters in shades of sage green and slate blue. The aesthetic is clean and analytical, with glowing nodes and delicate connecting lines against a soft gray background, representing an ethical AI monitoring system."
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuA372W4W_NyI6p8Dt3ZzQ3TkPhDjpuxxNuIFeM9zAEXWJAXcH9hhKMQVwybiG-Or21upToV_p-Y-5TgLEjpo7C_8960qG-t__Gm8v-QdNeG-i7LZvxwzUReqmLRHKkb8WXJ3KkdmHSb1SaBKLpPrI353dxprBVrkCfztaXEE9o31RCj2bFWs42yR7-YksxNh31dTGOVShIp7Z5mrda2TwI_S0GAfhsUs746MuV1ROAwnZi1H9yLjfT1qekWwJ89aUwy1yK3J82ztiw" />
+                                    <div class="flex-1">
+                                        <h5 class="font-headline-md text-on-surface mb-sm">EthosGraph V2.0</h5>
+                                        <p class="text-on-surface-variant font-body-md mb-md">A real-time monitoring
+                                            tool for detecting semantic drift and bias in enterprise generative models.
+                                        </p>
+                                        <button
+                                            class="flex items-center gap-xs text-primary font-label-md hover:gap-md transition-all">
+                                            View Project Case Study <span
+                                                class="material-symbols-outlined">arrow_forward</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- BottomNavBar (Mobile Shared Component) -->
+    <nav
+        class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-surface border-t border-outline-variant flex items-center justify-around px-md z-50">
+        <button class="flex flex-col items-center text-on-surface-variant">
+            <span class="material-symbols-outlined">dynamic_feed</span>
+            <span class="text-[10px] font-label-sm">Feed</span>
+        </button>
+        <button class="flex flex-col items-center text-on-surface-variant">
+            <span class="material-symbols-outlined">group</span>
+            <span class="text-[10px] font-label-sm">Network</span>
+        </button>
+        <button class="flex flex-col items-center text-on-surface-variant">
+            <span class="material-symbols-outlined">lightbulb</span>
+            <span class="text-[10px] font-label-sm">Opportunities</span>
+        </button>
+        <button class="flex flex-col items-center text-primary font-bold">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+            <span class="text-[10px] font-label-sm">Profile</span>
+        </button>
+    </nav>
+    <script type="module" src="./app.js"></script>
+</body>
+
+</html>
