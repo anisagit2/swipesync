@@ -38,7 +38,7 @@ const pages = ['first', 'second', 'smart', 'collab'];
 const names = ['FirstPage', 'SecondPage', 'ThirdPage', 'FourthPage'];
 
 for (let i = 0; i < pages.length; i++) {
-    const htmlPath = path.join(__dirname, '..', 'new_frontend', `${pages[i]}.html`);
+    const htmlPath = path.join(__dirname, '..', 'frontend', `${pages[i]}.html`);
     const jsxPath = path.join(__dirname, 'src', 'pages', `${names[i]}.jsx`);
     
     if (fs.existsSync(htmlPath)) {

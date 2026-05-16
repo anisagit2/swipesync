@@ -1,6 +1,6 @@
 # SwipeSync
 
-SwipeSync now runs from the `new_frontend/` folder. The old static frontend has been removed from the active project.
+SwipeSync now runs from the `frontend/` folder. The old static frontend has been removed from the active project.
 
 ## Requirements
 
@@ -35,7 +35,7 @@ Starts the new frontend locally.
 npm run build
 ```
 
-Builds the new frontend into `new_frontend/dist/`.
+Builds the new frontend into `frontend/dist/`.
 
 ```bash
 npm run preview
@@ -45,7 +45,7 @@ Previews the production build locally.
 
 ## Project Structure
 
-- `new_frontend/` - active frontend pages and shared browser behavior
-- `new_frontend/app.js` - shared navigation and form handling
-- `new_frontend/vite.config.js` - Vite build configuration for all HTML pages
+- `frontend/` - active frontend pages and shared browser behavior
+- `frontend/app.js` - shared navigation and form handling
+- `frontend/vite.config.js` - Vite build configuration for all HTML pages
 - `client/` - legacy React client kept in the repository, but no longer used by the root run scripts
