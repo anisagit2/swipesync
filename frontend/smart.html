@@ -5,390 +5,591 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>SwipeSync Smart Dashboard</title>
+    <title>Analysis - SwipeSync</title>
     <link rel="stylesheet" href="./styles.css" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&amp;family=Atkinson+Hyperlegible+Next:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&amp;family=Atkinson+Hyperlegible+Next:wght@600;700&amp;display=swap"
         rel="stylesheet" />
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
-    
-    
+    <style>
+        :root {
+            --analysis-ink: #17211d;
+            --analysis-green: #466457;
+            --analysis-blue: #3f627d;
+            --analysis-mint: #d8efe5;
+            --analysis-gold: #f1c86b;
+        }
+        body {
+            background:
+                linear-gradient(135deg, rgba(216, 239, 229, 0.72) 0%, rgba(250, 249, 248, 0.72) 42%, rgba(224, 235, 244, 0.78) 100%),
+                #faf9f8;
+        }
+        .analysis-shell {
+            position: relative;
+        }
+        .analysis-shell::before {
+            content: "";
+            position: fixed;
+            inset: 64px 0 auto 0;
+            height: 240px;
+            pointer-events: none;
+            background: linear-gradient(90deg, rgba(70, 100, 87, 0.18), rgba(63, 98, 125, 0.18), rgba(241, 200, 107, 0.12));
+            mask-image: linear-gradient(to bottom, #000 0%, transparent 100%);
+            z-index: -1;
+        }
+        .hero-panel {
+            background:
+                linear-gradient(135deg, rgba(23, 33, 29, 0.94), rgba(63, 98, 125, 0.9)),
+                #17211d;
+            color: white;
+            box-shadow: 0 24px 60px -36px rgba(23, 33, 29, 0.75);
+        }
+        .hero-panel::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+            background-size: 28px 28px;
+            mask-image: linear-gradient(90deg, transparent 0%, #000 20%, #000 80%, transparent 100%);
+            opacity: 0.35;
+        }
+        .premium-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.72);
+            box-shadow: 0 18px 45px -34px rgba(23, 33, 29, 0.85);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .premium-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 24px 55px -34px rgba(23, 33, 29, 0.95);
+            border-color: rgba(70, 100, 87, 0.28);
+        }
+        .metric-tile {
+            background: linear-gradient(180deg, rgba(255,255,255,0.86), rgba(244,243,242,0.82));
+            border: 1px solid rgba(193, 200, 195, 0.45);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.75);
+        }
+        .metric-track {
+            background: rgba(193, 200, 195, 0.32);
+            box-shadow: inset 0 1px 2px rgba(23, 33, 29, 0.08);
+        }
+        .action-required-glass {
+            background: linear-gradient(135deg, rgba(139, 26, 26, 0.1) 0%, rgba(255, 255, 255, 0.92) 62%, rgba(241, 200, 107, 0.18) 100%);
+            border: 1px solid rgba(139, 26, 26, 0.16);
+        }
+        .signal-strip {
+            background: linear-gradient(90deg, var(--analysis-green), var(--analysis-blue), var(--analysis-gold));
+        }
+        .heat-cell {
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+        }
+        .heat-cell:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px -12px rgba(23, 33, 29, 0.6);
+        }
+        .heatmap-grid {
+            grid-template-columns: repeat(15, minmax(12px, 1fr));
+        }
+        .bar-glow {
+            box-shadow: 0 -10px 28px -18px currentColor;
+        }
+        .velocity-chart {
+            background-image: linear-gradient(to top, rgba(193, 200, 195, 0.45) 1px, transparent 1px);
+            background-size: 100% 25%;
+        }
+    </style>
 </head>
 
-<body class="bg-background text-on-surface font-body-md min-h-screen">
+<body class="text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed overflow-x-hidden">
     <!-- TopAppBar -->
     <header
-        class="sticky top-0 z-50 flex justify-between items-center w-full px-gutter max-w-container-max mx-auto h-16 bg-surface-bright border-b border-outline-variant">
-        <div class="font-headline-md text-headline-md-mobile md:text-headline-md font-bold text-primary">SwipeSync</div>
+        class="sticky top-0 z-50 flex justify-between items-center w-full px-gutter max-w-[1320px] mx-auto bg-white/80 backdrop-blur-md border-b border-outline-variant h-16">
         <div class="flex items-center gap-4">
-            <button
-                class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container-low transition-colors rounded-full focus-ring">notifications</button>
-            <button
-                class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container-low transition-colors rounded-full focus-ring">account_circle</button>
+            <span class="font-headline-md text-headline-md font-bold text-primary tracking-tight">SwipeSync</span>
+        </div>
+        <div class="hidden md:flex flex-1 max-w-md mx-8">
+            <div class="relative w-full">
+                <span
+                    class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+                <input
+                    class="w-full bg-surface-container-low border border-outline-variant rounded-full py-2 pl-10 pr-4 text-body-md focus:ring-2 focus:ring-secondary focus:outline-none focus:border-transparent transition-all"
+                    placeholder="Search ecosystem..." type="text" />
+            </div>
+        </div>
+        <div class="flex items-center gap-md">
+            <a aria-label="Settings" href="setting.html"
+                class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low transition-colors p-2 rounded-full no-underline">settings</a>
+            <a aria-label="Profile" href="prf.html"
+                class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low transition-colors p-2 rounded-full no-underline">account_circle</a>
         </div>
     </header>
-    <div class="flex max-w-container-max mx-auto px-4 md:px-lg py-gutter">
+
+    <div class="flex max-w-[1320px] mx-auto min-h-[calc(100vh-64px)]">
         <!-- SideNavBar -->
         <aside
-            class="hidden md:flex flex-col h-[calc(100vh-100px)] sticky top-24 w-64 mr-lg bg-surface-container-low border-r border-outline-variant p-md rounded-xl">
-            <div class="mb-8">
-                <h2 class="font-headline-md text-headline-md font-bold text-primary">Professional Hub</h2>
-                <p class="text-on-surface-variant text-label-sm">AI-Powered Matching</p>
+            class="hidden md:flex flex-col h-[calc(100vh-64px)] sticky top-16 w-64 p-md bg-white/40 border-r border-outline-variant">
+            <div class="mb-xl">
+                <a class="flex items-center gap-sm mb-4 rounded-lg hover:bg-white/60 transition-colors p-1 -m-1"
+                    href="prf.html">
+                    <img class="w-10 h-10 rounded-full object-cover border border-outline-variant shadow-sm" data-profile-image
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuyrxHzyBkfdkNH_Fw1-k-S86sKNgp-wx4jR_Z93TmUOumPJJI_UQJjOlZ467uE8gz5FivcZ3G99H8A6A4Njy8eR0VKjKnEtVaL52xQ8QAUBW2x7uI1P0ZPT6JlpdOA641Z-0sSMvP8_uQXLMtf-wnENrtrjO8k7odWxaiyPE7KUCJ-mKp96oKfNZ4-Z6y1SRko2E6XGLcmFxsElp8guPYXHXxmBt00syWq8w9c5xXIGom7UzcrBkjbQgIVMdbwy0R2Intu8owcIc" />
+                    <div>
+                        <p class="font-label-md text-label-md text-on-surface font-bold" data-profile-name>Alex Morrison</p>
+                        <p class="text-[10px] text-on-surface-variant uppercase tracking-tighter" data-profile-role>Senior AI Researcher</p>
+                    </div>
+                </a>
+                <button
+                    class="w-full bg-primary text-on-primary font-label-md text-label-md py-3 rounded-lg hover:brightness-110 transition-all shadow-md active:scale-95">
+                    Start New Search
+                </button>
             </div>
-            <nav class="flex flex-col gap-2">
-                <a class="text-on-surface-variant dark:text-surface-variant hover:bg-surface-variant px-4 py-2 transition-all rounded-lg flex items-center gap-3"
-                    href="#">
+            <nav class="flex flex-col gap-xs flex-1">
+                <a class="flex items-center gap-3 px-4 py-3 rounded-lg transition-all hover:bg-white/60"
+                    href="first.html" data-nav="discovery">
                     <span class="material-symbols-outlined">search_check</span>
                     <span class="font-label-md text-label-md">Discovery</span>
                 </a>
-                <a class="text-primary bg-primary-fixed font-bold rounded-lg px-4 py-2 flex items-center gap-3 translate-x-1 transition-transform duration-200"
-                    href="#">
+                <a class="flex items-center gap-3 px-4 py-3 rounded-lg transition-all"
+                    href="smart.html" data-nav="analysis">
                     <span class="material-symbols-outlined">analytics</span>
                     <span class="font-label-md text-label-md">Analysis</span>
                 </a>
-                <a class="text-on-surface-variant dark:text-surface-variant hover:bg-surface-variant px-4 py-2 transition-all rounded-lg flex items-center gap-3"
-                    href="#">
+                <a class="flex items-center gap-3 px-4 py-3 rounded-lg transition-all hover:bg-white/60"
+                    href="collab.html" data-nav="collab">
                     <span class="material-symbols-outlined">hub</span>
                     <span class="font-label-md text-label-md">Collaboration Hub</span>
                 </a>
-                <a class="text-on-surface-variant dark:text-surface-variant hover:bg-surface-variant px-4 py-2 transition-all rounded-lg flex items-center gap-3"
-                    href="#">
-                    <span class="material-symbols-outlined">monitoring</span>
-                    <span class="font-label-md text-label-md">Analytics</span>
+                <a class="flex items-center gap-3 px-4 py-3 rounded-lg transition-all hover:bg-white/60"
+                    href="prf.html" data-nav="profile">
+                    <span class="material-symbols-outlined">person</span>
+                    <span class="font-label-md text-label-md">Profile</span>
                 </a>
             </nav>
-            <button
-                class="mt-auto bg-primary text-on-primary font-label-md text-label-md py-3 rounded-xl hover:opacity-90 transition-opacity focus-ring">
-                Start New Search
-            </button>
         </aside>
-        <!-- Main Content Area -->
-        <main class="flex-1 w-full pb-24 md:pb-0">
-            <div class="flex flex-col gap-gutter">
-                <!-- Welcome Section -->
-                <section>
-                    <h1
-                        class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-2">
-                        Welcome back, Jordan</h1>
-                    <p class="text-body-md text-on-surface-variant">Your collaboration network is growing steadily. Here
-                        is your AI-curated focus for today.</p>
-                </section>
-                <!-- Bento Grid Layout -->
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
-                    <!-- Connection Health (Large Feature) -->
-                    <div
-                        class="md:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-xl p-md">
-                        <div class="flex justify-between items-center mb-6">
-                            <h3 class="font-headline-md text-headline-md text-on-surface">Connection Health</h3>
-                            <span class="text-label-sm font-label-sm text-on-surface-variant flex items-center gap-1">
-                                <span class="material-symbols-outlined text-[16px]">info</span> Last 30 Days
-                            </span>
+
+        <!-- Main Content Canvas -->
+        <main class="analysis-shell flex-1 p-gutter md:p-lg page-transition">
+            <header class="hero-panel relative overflow-hidden rounded-3xl p-6 md:p-8 mb-8 flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+                <div class="relative z-10 max-w-2xl">
+                    <div class="inline-flex items-center gap-2 bg-white/10 border border-white/15 text-white/80 px-3 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-widest mb-5">
+                        <span class="material-symbols-outlined text-[16px]">auto_awesome</span>
+                        AI Network Brief
+                    </div>
+                    <h1 class="text-headline-lg-mobile md:text-headline-lg font-bold mb-4 tracking-tight">Welcome back, <span data-profile-name>Alex</span></h1>
+                    <p class="text-body-md text-white/75 max-w-2xl font-medium">Your collaboration network is gaining momentum. Focus on the highest-leverage relationships, stalled partnerships, and next best conversations.</p>
+                </div>
+                <div class="relative z-10 grid grid-cols-3 gap-3 w-full lg:w-auto">
+                    <div class="bg-white/12 border border-white/15 rounded-2xl p-4 min-w-24">
+                        <p class="text-[10px] uppercase tracking-widest text-white/60 font-bold mb-1">Focus</p>
+                        <p class="text-headline-md font-bold">3</p>
+                    </div>
+                    <div class="bg-white/12 border border-white/15 rounded-2xl p-4 min-w-24">
+                        <p class="text-[10px] uppercase tracking-widest text-white/60 font-bold mb-1">Score</p>
+                        <p class="text-headline-md font-bold">88%</p>
+                    </div>
+                    <div class="bg-white/12 border border-white/15 rounded-2xl p-4 min-w-24">
+                        <p class="text-[10px] uppercase tracking-widest text-white/60 font-bold mb-1">Today</p>
+                        <p class="text-sm font-bold leading-6">May 17</p>
+                    </div>
+                </div>
+            </header>
+
+            <div class="grid grid-cols-12 gap-6 md:gap-8">
+                <!-- Top Row: Connection Health & Network Composition -->
+                <div class="col-span-12 lg:col-span-8 rounded-3xl p-6 md:p-8 premium-card overflow-hidden relative">
+                    <div class="signal-strip absolute left-0 top-0 h-1.5 w-full"></div>
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-8">
+                        <div>
+                            <p class="text-[11px] font-bold text-primary uppercase tracking-widest mb-2">Live Pulse</p>
+                            <h2 class="text-headline-md font-bold text-on-surface">Connection Health</h2>
                         </div>
-                        <!-- Data Visualization Placeholder -->
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-md mb-gutter">
-                            <div class="flex flex-col gap-2">
-                                <div class="text-label-sm text-on-surface-variant">Active Collaborations</div>
-                                <div class="text-headline-md text-primary">12</div>
-                                <div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
-                                    <div class="bg-primary h-full w-[75%]"></div>
-                                </div>
-                            </div>
-                            <div class="flex flex-col gap-2">
-                                <div class="text-label-sm text-on-surface-variant">Engagement Rate</div>
-                                <div class="text-headline-md text-secondary">88%</div>
-                                <div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
-                                    <div class="bg-secondary h-full w-[88%]"></div>
-                                </div>
-                            </div>
-                            <div class="flex flex-col gap-2">
-                                <div class="text-label-sm text-on-surface-variant">Growth</div>
-                                <div class="text-headline-md text-tertiary">+4</div>
-                                <div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
-                                    <div class="bg-tertiary h-full w-[40%]"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Fix Suggestion (Critical Requirement) -->
-                        <div
-                            class="bg-error-container border border-error/20 p-md rounded-xl flex flex-col md:flex-row gap-4 items-center">
-                            <div class="bg-white/50 p-2 rounded-full">
-                                <span class="material-symbols-outlined text-error"
-                                    style="font-variation-settings: 'FILL' 1;">warning</span>
-                            </div>
-                            <div class="flex-1 text-center md:text-left">
-                                <div class="font-label-md text-label-md text-on-error-container">Action Required:
-                                    Inactive Partnership</div>
-                                <p class="text-body-md text-on-surface-variant">Your collaboration with <strong>Elena
-                                        Ross</strong> has been quiet for 14 days. She recently shared a project on Green
-                                    Fintech.</p>
-                            </div>
-                            <button
-                                class="bg-on-error-container text-white px-gutter py-2 rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity focus-ring">
-                                Fix Now
-                            </button>
+                        <div class="flex items-center gap-2 text-primary text-sm font-bold uppercase tracking-widest bg-primary-fixed/70 px-3 py-1.5 rounded-full border border-primary/10">
+                            <span class="material-symbols-outlined text-lg">insights</span>
+                            Last 30 Days
                         </div>
                     </div>
-                    <div
-                        class="md:col-span-4 bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex flex-col">
-                        <h3 class="font-headline-md text-headline-md text-on-surface mb-md">Network Composition</h3>
-                        <div class="flex-1 flex flex-col justify-center gap-4">
-                            <div class="space-y-1.5">
-                                <div class="flex justify-between text-label-sm"><span>Teammates</span><span>40%</span>
-                                </div>
-                                <div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
-                                    <div class="bg-primary h-full w-[40%]"></div>
-                                </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                        <div class="metric-tile rounded-2xl p-5">
+                            <p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-4">Active Collaborations</p>
+                            <div class="flex items-baseline gap-1 mb-5">
+                                <span class="text-[42px] leading-none font-bold text-on-surface tracking-tight">12</span>
+                                <span class="text-primary font-bold text-base xl:text-xl">+18%</span>
                             </div>
-                            <div class="space-y-1.5">
-                                <div class="flex justify-between text-label-sm"><span>Mentors</span><span>30%</span>
-                                </div>
-                                <div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
-                                    <div class="bg-secondary h-full w-[30%]"></div>
-                                </div>
-                            </div>
-                            <div class="space-y-1.5">
-                                <div class="flex justify-between text-label-sm"><span>Startups</span><span>20%</span>
-                                </div>
-                                <div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
-                                    <div class="bg-tertiary h-full w-[20%]"></div>
-                                </div>
-                            </div>
-                            <div class="space-y-1.5">
-                                <div class="flex justify-between text-label-sm"><span>Other</span><span>10%</span></div>
-                                <div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
-                                    <div class="bg-outline-variant h-full w-[10%]"></div>
-                                </div>
-                            </div>
-                        </div><button class="mt-4 text-primary font-label-md text-label-md hover:underline">View
-                            Details</button>
-                    </div>
-                    <!-- Upcoming Opportunities (Vertical Card) -->
-                    <div
-                        class="md:col-span-4 bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex flex-col">
-                        <h3 class="font-headline-md text-headline-md text-on-surface mb-md">Upcoming</h3>
-                        <div class="flex flex-col gap-4 flex-1">
-                            <div class="p-3 bg-surface-container-low rounded-lg border-l-4 border-primary">
-                                <div class="text-label-sm text-primary mb-1">Tomorrow, 10:00 AM</div>
-                                <div class="font-label-md text-label-md text-on-surface">Design Sync: Project Aurora
-                                </div>
-                                <div class="text-body-md text-on-surface-variant text-[14px]">3 mutual connections
-                                    joining</div>
-                            </div>
-                            <div class="p-3 bg-surface-container-low rounded-lg border-l-4 border-secondary">
-                                <div class="text-label-sm text-secondary mb-1">Thu, 2:30 PM</div>
-                                <div class="font-label-md text-label-md text-on-surface">Web3 Roundtable</div>
-                                <div class="text-body-md text-on-surface-variant text-[14px]">Open invite based on your
-                                    Skills</div>
-                            </div>
-                            <div class="p-3 bg-surface-container-low rounded-lg border-l-4 border-tertiary">
-                                <div class="text-label-sm text-tertiary mb-1">Fri, 4:00 PM</div>
-                                <div class="font-label-md text-label-md text-on-surface">Coffee Chat: Alex Chen</div>
-                                <div class="text-body-md text-on-surface-variant text-[14px]">Potential Fintech
-                                    collaboration</div>
+                            <div class="w-full metric-track h-3 rounded-full overflow-hidden">
+                                <div class="bg-[#466457] h-full rounded-full shadow-[0_0_12px_rgba(70,100,87,0.45)]" style="width: 75%"></div>
                             </div>
                         </div>
-                        <button
-                            class="mt-4 text-primary font-label-md text-label-md flex items-center justify-center gap-2 hover:bg-surface-container transition-colors p-2 rounded-lg">
-                            View Calendar <span class="material-symbols-outlined text-[18px]">calendar_month</span>
+                        <div class="metric-tile rounded-2xl p-5">
+                            <p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-4">Engagement Rate</p>
+                            <div class="flex items-baseline gap-1 mb-5">
+                                <span class="text-[42px] leading-none font-bold text-[#4F6A82] tracking-tight">88</span>
+                                <span class="text-[#4F6A82] font-bold text-xl xl:text-2xl">%</span>
+                            </div>
+                            <div class="w-full metric-track h-3 rounded-full overflow-hidden">
+                                <div class="bg-[#4F6A82] h-full rounded-full shadow-[0_0_12px_rgba(79,106,130,0.45)]" style="width: 88%"></div>
+                            </div>
+                        </div>
+                        <div class="metric-tile rounded-2xl p-5">
+                            <p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-4">Network Growth</p>
+                            <div class="flex items-baseline gap-1 mb-5">
+                                <span class="text-[42px] leading-none font-bold text-on-surface tracking-tight">+4</span>
+                                <span class="text-on-surface-variant font-bold text-xs ml-1">contacts</span>
+                            </div>
+                            <div class="w-full metric-track h-3 rounded-full overflow-hidden">
+                                <div class="bg-[#F1C86B] h-full rounded-full shadow-[0_0_12px_rgba(241,200,107,0.45)]" style="width: 58%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Inactive Partnership Alert -->
+                    <div class="action-required-glass rounded-2xl p-5 md:p-6 flex flex-col xl:flex-row items-center gap-5 shadow-inner">
+                        <div class="w-14 h-14 rounded-2xl bg-white flex items-center justify-center shadow-md animate-pulse shrink-0">
+                            <span class="material-symbols-outlined text-[#8B1A1A] text-3xl" style="font-variation-settings: 'FILL' 1;">error</span>
+                        </div>
+                        <div class="flex-1 text-center md:text-left">
+                            <h3 class="text-[#8B1A1A] font-bold text-lg mb-1 flex items-center justify-center xl:justify-start gap-2">
+                                <span class="w-2 h-2 rounded-full bg-[#8B1A1A]"></span>
+                                Action Required: Inactive Partnership
+                            </h3>
+                            <p class="text-on-surface-variant text-body-md leading-relaxed">
+                                Your collaboration with <span class="font-bold text-on-surface underline decoration-primary/30">Elena Ross</span> has been quiet for 14 days. She recently shared a project on Green Fintech.
+                            </p>
+                        </div>
+                        <button class="bg-[#8B1A1A] text-white px-8 py-3 rounded-xl font-bold text-base hover:scale-105 transition-all shadow-[0_4px_15px_rgba(139,26,26,0.3)] active:scale-95">
+                            Fix Now
                         </button>
                     </div>
-                    <!-- AI Recommendations (Bento Row) -->
-                    <div class="md:col-span-12">
-                        <div class="flex justify-between items-center mb-md">
-                            <h3 class="font-headline-md text-headline-md text-on-surface">AI Recommendations</h3>
-                            <button
-                                class="text-on-surface-variant font-label-md text-label-md flex items-center gap-1 hover:text-primary transition-colors">
-                                Refresh <span class="material-symbols-outlined text-[16px]">refresh</span>
-                            </button>
+                </div>
+
+                <div class="col-span-12 lg:col-span-4 rounded-3xl p-6 md:p-8 premium-card flex flex-col overflow-hidden relative">
+                    <div class="signal-strip absolute left-0 top-0 h-1.5 w-full"></div>
+                    <div class="flex items-start justify-between mb-8">
+                        <div>
+                            <p class="text-[11px] font-bold text-primary uppercase tracking-widest mb-2">Mix</p>
+                            <h2 class="text-headline-md font-bold text-on-surface tracking-tight">Network Composition</h2>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-                            <!-- Rec 1 -->
-                            <div
-                                class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:border-primary transition-colors group">
-                                <div class="h-32 bg-surface-container overflow-hidden">
-                                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                        data-alt="A professional woman with a warm, confident smile in a modern, sun-drenched office setting. She is wearing a soft sage green blazer that complements the minimalist interior design. The lighting is soft and airy, creating a low-anxiety, welcoming atmosphere. The composition is clean and focused, highlighting her as a high-value professional contact."
-                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwVeMMRZGjqAp7UL_AZ_jn4RfpJeyxrUIwKB281pRhylkBYtpNOlhjDLeahgv1e2ZPqJyd_7TXSPYtTQTiBwcskZh9l6cLxSiBxgTiaUkHi0FPOgvl4oB_c0aP1uYhu2unPQupG9QH6BGFD0h8CHqYH0qbnewdbpywRNQlRxlSKqhEf_tJWNbWiwWImOHCmiJIrGaGTU86_-z7xp7PWYPqP4yfeuOjOj0vih1S3Rl_6vh6wPaSPDq-yC1Uf6ze5cTQZpLPpjSJGFc" />
+                        <span class="material-symbols-outlined text-[#4F6A82] text-4xl">donut_large</span>
+                    </div>
+                    <div class="space-y-7 flex-1">
+                        <div class="group">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-sm font-bold text-on-surface flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-[#466457]"></span>
+                                    Teammates
+                                </span>
+                                <span class="text-sm font-bold text-on-surface-variant opacity-60">40%</span>
+                            </div>
+                            <div class="w-full bg-[#E0E0E0]/30 h-4 rounded-full overflow-hidden border border-outline-variant/10">
+                                <div class="bg-[#466457] h-full group-hover:brightness-110 transition-all" style="width: 40%"></div>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-sm font-bold text-on-surface flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-[#3F627D]"></span>
+                                    Mentors
+                                </span>
+                                <span class="text-sm font-bold text-on-surface-variant opacity-60">30%</span>
+                            </div>
+                            <div class="w-full bg-[#E0E0E0]/30 h-4 rounded-full overflow-hidden border border-outline-variant/10">
+                                <div class="bg-[#3F627D] h-full group-hover:brightness-110 transition-all" style="width: 30%"></div>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-sm font-bold text-on-surface flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-[#757575]"></span>
+                                    Startups
+                                </span>
+                                <span class="text-sm font-bold text-on-surface-variant opacity-60">20%</span>
+                            </div>
+                            <div class="w-full bg-[#E0E0E0]/30 h-4 rounded-full overflow-hidden border border-outline-variant/10">
+                                <div class="bg-[#757575] h-full group-hover:brightness-110 transition-all" style="width: 20%"></div>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-sm font-bold text-on-surface flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-[#C0C0C0]"></span>
+                                    Other
+                                </span>
+                                <span class="text-sm font-bold text-on-surface-variant opacity-60">10%</span>
+                            </div>
+                            <div class="w-full bg-[#E0E0E0]/30 h-4 rounded-full overflow-hidden border border-outline-variant/10">
+                                <div class="bg-[#C0C0C0] h-full group-hover:brightness-110 transition-all" style="width: 10%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="mt-8 w-full py-3.5 border-2 border-outline-variant text-[#4F6A82] font-bold text-base rounded-xl hover:bg-surface-container transition-all">View Full Distribution</button>
+                </div>
+
+                <!-- Mid Row: Upcoming & AI Recommendations -->
+                <div class="col-span-12 lg:col-span-4 rounded-3xl p-6 md:p-8 premium-card">
+                    <div class="flex items-center justify-between mb-7">
+                        <div>
+                            <p class="text-[11px] font-bold text-primary uppercase tracking-widest mb-2">Calendar</p>
+                            <h2 class="text-headline-md font-bold text-on-surface tracking-tight">Upcoming</h2>
+                        </div>
+                        <span class="material-symbols-outlined text-[#466457] text-4xl">event_upcoming</span>
+                    </div>
+                    <div class="space-y-4 mb-8">
+                        <div class="bg-gradient-to-r from-[#F8F9FA] to-white border-l-[6px] border-[#466457] p-6 rounded-r-2xl shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+                            <div class="flex justify-between items-start mb-2">
+                                <p class="text-[#757575] text-[10px] font-bold uppercase tracking-widest">Tomorrow, 10:00 AM</p>
+                                <span class="material-symbols-outlined text-[#466457] text-xl">video_chat</span>
+                            </div>
+                            <h4 class="font-bold text-xl text-on-surface mb-2">Design Sync: Project Aurora</h4>
+                            <div class="flex -space-x-2">
+                                <div class="w-6 h-6 rounded-full bg-primary-fixed border border-white"></div>
+                                <div class="w-6 h-6 rounded-full bg-secondary-fixed border border-white"></div>
+                                <div class="w-6 h-6 rounded-full bg-surface-container-high border border-white flex items-center justify-center text-[8px] font-bold">+3</div>
+                            </div>
+                        </div>
+                        <div class="bg-white/70 border-l-[6px] border-[#3F627D] p-6 rounded-r-2xl opacity-90 hover:opacity-100 transition-all cursor-pointer shadow-sm">
+                            <p class="text-[#757575] text-[10px] font-bold uppercase tracking-widest mb-2">Thu, 2:30 PM</p>
+                            <h4 class="font-bold text-xl text-on-surface mb-1">Web3 Roundtable</h4>
+                            <p class="text-on-surface-variant text-sm font-medium">Open invite based on your Skills</p>
+                        </div>
+                    </div>
+                    <button class="w-full flex items-center justify-center gap-3 py-3.5 bg-[#EEF4F1] text-[#4F6A82] font-bold text-base rounded-xl hover:bg-surface-container-high transition-all">
+                        Open Calendar
+                        <span class="material-symbols-outlined text-2xl">calendar_month</span>
+                    </button>
+                </div>
+
+                <div class="col-span-12 lg:col-span-8 space-y-8">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+                        <div>
+                            <p class="text-[11px] font-bold text-primary uppercase tracking-widest mb-2">Next Best Actions</p>
+                            <h2 class="text-headline-md font-bold text-on-surface tracking-tight">AI Recommendations</h2>
+                        </div>
+                        <button class="group flex items-center gap-2 text-on-surface-variant font-bold text-xs uppercase tracking-widest bg-white border border-outline-variant px-4 py-2 rounded-full hover:border-primary hover:text-primary transition-all shadow-sm">
+                            Refresh Intelligence
+                            <span class="material-symbols-outlined text-lg group-hover:rotate-180 transition-transform duration-500">refresh</span>
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- SARAH JENKINS -->
+                        <div class="rounded-3xl overflow-hidden premium-card group">
+                            <div class="h-48 relative overflow-hidden">
+                                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDch69k8I9dVdYU92jbGSmDD4NZvYN_2qgsodeatJ9pMMesMNUaDaAp1dI2nlpLJvfBHSGqU906h0oCXQvmAtMubdEomRQl9Gz3JEvJSpnaZJPExCLWWcvHSJsV9ilh9NhWrqKkKLov6ngmX_8qg-sz9ukf44iTSDDkujth37Eyx7ADCbEDn-PlrF8GG_2hN50A69oHLwiCaRzKHJIZgjJnFu0sn5oU6nwRrtC08ZI_qfzNfpryyI1UBLUb9xFb_Pg_HD4XuuxFzhY" />
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60"></div>
+                                <span class="absolute top-4 left-4 bg-[#D1E8E2] text-[#466457] px-3 py-1 rounded-full text-[10px] font-bold uppercase shadow-sm">98% Match</span>
+                            </div>
+                            <div class="p-6 bg-white/65">
+                                <p class="text-[#757575] text-[10px] font-bold uppercase tracking-widest mb-2">Product Strategy</p>
+                                <h4 class="text-[20px] font-bold text-on-surface mb-2">Sarah Jenkins</h4>
+                                <p class="text-sm text-on-surface-variant mb-8 line-clamp-2 leading-relaxed">Specializes in scaling sustainable tech ventures with a focus on ethical growth.</p>
+                                <button class="w-full py-3.5 bg-primary text-on-primary rounded-xl font-bold hover:brightness-110 transition-all shadow-md active:scale-95">Connect</button>
+                            </div>
+                        </div>
+                        <!-- THE FOUNDERS CIRCLE -->
+                        <div class="rounded-3xl overflow-hidden premium-card group">
+                            <div class="h-48 relative overflow-hidden">
+                                <div class="w-full h-full bg-gradient-to-br from-[#4F6A82]/20 to-[#466457]/20 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-[#4F6A82] text-7xl opacity-50 group-hover:scale-110 transition-transform">groups</span>
                                 </div>
-                                <div class="p-md">
-                                    <div class="flex items-center gap-2 mb-2">
-                                        <span
-                                            class="bg-primary-fixed text-primary px-2 py-0.5 rounded-full text-[10px] font-bold">98%
-                                            MATCH</span>
-                                        <span class="text-on-surface-variant text-[12px] font-label-sm">Product
-                                            Strategy</span>
-                                    </div>
-                                    <div class="font-headline-md text-[20px] text-on-surface mb-1">Sarah Jenkins</div>
-                                    <p class="text-body-md text-on-surface-variant text-[14px] line-clamp-2 mb-gutter">
-                                        Specializes in scaling sustainable tech startups. Shared interest in Circular
-                                        Economy.</p>
-                                    <button
-                                        class="w-full border border-secondary text-secondary py-2 rounded-lg font-label-md text-label-md hover:bg-secondary hover:text-white transition-all focus-ring">
-                                        Connect
-                                    </button>
+                                <span class="absolute top-4 left-4 bg-[#D9E9F9] text-[#3F627D] px-3 py-1 rounded-full text-[10px] font-bold uppercase shadow-sm">Group Advisory</span>
+                            </div>
+                            <div class="p-6 bg-white/65">
+                                <p class="text-[#757575] text-[10px] font-bold uppercase tracking-widest mb-2">Leadership</p>
+                                <h4 class="text-[20px] font-bold text-on-surface mb-2">Founders Circle</h4>
+                                <p class="text-sm text-on-surface-variant mb-8 line-clamp-2 leading-relaxed">A private cohort for Series A founders focused on building high-trust organizations.</p>
+                                <button class="w-full py-3.5 border-2 border-outline text-on-surface-variant rounded-xl font-bold hover:bg-surface-container transition-all active:scale-95">Request Invite</button>
+                            </div>
+                        </div>
+                        <!-- MARCUS THORNE -->
+                        <div class="rounded-3xl overflow-hidden premium-card group">
+                            <div class="h-48 relative overflow-hidden">
+                                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYfdMi3w62Fu8MdU6rlZXkiBpU-JbUzUnRjbAIInb59eYJf3QDz5X7mBvvkWV2Z4mcRJ1zG583ApHGXlo-6srB2Mdh5NA6mUT-m-f15HG3oFx_M92JaEN87Mihe4p0mzxNJT57vIJSnYZ26Tf-OlmY7pgHgH0ZmBLOoe8w8O9S5pkjHsHf1teBxDBAHdtDQHoDR6oDH3Cf8RyRq5NYv3QxE6Hdz87Dcre0oW23-SXaNQblAS0p7iRR-xZJp9AIblQHlTyG5bgD0mU" />
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60"></div>
+                                <span class="absolute top-4 left-4 bg-[#EAEAEA] text-[#757575] px-3 py-1 rounded-full text-[10px] font-bold uppercase shadow-sm">Skill Bridge</span>
+                            </div>
+                            <div class="p-6 bg-white/65">
+                                <p class="text-[#757575] text-[10px] font-bold uppercase tracking-widest mb-2">Data Science</p>
+                                <h4 class="text-[20px] font-bold text-on-surface mb-2">Marcus Thorne</h4>
+                                <p class="text-sm text-on-surface-variant mb-8 line-clamp-2 leading-relaxed">Marcus has the Data skills you're looking for to round out your research team.</p>
+                                <button class="w-full py-3.5 bg-secondary text-on-secondary rounded-xl font-bold hover:brightness-110 transition-all shadow-md active:scale-95">Message</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Row: Heatmap & Velocity -->
+                <div class="col-span-12 rounded-3xl p-6 md:p-8 premium-card">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8">
+                        <div>
+                            <p class="text-[11px] font-bold text-primary uppercase tracking-widest mb-2">Momentum Map</p>
+                            <h2 class="text-headline-md font-bold text-on-surface tracking-tight mb-2">Activity Heatmap</h2>
+                            <p class="text-body-md text-on-surface-variant font-medium opacity-70">Weekly signals from messages, meetings, follows, and project interactions.</p>
+                        </div>
+                        <div class="flex items-center gap-4 bg-surface-container-low px-5 py-3 rounded-2xl border border-outline-variant/30">
+                            <span class="text-[10px] text-on-surface-variant uppercase font-bold tracking-widest">Less</span>
+                            <div class="flex gap-2">
+                                <div class="w-4 h-4 rounded bg-[#F3F4F6] border border-outline-variant/10"></div>
+                                <div class="w-4 h-4 rounded bg-[#B2C5BD]"></div>
+                                <div class="w-4 h-4 rounded bg-[#7DA195]"></div>
+                                <div class="w-4 h-4 rounded bg-[#466457]"></div>
+                            </div>
+                            <span class="text-[10px] text-on-surface-variant uppercase font-bold tracking-widest">More</span>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto pb-2">
+                        <div class="min-w-[720px]">
+                            <div class="grid grid-cols-[56px_1fr] gap-3">
+                                <div class="grid grid-rows-7 gap-2 text-[10px] font-bold text-on-surface-variant/70 uppercase pt-1">
+                                    <span>Mon</span>
+                                    <span>Tue</span>
+                                    <span>Wed</span>
+                                    <span>Thu</span>
+                                    <span>Fri</span>
+                                    <span>Sat</span>
+                                    <span>Sun</span>
+                                </div>
+                                <div class="heatmap-grid grid grid-rows-7 grid-flow-col gap-2">
+                                    <div class="heat-cell h-5 rounded bg-[#F3F4F6] border border-outline-variant/10"></div><div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div><div class="heat-cell h-5 rounded bg-[#7DA195]"></div><div class="heat-cell h-5 rounded bg-[#466457]"></div><div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div><div class="heat-cell h-5 rounded bg-[#F3F4F6] border border-outline-variant/10"></div><div class="heat-cell h-5 rounded bg-[#F3F4F6] border border-outline-variant/10"></div>
+                                    <div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div><div class="heat-cell h-5 rounded bg-[#7DA195]"></div><div class="heat-cell h-5 rounded bg-[#466457]"></div><div class="heat-cell h-5 rounded bg-[#7DA195]"></div><div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div><div class="heat-cell h-5 rounded bg-[#F3F4F6] border border-outline-variant/10"></div><div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div>
+                                    <div class="heat-cell h-5 rounded bg-[#7DA195]"></div><div class="heat-cell h-5 rounded bg-[#466457]"></div><div class="heat-cell h-5 rounded bg-[#7DA195]"></div><div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div><div class="heat-cell h-5 rounded bg-[#466457]"></div><div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div><div class="heat-cell h-5 rounded bg-[#F3F4F6] border border-outline-variant/10"></div>
+                                    <div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div><div class="heat-cell h-5 rounded bg-[#7DA195]"></div><div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div><div class="heat-cell h-5 rounded bg-[#466457]"></div><div class="heat-cell h-5 rounded bg-[#7DA195]"></div><div class="heat-cell h-5 rounded bg-[#F3F4F6] border border-outline-variant/10"></div><div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div>
+                                    <div class="heat-cell h-5 rounded bg-[#F3F4F6] border border-outline-variant/10"></div><div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div><div class="heat-cell h-5 rounded bg-[#7DA195]"></div><div class="heat-cell h-5 rounded bg-[#466457]"></div><div class="heat-cell h-5 rounded bg-[#466457]"></div><div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div><div class="heat-cell h-5 rounded bg-[#F3F4F6] border border-outline-variant/10"></div>
+                                    <div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div><div class="heat-cell h-5 rounded bg-[#466457]"></div><div class="heat-cell h-5 rounded bg-[#7DA195]"></div><div class="heat-cell h-5 rounded bg-[#7DA195]"></div><div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div><div class="heat-cell h-5 rounded bg-[#F3F4F6] border border-outline-variant/10"></div><div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div>
+                                    <div class="heat-cell h-5 rounded bg-[#7DA195]"></div><div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div><div class="heat-cell h-5 rounded bg-[#466457]"></div><div class="heat-cell h-5 rounded bg-[#7DA195]"></div><div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div><div class="heat-cell h-5 rounded bg-[#F3F4F6] border border-outline-variant/10"></div><div class="heat-cell h-5 rounded bg-[#F3F4F6] border border-outline-variant/10"></div>
+                                    <div class="heat-cell h-5 rounded bg-[#466457]"></div><div class="heat-cell h-5 rounded bg-[#7DA195]"></div><div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div><div class="heat-cell h-5 rounded bg-[#7DA195]"></div><div class="heat-cell h-5 rounded bg-[#466457]"></div><div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div><div class="heat-cell h-5 rounded bg-[#F3F4F6] border border-outline-variant/10"></div>
+                                    <div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div><div class="heat-cell h-5 rounded bg-[#7DA195]"></div><div class="heat-cell h-5 rounded bg-[#466457]"></div><div class="heat-cell h-5 rounded bg-[#466457]"></div><div class="heat-cell h-5 rounded bg-[#7DA195]"></div><div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div><div class="heat-cell h-5 rounded bg-[#F3F4F6] border border-outline-variant/10"></div>
+                                    <div class="heat-cell h-5 rounded bg-[#7DA195]"></div><div class="heat-cell h-5 rounded bg-[#466457]"></div><div class="heat-cell h-5 rounded bg-[#466457]"></div><div class="heat-cell h-5 rounded bg-[#7DA195]"></div><div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div><div class="heat-cell h-5 rounded bg-[#F3F4F6] border border-outline-variant/10"></div><div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div>
+                                    <div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div><div class="heat-cell h-5 rounded bg-[#7DA195]"></div><div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div><div class="heat-cell h-5 rounded bg-[#466457]"></div><div class="heat-cell h-5 rounded bg-[#7DA195]"></div><div class="heat-cell h-5 rounded bg-[#F3F4F6] border border-outline-variant/10"></div><div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div>
+                                    <div class="heat-cell h-5 rounded bg-[#F3F4F6] border border-outline-variant/10"></div><div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div><div class="heat-cell h-5 rounded bg-[#7DA195]"></div><div class="heat-cell h-5 rounded bg-[#466457]"></div><div class="heat-cell h-5 rounded bg-[#7DA195]"></div><div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div><div class="heat-cell h-5 rounded bg-[#F3F4F6] border border-outline-variant/10"></div>
+                                    <div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div><div class="heat-cell h-5 rounded bg-[#466457]"></div><div class="heat-cell h-5 rounded bg-[#7DA195]"></div><div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div><div class="heat-cell h-5 rounded bg-[#466457]"></div><div class="heat-cell h-5 rounded bg-[#7DA195]"></div><div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div>
+                                    <div class="heat-cell h-5 rounded bg-[#7DA195]"></div><div class="heat-cell h-5 rounded bg-[#466457]"></div><div class="heat-cell h-5 rounded bg-[#466457]"></div><div class="heat-cell h-5 rounded bg-[#7DA195]"></div><div class="heat-cell h-5 rounded bg-[#466457]"></div><div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div><div class="heat-cell h-5 rounded bg-[#F3F4F6] border border-outline-variant/10"></div>
+                                    <div class="heat-cell h-5 rounded bg-[#466457]"></div><div class="heat-cell h-5 rounded bg-[#7DA195]"></div><div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div><div class="heat-cell h-5 rounded bg-[#466457]"></div><div class="heat-cell h-5 rounded bg-[#7DA195]"></div><div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div><div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div>
+                                    <div class="heat-cell h-5 rounded bg-[#7DA195]"></div><div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div><div class="heat-cell h-5 rounded bg-[#466457]"></div><div class="heat-cell h-5 rounded bg-[#7DA195]"></div><div class="heat-cell h-5 rounded bg-[#466457]"></div><div class="heat-cell h-5 rounded bg-[#B2C5BD]"></div><div class="heat-cell h-5 rounded bg-[#F3F4F6] border border-outline-variant/10"></div>
                                 </div>
                             </div>
-                            <!-- Rec 2 -->
-                            <div
-                                class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:border-primary transition-colors group">
-                                <div class="h-32 bg-surface-container overflow-hidden">
-                                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                        data-alt="A collaborative workspace where a small group of professionals is engaged in a deep, focused discussion around a large wooden table. The room is designed with natural textures, muted tones, and plenty of plants, fostering a serene, library-like networking environment. The lighting is bright yet warm, emphasizing a productive and non-competitive professional atmosphere."
-                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWPhYNkh1ilKKXKU7M1zqctet1u1n4f69D_NLpINE-e5L0IozAV0d5M0aBstOv9JgWxw_oaR_c2LLtRQ1XO5yySFvBTe63hV8vnUyBt_TbIYq44_GVra75gIM-_y_Gosl_BMKz37a-EduIwqQVfdMWATF1w3WrJEg9NqkQ9NzRjQN6PrGMTYyVK1QB6XF-tTRTuI_1qyXrF1-JV7KnXvCQwX01EyfEukKWMAeCup_nh7wO5zRp2HjEbllYzw_Xel6vtrhNK-m9cSc" />
-                                </div>
-                                <div class="p-md">
-                                    <div class="flex items-center gap-2 mb-2">
-                                        <span
-                                            class="bg-secondary-container text-secondary px-2 py-0.5 rounded-full text-[10px] font-bold">GROUP
-                                            ADVISORY</span>
-                                        <span
-                                            class="text-on-surface-variant text-[12px] font-label-sm">Leadership</span>
-                                    </div>
-                                    <div class="font-headline-md text-[20px] text-on-surface mb-1">The Founders Circle
-                                    </div>
-                                    <p class="text-body-md text-on-surface-variant text-[14px] line-clamp-2 mb-gutter">A
-                                        private cohort for Series A founders discussing ethics in AI. 2 colleagues are
-                                        members.</p>
-                                    <button
-                                        class="w-full border border-secondary text-secondary py-2 rounded-lg font-label-md text-label-md hover:bg-secondary hover:text-white transition-all focus-ring">
-                                        Request Invite
-                                    </button>
-                                </div>
-                            </div>
-                            <!-- Rec 3 -->
-                            <div
-                                class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:border-primary transition-colors group">
-                                <div class="h-32 bg-surface-container overflow-hidden">
-                                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                        data-alt="A diverse professional team laughing and talking in a bright, modern cafeteria with large windows. The aesthetic is clean and minimalist, featuring soft grays and warm wood accents. The mood is supportive and casual, capturing a moment of genuine human connection in a corporate setting. High-quality natural light fills the space, reinforcing the professional yet composed brand identity."
-                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtDUBk_ncoQ_lA4NfLOWql-0AiibIDN2HCQe7ZQpWTMqYeDIB2AbsgY2Hk5x6XvTlLB_Cy3gbdQYRX97jmrEL7Mn0rtYt4-L9gQrLB7EsJiIRmr6S3_RVeIWF9A6h_SRF8eaK1xA3eq_PMAZMuJ-iAwQq8xYITTHx9_JIUpD95RXQqrHRnLyudtAsG9g0vPo1k42bXkvMrgTne4wp60_m55mITpGudJBtuPRUIdvMiVU3vp6Oo6BSY0VJfNsSyuxfqMVZ7D_d5SPY" />
-                                </div>
-                                <div class="p-md">
-                                    <div class="flex items-center gap-2 mb-2">
-                                        <span
-                                            class="bg-tertiary-fixed text-tertiary px-2 py-0.5 rounded-full text-[10px] font-bold">SKILL
-                                            BRIDGE</span>
-                                        <span class="text-on-surface-variant text-[12px] font-label-sm">Data
-                                            Science</span>
-                                    </div>
-                                    <div class="font-headline-md text-[20px] text-on-surface mb-1">Marcus Thorne</div>
-                                    <p class="text-body-md text-on-surface-variant text-[14px] line-clamp-2 mb-gutter">
-                                        Marcus has the Data skills you're looking for to complete your current project.
-                                    </p>
-                                    <button
-                                        class="w-full border border-secondary text-secondary py-2 rounded-lg font-label-md text-label-md hover:bg-secondary hover:text-white transition-all focus-ring">
-                                        Message
-                                    </button>
+                            <div class="grid grid-cols-[56px_1fr] gap-3 mt-3 text-[10px] font-bold text-on-surface-variant/70 uppercase">
+                                <span></span>
+                                <div class="grid grid-cols-4">
+                                    <span>Feb</span>
+                                    <span>Mar</span>
+                                    <span>Apr</span>
+                                    <span>May</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Progress Visualization Card -->
-                    <div
-                        class="md:col-span-12 bg-surface-container-lowest border border-outline-variant rounded-xl p-md">
-                        <div class="flex justify-between items-center mb-md">
-                            <h3 class="font-headline-md text-headline-md text-on-surface">Activity Heatmap</h3>
-                            <div class="flex items-center gap-4 text-label-sm text-on-surface-variant"><span>Less</span>
-                                <div class="flex gap-1">
-                                    <div class="w-3 h-3 rounded-sm bg-surface-container"></div>
-                                    <div class="w-3 h-3 rounded-sm bg-primary/30"></div>
-                                    <div class="w-3 h-3 rounded-sm bg-primary/60"></div>
-                                    <div class="w-3 h-3 rounded-sm bg-primary"></div>
-                                </div><span>More</span>
-                            </div>
+                </div>
+
+                <div class="col-span-12 rounded-3xl p-6 md:p-8 premium-card overflow-hidden">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8">
+                        <div>
+                            <p class="text-[11px] font-bold text-primary uppercase tracking-widest mb-2">Weekly Flow</p>
+                            <h2 class="text-headline-md font-bold text-on-surface tracking-tight">Collaboration Velocity</h2>
+                            <p class="text-body-md text-on-surface-variant opacity-70 mt-2">A balanced view of outreach versus scheduled interaction.</p>
                         </div>
-                        <div class="flex flex-wrap gap-1 items-start max-w-full overflow-hidden">
-                            <!-- 12 weeks * 7 days placeholder -->
-                            <div class="grid grid-flow-col grid-rows-7 gap-1"></div>
+                        <div class="flex flex-wrap gap-5">
+                            <div class="flex items-center gap-3">
+                                <div class="w-3 h-3 rounded-full bg-[#466457]"></div>
+                                <span class="text-sm font-bold text-on-surface-variant">Messages Sent</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-3 h-3 rounded-full bg-[#3F627D]"></div>
+                                <span class="text-sm font-bold text-on-surface-variant">Meetings Attended</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="md:col-span-12 bg-surface-container-low border border-outline-variant rounded-xl p-md">
-                        <h3 class="font-headline-md text-headline-md text-on-surface mb-md">Collaboration Velocity</h3>
-                        <div class="space-y-6 mb-6 px-gutter">
-                            <div class="flex justify-end gap-4 text-label-sm mb-2">
-                                <div class="flex items-center gap-1"><span class="w-3 h-3 bg-primary rounded-sm"></span>
-                                    Messages Sent</div>
-                                <div class="flex items-center gap-1"><span
-                                        class="w-3 h-3 bg-secondary rounded-sm"></span> Meetings Attended</div>
+                    
+                    <!-- Velocity Bar Chart -->
+                    <div class="grid grid-cols-[42px_1fr] gap-4">
+                        <div class="velocity-chart h-64 flex flex-col justify-between text-[10px] text-on-surface-variant/70 font-bold text-right pr-1 py-1">
+                            <span>120</span>
+                            <span>90</span>
+                            <span>60</span>
+                            <span>30</span>
+                            <span>0</span>
+                        </div>
+                        <div class="velocity-chart h-64 flex items-end gap-4 md:gap-8 w-full px-2 md:px-6 pb-1">
+                            <div class="flex-1 flex flex-col items-center gap-3 group h-full">
+                                <div class="flex gap-1.5 md:gap-2 w-full justify-center items-end h-full">
+                                    <div class="bar-glow bg-[#466457] text-[#466457] w-4 md:w-5 h-[35%] rounded-t-md group-hover:brightness-110 transition-all shadow-sm"></div>
+                                    <div class="bar-glow bg-[#3F627D] text-[#3F627D] w-4 md:w-5 h-[20%] rounded-t-md group-hover:brightness-110 transition-all shadow-sm"></div>
+                                </div>
+                                <span class="text-[10px] font-bold text-[#757575] uppercase tracking-widest">Mon</span>
                             </div>
-                            <div class="flex items-end gap-4 h-48 border-b border-outline-variant pb-2">
-                                <div class="flex-1 flex flex-col justify-end gap-1 h-full">
-                                    <div class="flex gap-1 items-end h-full justify-center">
-                                        <div class="w-3 bg-primary rounded-t-sm h-[40%]"></div>
-                                        <div class="w-3 bg-secondary rounded-t-sm h-[20%]"></div>
-                                    </div>
-                                    <div class="text-center text-[10px] font-bold">MON</div>
+                            <div class="flex-1 flex flex-col items-center gap-3 group h-full">
+                                <div class="flex gap-1.5 md:gap-2 w-full justify-center items-end h-full">
+                                    <div class="bar-glow bg-[#466457] text-[#466457] w-4 md:w-5 h-[55%] rounded-t-md group-hover:brightness-110 transition-all shadow-sm"></div>
+                                    <div class="bar-glow bg-[#3F627D] text-[#3F627D] w-4 md:w-5 h-[35%] rounded-t-md group-hover:brightness-110 transition-all shadow-sm"></div>
                                 </div>
-                                <div class="flex-1 flex flex-col justify-end gap-1 h-full">
-                                    <div class="flex gap-1 items-end h-full justify-center">
-                                        <div class="w-3 bg-primary rounded-t-sm h-[60%]"></div>
-                                        <div class="w-3 bg-secondary rounded-t-sm h-[35%]"></div>
-                                    </div>
-                                    <div class="text-center text-[10px] font-bold">TUE</div>
+                                <span class="text-[10px] font-bold text-[#757575] uppercase tracking-widest">Tue</span>
+                            </div>
+                            <div class="flex-1 flex flex-col items-center gap-3 group h-full">
+                                <div class="flex gap-1.5 md:gap-2 w-full justify-center items-end h-full">
+                                    <div class="bar-glow bg-[#466457] text-[#466457] w-4 md:w-5 h-[40%] rounded-t-md group-hover:brightness-110 transition-all shadow-sm"></div>
+                                    <div class="bar-glow bg-[#3F627D] text-[#3F627D] w-4 md:w-5 h-[45%] rounded-t-md group-hover:brightness-110 transition-all shadow-sm"></div>
                                 </div>
-                                <div class="flex-1 flex flex-col justify-end gap-1 h-full">
-                                    <div class="flex gap-1 items-end h-full justify-center">
-                                        <div class="w-3 bg-primary rounded-t-sm h-[45%]"></div>
-                                        <div class="w-3 bg-secondary rounded-t-sm h-[50%]"></div>
-                                    </div>
-                                    <div class="text-center text-[10px] font-bold">WED</div>
+                                <span class="text-[10px] font-bold text-[#757575] uppercase tracking-widest">Wed</span>
+                            </div>
+                            <div class="flex-1 flex flex-col items-center gap-3 group h-full">
+                                <div class="flex gap-1.5 md:gap-2 w-full justify-center items-end h-full">
+                                    <div class="bar-glow bg-[#466457] text-[#466457] w-4 md:w-5 h-[75%] rounded-t-md group-hover:brightness-110 transition-all shadow-sm"></div>
+                                    <div class="bar-glow bg-[#3F627D] text-[#3F627D] w-4 md:w-5 h-[38%] rounded-t-md group-hover:brightness-110 transition-all shadow-sm"></div>
                                 </div>
-                                <div class="flex-1 flex flex-col justify-end gap-1 h-full">
-                                    <div class="flex gap-1 items-end h-full justify-center">
-                                        <div class="w-3 bg-primary rounded-t-sm h-[80%]"></div>
-                                        <div class="w-3 bg-secondary rounded-t-sm h-[40%]"></div>
-                                    </div>
-                                    <div class="text-center text-[10px] font-bold">THU</div>
+                                <span class="text-[10px] font-bold text-[#757575] uppercase tracking-widest">Thu</span>
+                            </div>
+                            <div class="flex-1 flex flex-col items-center gap-3 group h-full">
+                                <div class="flex gap-1.5 md:gap-2 w-full justify-center items-end h-full">
+                                    <div class="bar-glow bg-[#466457] text-[#466457] w-4 md:w-5 h-[90%] rounded-t-md group-hover:brightness-110 transition-all shadow-sm"></div>
+                                    <div class="bar-glow bg-[#3F627D] text-[#3F627D] w-4 md:w-5 h-[65%] rounded-t-md group-hover:brightness-110 transition-all shadow-sm"></div>
                                 </div>
-                                <div class="flex-1 flex flex-col justify-end gap-1 h-full">
-                                    <div class="flex gap-1 items-end h-full justify-center">
-                                        <div class="w-3 bg-primary rounded-t-sm h-[95%]"></div>
-                                        <div class="w-3 bg-secondary rounded-t-sm h-[65%]"></div>
-                                    </div>
-                                    <div class="text-center text-[10px] font-bold">FRI</div>
+                                <span class="text-[10px] font-bold text-[#757575] uppercase tracking-widest">Fri</span>
+                            </div>
+                            <div class="flex-1 flex flex-col items-center gap-3 group h-full">
+                                <div class="flex gap-1.5 md:gap-2 w-full justify-center items-end h-full">
+                                    <div class="bar-glow bg-[#466457] text-[#466457] w-4 md:w-5 h-[15%] rounded-t-md group-hover:brightness-110 transition-all shadow-sm"></div>
+                                    <div class="bar-glow bg-[#3F627D] text-[#3F627D] w-4 md:w-5 h-[10%] rounded-t-md group-hover:brightness-110 transition-all shadow-sm"></div>
                                 </div>
-                                <div class="flex-1 flex flex-col justify-end gap-1 h-full">
-                                    <div class="flex gap-1 items-end h-full justify-center">
-                                        <div class="w-3 bg-primary rounded-t-sm h-[15%]"></div>
-                                        <div class="w-3 bg-secondary rounded-t-sm h-[10%]"></div>
-                                    </div>
-                                    <div class="text-center text-[10px] font-bold">SAT</div>
+                                <span class="text-[10px] font-bold text-[#757575] uppercase tracking-widest">Sat</span>
+                            </div>
+                            <div class="flex-1 flex flex-col items-center gap-3 group h-full">
+                                <div class="flex gap-1.5 md:gap-2 w-full justify-center items-end h-full">
+                                    <div class="bar-glow bg-[#466457] text-[#466457] w-4 md:w-5 h-[22%] rounded-t-md group-hover:brightness-110 transition-all shadow-sm"></div>
+                                    <div class="bar-glow bg-[#3F627D] text-[#3F627D] w-4 md:w-5 h-[12%] rounded-t-md group-hover:brightness-110 transition-all shadow-sm"></div>
                                 </div>
-                                <div class="flex-1 flex flex-col justify-end gap-1 h-full">
-                                    <div class="flex gap-1 items-end h-full justify-center">
-                                        <div class="w-3 bg-primary rounded-t-sm h-[20%]"></div>
-                                        <div class="w-3 bg-secondary rounded-t-sm h-[5%]"></div>
-                                    </div>
-                                    <div class="text-center text-[10px] font-bold">SUN</div>
-                                </div>
+                                <span class="text-[10px] font-bold text-[#757575] uppercase tracking-widest">Sun</span>
                             </div>
                         </div>
-                        <p class="text-body-md text-on-surface-variant italic text-center">Networking engagement remains
-                            balanced between outreach and direct interaction.</p>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-outline-variant text-center">
+                        <p class="text-body-md text-on-surface-variant italic font-medium">"Networking engagement remains balanced between outreach and direct interaction."</p>
                     </div>
                 </div>
             </div>
         </main>
     </div>
+
     <!-- BottomNavBar (Mobile Only) -->
     <nav
-        class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 md:hidden bg-surface-bright border-t border-outline-variant rounded-t-xl">
-        <a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+        class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 md:hidden bg-white border-t border-outline-variant rounded-t-xl">
+        <a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="first.html" data-nav="discovery">
             <span class="material-symbols-outlined">explore</span>
             <span class="font-label-sm text-label-sm">Discovery</span>
         </a>
-        <a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-4 py-1 scale-95 transition-transform duration-200"
-            href="#">
-            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="smart.html" data-nav="analysis">
+            <span class="material-symbols-outlined">dashboard</span>
             <span class="font-label-sm text-label-sm">Analysis</span>
         </a>
-        <a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+        <a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="collab.html" data-nav="collab">
             <span class="material-symbols-outlined">diversity_3</span>
             <span class="font-label-sm text-label-sm">Collab Hub</span>
         </a>
-        <a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+        <a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="prf.html" data-nav="profile">
             <span class="material-symbols-outlined">person</span>
             <span class="font-label-sm text-label-sm">Profile</span>
         </a>

@@ -13,313 +13,255 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    
-    
 </head>
 
 <body class="bg-background text-on-surface font-body-md text-body-md overflow-x-hidden">
-    <!-- Sidebar Navigation Shell -->
-    <aside
-        class="flex flex-col h-screen fixed left-0 top-0 p-md z-40 bg-surface-container-low border-r border-outline-variant w-72 hidden md:flex">
-        <div class="flex items-center gap-sm mb-lg px-xs">
-            <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <span class="material-symbols-outlined text-on-primary" data-icon="hub">hub</span>
-            </div>
-            <div>
-                <h1 class="font-display text-headline-md font-bold text-primary">SwipeSync</h1>
-                <p class="font-label-md text-label-md text-on-surface-variant -mt-1">AI Collaboration Hub</p>
+    <!-- TopAppBar -->
+    <header
+        class="sticky top-0 z-50 flex justify-between items-center w-full px-gutter max-w-container-max mx-auto bg-surface-bright border-b border-outline-variant h-16">
+        <div class="flex items-center gap-4">
+            <span class="font-headline-md text-headline-md font-bold text-primary">SwipeSync</span>
+        </div>
+        <div class="hidden md:flex flex-1 max-w-md mx-8">
+            <div class="relative w-full">
+                <span
+                    class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+                <input
+                    class="w-full bg-surface-container-low border border-outline-variant rounded-full py-2 pl-10 pr-4 text-body-md focus:ring-2 focus:ring-secondary focus:outline-none focus:border-transparent"
+                    placeholder="Search settings..." type="text" />
             </div>
         </div>
-        <nav class="flex-1 space-y-xs">
-            <a class="flex items-center gap-sm px-sm py-base text-on-surface-variant hover:bg-surface-container-high transition-all font-label-md text-label-md rounded-lg group active:scale-98"
-                href="#">
-                <span class="material-symbols-outlined group-hover:text-primary transition-colors"
-                    data-icon="dynamic_feed">dynamic_feed</span>
-                Discovery
-            </a>
-            <a class="flex items-center gap-sm px-sm py-base text-on-surface-variant hover:bg-surface-container-high transition-all font-label-md text-label-md rounded-lg group active:scale-98"
-                href="#">
-                <span class="material-symbols-outlined group-hover:text-primary transition-colors"
-                    data-icon="group">group</span>
-                Analysis
-            </a>
-            <a class="flex items-center gap-sm px-sm py-base text-on-surface-variant hover:bg-surface-container-high transition-all font-label-md text-label-md rounded-lg group active:scale-98"
-                href="#">
-                <span class="material-symbols-outlined group-hover:text-primary transition-colors"
-                    data-icon="lightbulb">lightbulb</span>
-                Collaboration Hub
-            </a>
-            <a class="flex items-center gap-sm px-sm py-base text-on-surface-variant hover:bg-surface-container-high transition-all font-label-md text-label-md rounded-lg group active:scale-98"
-                href="#">
-                <span class="material-symbols-outlined group-hover:text-primary transition-colors"
-                    data-icon="analytics">analytics</span>
-                Analytics
-            </a>
-        </nav>
-        <div class="mt-auto border-t border-outline-variant pt-md space-y-xs">
-            <a class="flex items-center gap-sm px-sm py-base bg-primary-container text-on-primary-container font-bold rounded-lg group"
-                href="#">
-                <span class="material-symbols-outlined" data-icon="settings">settings</span>
-                Settings
-            </a>
-            <a class="flex items-center gap-sm px-sm py-base text-on-surface-variant hover:bg-surface-container-high transition-all font-label-md text-label-md rounded-lg group"
-                href="#">
-                <span class="material-symbols-outlined" data-icon="help">help</span>
-                Help
-            </a>
+        <div class="flex items-center gap-md">
+            <a aria-label="Settings" href="setting.html"
+                class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low transition-colors p-2 rounded-full no-underline">settings</a>
+            <a aria-label="Profile" href="prf.html"
+                class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low transition-colors p-2 rounded-full no-underline">account_circle</a>
         </div>
-    </aside>
-    <!-- Main Canvas -->
-    <main class="md:ml-72 min-h-screen">
-        <!-- Top App Bar -->
-        <header
-            class="flex justify-between items-center px-gutter w-full h-16 sticky top-0 z-50 bg-surface border-b border-outline-variant">
-            <div class="flex items-center gap-md">
-                <button class="md:hidden p-xs">
-                    <span class="material-symbols-outlined" data-icon="menu">menu</span>
-                </button>
-                <h2 class="font-display text-headline-md font-bold text-primary">Settings</h2>
-            </div>
-            <div class="flex items-center gap-md">
-                <div class="relative hidden sm:block">
-                    <span
-                        class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant"
-                        data-icon="search">search</span>
-                    <input
-                        class="pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-full text-label-md focus:outline-none focus:border-primary w-64"
-                        placeholder="Search settings..." type="text" />
-                </div>
-                <button
-                    class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container p-xs rounded-full transition-colors"
-                    data-icon="notifications">notifications</button>
-                <a aria-label="Profile" href="prf.html"
-                    class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant block">
-                    <img alt="User profile" class="w-full h-full object-cover" data-profile-image
-                        data-alt="Close-up professional portrait of a confident male executive in a well-lit minimalist studio setting. He is wearing a clean charcoal suit, reflecting a professional and composed brand personality. The lighting is soft and natural, emphasizing clarity and trust. The overall aesthetic is serene and high-end, aligned with a modern professional networking platform."
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCADLxNgv3s03XMOs7DEjoRnpPdLDYqyEPE-58Qpm8M1kdr38OVX7_1pQC8ARKy8PLW964SFPWP4cMD00vlw_NDtjIdmZdS68cPsF-qNgZvKLPwoj2Ut-5RsnHK4vqf45n7yudqS8b5d4LfWSHdxrtfSH4iC00ngYqm7TgCB85mTbooNiyPN9IXPGqzJSGUYm9-NAPH6T7THgThmowvEwJg3O0zBcv-makSkVS6lKntLxIOq0LIYdIqA5DC12t4juYtdGn0cX5axG8" />
+    </header>
+
+    <div class="flex max-w-container-max mx-auto min-h-[calc(100vh-64px)]">
+        <!-- SideNavBar -->
+        <aside
+            class="hidden md:flex flex-col h-[calc(100vh-64px)] sticky top-16 w-64 p-md bg-surface-container-low border-r border-outline-variant">
+            <div class="mb-xl">
+                <a class="flex items-center gap-sm mb-4 rounded-lg hover:bg-surface-variant transition-colors p-1 -m-1"
+                    href="prf.html">
+                    <img class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-profile-image
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuyrxHzyBkfdkNH_Fw1-k-S86sKNgp-wx4jR_Z93TmUOumPJJI_UQJjOlZ467uE8gz5FivcZ3G99H8A6A4Njy8eR0VKjKnEtVaL52xQ8QAUBW2x7uI1P0ZPT6JlpdOA641Z-0sSMvP8_uQXLMtf-wnENrtrjO8k7odWxaiyPE7KUCJ-mKp96oKfNZ4-Z6y1SRko2E6XGLcmFxsElp8guPYXHXxmBt00syWq8w9c5xXIGom7UzcrBkjbQgIVMdbwy0R2Intu8owcIc" />
+                    <div>
+                        <p class="font-label-md text-label-md text-on-surface" data-profile-name>Alex Morrison</p>
+                        <p class="text-[11px] text-on-surface-variant" data-profile-role>Senior AI Researcher</p>
+                    </div>
                 </a>
+                <button
+                    class="w-full bg-primary text-on-primary font-label-md text-label-md py-3 rounded-lg hover:opacity-90 transition-opacity">
+                    Start New Search
+                </button>
             </div>
-        </header>
-        <!-- Page Content -->
-        <div class="max-w-container-max mx-auto p-gutter">
+            <nav class="flex flex-col gap-xs flex-1">
+                <a class="flex items-center gap-3 px-4 py-3 rounded-lg transition-all"
+                    href="first.html" data-nav="discovery">
+                    <span class="material-symbols-outlined">search_check</span>
+                    <span class="font-label-md text-label-md">Discovery</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 rounded-lg transition-all"
+                    href="smart.html" data-nav="analysis">
+                    <span class="material-symbols-outlined">analytics</span>
+                    <span class="font-label-md text-label-md">Analysis</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 rounded-lg transition-all"
+                    href="collab.html" data-nav="collab">
+                    <span class="material-symbols-outlined">hub</span>
+                    <span class="font-label-md text-label-md">Collaboration Hub</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 rounded-lg transition-all"
+                    href="prf.html" data-nav="profile">
+                    <span class="material-symbols-outlined">person</span>
+                    <span class="font-label-md text-label-md">Profile</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 w-full p-gutter pb-24 md:pb-0 page-transition">
+            <header class="flex justify-between items-center mb-lg">
+                <h2 class="font-headline-md text-headline-md font-bold text-primary">Settings</h2>
+            </header>
+            
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
                 <!-- Category Navigation -->
                 <div class="lg:col-span-3 space-y-xs">
                     <button
-                        class="w-full text-left flex items-center gap-sm px-md py-sm rounded-lg bg-primary-container text-on-primary-container font-bold transition-all">
-                        <span class="material-symbols-outlined" data-icon="person">person</span>
+                        class="w-full text-left flex items-center gap-sm px-md py-sm rounded-lg bg-primary-container text-on-primary-container font-bold transition-all" aria-label="Account">
+                        <span class="material-symbols-outlined">person</span>
                         Account
                     </button>
                     <button
-                        class="w-full text-left flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-all">
-                        <span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
-                        Profile
-                    </button>
-                    <button
-                        class="w-full text-left flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-all">
-                        <span class="material-symbols-outlined"
-                            data-icon="notifications_active">notifications_active</span>
+                        class="w-full text-left flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-all" aria-label="Notifications">
+                        <span class="material-symbols-outlined">notifications_active</span>
                         Notifications
                     </button>
                     <button
-                        class="w-full text-left flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-all">
-                        <span class="material-symbols-outlined" data-icon="security">security</span>
-                        Privacy &amp; Security
-                    </button>
-                    <button
-                        class="w-full text-left flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-all">
-                        <span class="material-symbols-outlined" data-icon="payments">payments</span>
+                        class="w-full text-left flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-all" aria-label="Subscriptions">
+                        <span class="material-symbols-outlined">payments</span>
                         Subscriptions
                     </button>
+                    <button
+                        class="w-full text-left flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-all" aria-label="Privacy & Security">
+                        <span class="material-symbols-outlined">security</span>
+                        Privacy &amp; Security
+                    </button>
                 </div>
+
                 <!-- Settings Forms Content -->
                 <div class="lg:col-span-9 space-y-lg">
                     <!-- Account Section -->
-                    <section class="bg-surface-container-lowest border border-outline-variant p-lg rounded-xl">
+                    <section class="bg-surface-container-lowest border border-outline-variant p-lg rounded-xl shadow-sm">
                         <div class="mb-lg">
                             <h3 class="font-headline-md text-headline-md text-primary">Account Information</h3>
-                            <p class="text-on-surface-variant mt-xs">Update your primary account details and security
-                                credentials.</p>
+                            <p class="text-on-surface-variant mt-xs">Update your primary account details.</p>
                         </div>
                         <div class="space-y-md">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
                                 <div class="space-y-xs">
-                                    <label class="block font-label-md text-label-md text-on-surface">Email
-                                        Address</label>
-                                    <input
-                                        class="w-full px-md py-sm bg-surface-bright border border-outline-variant rounded-lg focus-ring"
-                                        type="email" value="alex.morrison@connectai.io" />
+                                    <label class="block font-label-md text-label-md text-on-surface">Email Address</label>
+                                    <input class="w-full px-md py-sm bg-surface-bright border border-outline-variant rounded-lg focus:ring-2 focus:ring-secondary focus:outline-none" type="email" value="alex.morrison@swipesync.io" />
                                 </div>
                                 <div class="space-y-xs">
-                                    <label class="block font-label-md text-label-md text-on-surface">Phone
-                                        Number</label>
-                                    <input
-                                        class="w-full px-md py-sm bg-surface-bright border border-outline-variant rounded-lg focus-ring"
-                                        type="tel" value="+1 (555) 123-4567" />
+                                    <label class="block font-label-md text-label-md text-on-surface">Phone Number</label>
+                                    <input class="w-full px-md py-sm bg-surface-bright border border-outline-variant rounded-lg focus:ring-2 focus:ring-secondary focus:outline-none" type="tel" value="+1 (555) 000-0000" />
                                 </div>
                             </div>
-                            <div class="pt-md border-t border-outline-variant">
-                                <h4 class="font-label-md text-label-md text-on-surface mb-md">Password</h4>
-                                <div class="flex flex-wrap items-center gap-md">
-                                    <button
-                                        class="px-lg py-sm bg-secondary text-on-secondary rounded-lg font-label-md text-label-md hover:bg-on-secondary-container transition-colors shadow-sm">
-                                        Change Password
-                                    </button>
-                                    <p class="text-label-sm text-on-surface-variant">Last changed 4 months ago</p>
+                        </div>
+                    </section>
+
+                    <!-- Notifications Section -->
+                    <section class="bg-surface-container-lowest border border-outline-variant p-lg rounded-xl shadow-sm">
+                        <div class="mb-lg">
+                            <h3 class="font-headline-md text-headline-md text-primary">Notification Preferences</h3>
+                            <p class="text-on-surface-variant mt-xs">Control your alerts.</p>
+                        </div>
+                        <div class="space-y-sm">
+                            <div class="flex items-center justify-between p-sm hover:bg-surface-container-low rounded-lg transition-colors">
+                                <div>
+                                    <p class="font-label-md text-label-md text-on-surface">Direct Messages</p>
+                                    <p class="text-label-sm text-on-surface-variant">Receive alerts when someone sends you a message.</p>
+                                </div>
+                                <div class="relative inline-flex items-center cursor-pointer">
+                                    <input checked="" class="sr-only peer" id="dm-notifications" type="checkbox" />
+                                    <div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
                                 </div>
                             </div>
-                            <div class="pt-md border-t border-outline-variant">
-                                <h4 class="font-label-md text-label-md text-error mb-xs">Danger Zone</h4>
-                                <p class="text-label-sm text-on-surface-variant mb-md">Once you delete your account,
-                                    there is no going back. Please be certain.</p>
+                            <div class="flex items-center justify-between p-sm hover:bg-surface-container-low rounded-lg transition-colors">
+                                <div>
+                                    <p class="font-label-md text-label-md text-on-surface">Match Alerts</p>
+                                    <p class="text-label-sm text-on-surface-variant">Get notified of potential collaborative opportunities.</p>
+                                </div>
+                                <div class="relative inline-flex items-center cursor-pointer">
+                                    <input checked="" class="sr-only peer" id="match-notifications" type="checkbox" />
+                                    <div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between p-sm hover:bg-surface-container-low rounded-lg transition-colors">
+                                <div>
+                                    <p class="font-label-md text-label-md text-on-surface">Community Updates</p>
+                                    <p class="text-label-sm text-on-surface-variant">Newsletter and platform improvement news.</p>
+                                </div>
+                                <div class="relative inline-flex items-center cursor-pointer">
+                                    <input class="sr-only peer" id="community-notifications" type="checkbox" />
+                                    <div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Subscriptions Section -->
+                    <section class="bg-surface-container-lowest border border-outline-variant p-lg rounded-xl shadow-sm">
+                        <div class="mb-lg flex justify-between items-start">
+                            <div>
+                                <h3 class="font-headline-md text-headline-md text-primary">Pro Professional</h3>
+                                <p class="text-on-surface-variant mt-xs">Active since January 2026</p>
+                            </div>
+                            <span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-bold text-[10px] uppercase">Active</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-md mb-lg">
+                            <div class="p-md bg-surface-container-low rounded-lg border border-outline-variant/30">
+                                <p class="text-label-sm text-on-surface-variant uppercase">Current Plan</p>
+                                <p class="font-headline-sm text-headline-sm text-on-surface">$29 / Mo</p>
+                            </div>
+                            <div class="p-md bg-surface-container-low rounded-lg border border-outline-variant/30">
+                                <p class="text-label-sm text-on-surface-variant uppercase">Next Invoice</p>
+                                <p class="font-headline-sm text-headline-sm text-on-surface">June 01</p>
+                            </div>
+                            <div class="p-md bg-surface-container-low rounded-lg border border-outline-variant/30">
+                                <p class="text-label-sm text-on-surface-variant uppercase">Payment Method</p>
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-on-surface-variant">credit_card</span>
+                                    <p class="font-headline-sm text-headline-sm text-on-surface">•••• 4242</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-end gap-md">
+                            <button class="px-md py-sm border border-outline text-on-surface-variant rounded-lg font-label-md hover:bg-surface-container transition-colors" aria-label="Manage Subscription">Manage Subscription</button>
+                            <button class="px-md py-sm bg-secondary text-on-secondary rounded-lg font-label-md hover:brightness-95 transition-all">View Billing History</button>
+                        </div>
+                    </section>
+
+                    <!-- Security Section -->
+                    <section class="bg-surface-container-lowest border border-outline-variant p-lg rounded-xl shadow-sm">
+                        <div class="mb-lg">
+                            <h3 class="font-headline-md text-headline-md text-primary">Privacy &amp; Security</h3>
+                            <p class="text-on-surface-variant mt-xs">Manage your access and data privacy.</p>
+                        </div>
+                        <div class="space-y-md">
+                            <div class="flex flex-col md:flex-row gap-md border-b border-outline-variant pb-md">
                                 <button
-                                    class="px-lg py-sm border border-error text-error rounded-lg font-label-md text-label-md hover:bg-error-container transition-colors">
+                                    class="px-md py-2 bg-primary text-on-primary rounded-lg font-label-md hover:brightness-95 transition-all flex items-center justify-center gap-2 shadow-sm"
+                                    aria-label="Change Password">
+                                    <span class="material-symbols-outlined text-[20px]">lock_reset</span> Change
+                                    Password
+                                </button>
+                                <button
+                                    class="px-md py-2 border border-error text-error rounded-lg font-label-md hover:bg-error/5 transition-colors flex items-center justify-center gap-2"
+                                    aria-label="Deactivate Account">
+                                    <span class="material-symbols-outlined text-[20px]">person_remove</span>
                                     Deactivate Account
                                 </button>
                             </div>
-                        </div>
-                    </section>
-                    <!-- Notifications Section (Nested for demonstration) -->
-                    <section class="bg-surface-container-lowest border border-outline-variant p-lg rounded-xl">
-                        <div class="mb-lg">
-                            <h3 class="font-headline-md text-headline-md text-primary">Notification Preferences</h3>
-                            <p class="text-on-surface-variant mt-xs">Control when and how you want to be alerted.</p>
-                        </div>
-                        <div class="space-y-sm">
-                            <div
-                                class="flex items-center justify-between p-sm hover:bg-surface-container-low rounded-lg transition-colors">
-                                <div>
-                                    <p class="font-label-md text-label-md text-on-surface">Direct Messages</p>
-                                    <p class="text-label-sm text-on-surface-variant">Receive alerts when someone sends
-                                        you a message.</p>
-                                </div>
-                                <div class="relative inline-flex items-center cursor-pointer">
-                                    <input checked="" class="sr-only peer" type="checkbox" />
-                                    <div
-                                        class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary">
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                class="flex items-center justify-between p-sm hover:bg-surface-container-low rounded-lg transition-colors">
-                                <div>
-                                    <p class="font-label-md text-label-md text-on-surface">Match Alerts</p>
-                                    <p class="text-label-sm text-on-surface-variant">Get notified of potential
-                                        collaborative opportunities.</p>
-                                </div>
-                                <div class="relative inline-flex items-center cursor-pointer">
-                                    <input checked="" class="sr-only peer" type="checkbox" />
-                                    <div
-                                        class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary">
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                class="flex items-center justify-between p-sm hover:bg-surface-container-low rounded-lg transition-colors">
-                                <div>
-                                    <p class="font-label-md text-label-md text-on-surface">Community Updates</p>
-                                    <p class="text-label-sm text-on-surface-variant">Newsletter and platform improvement
-                                        news.</p>
-                                </div>
-                                <div class="relative inline-flex items-center cursor-pointer">
-                                    <input class="sr-only peer" type="checkbox" />
-                                    <div
-                                        class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary">
-                                    </div>
-                                </div>
+                            <div class="p-md bg-error-container/10 border border-error/20 rounded-lg mt-md">
+                                <h4 class="font-label-md text-error mb-1">Danger Zone</h4>
+                                <p class="text-label-sm text-on-surface-variant mb-md">Permanently remove your professional data and history. This action cannot be undone.</p>
+                                <button class="px-md py-sm bg-error text-on-error rounded-lg font-label-md hover:opacity-90 transition-opacity" aria-label="Delete Account">Delete Account</button>
                             </div>
                         </div>
                     </section>
-                    <!-- Subscription Section -->
-                    <section
-                        class="bg-surface-container-lowest border border-outline-variant overflow-hidden rounded-xl">
-                        <div class="bg-primary-container p-lg text-on-primary-container">
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <span
-                                        class="inline-block px-sm py-xs bg-surface-bright/20 backdrop-blur-md rounded-full text-label-sm uppercase tracking-wider mb-sm">Current
-                                        Plan</span>
-                                    <h3 class="font-headline-md text-headline-md font-bold">Pro Professional</h3>
-                                    <p class="opacity-90 mt-xs">Next billing cycle: July 12, 2024</p>
-                                </div>
-                                <div class="text-right">
-                                    <p class="text-display font-display leading-none">$19</p>
-                                    <p class="text-label-md">per month</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-lg space-y-md">
-                            <h4 class="font-label-md text-label-md text-on-surface">Billing History</h4>
-                            <div class="border border-outline-variant rounded-lg overflow-hidden">
-                                <table class="w-full text-left text-label-md">
-                                    <thead class="bg-surface-container-low">
-                                        <tr>
-                                            <th class="px-md py-sm font-semibold">Date</th>
-                                            <th class="px-md py-sm font-semibold">Amount</th>
-                                            <th class="px-md py-sm font-semibold">Status</th>
-                                            <th class="px-md py-sm font-semibold text-right">Invoice</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="divide-y divide-outline-variant">
-                                        <tr>
-                                            <td class="px-md py-sm text-on-surface-variant">Jun 12, 2024</td>
-                                            <td class="px-md py-sm">$19.00</td>
-                                            <td class="px-md py-sm"><span
-                                                    class="px-xs py-1 bg-tertiary-fixed text-on-tertiary-fixed text-[10px] uppercase rounded">Paid</span>
-                                            </td>
-                                            <td class="px-md py-sm text-right"><span
-                                                    class="material-symbols-outlined text-primary cursor-pointer"
-                                                    data-icon="download">download</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="px-md py-sm text-on-surface-variant">May 12, 2024</td>
-                                            <td class="px-md py-sm">$19.00</td>
-                                            <td class="px-md py-sm"><span
-                                                    class="px-xs py-1 bg-tertiary-fixed text-on-tertiary-fixed text-[10px] uppercase rounded">Paid</span>
-                                            </td>
-                                            <td class="px-md py-sm text-right"><span
-                                                    class="material-symbols-outlined text-primary cursor-pointer"
-                                                    data-icon="download">download</span></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="flex justify-end gap-md pt-sm">
-                                <button
-                                    class="px-lg py-sm text-secondary font-label-md border border-secondary rounded-lg hover:bg-surface-container transition-colors">Manage
-                                    Subscription</button>
-                                <button
-                                    class="px-lg py-sm bg-primary text-on-primary font-label-md rounded-lg hover:opacity-90 transition-opacity shadow-sm">Save
-                                    Changes</button>
-                            </div>
-                        </div>
-                    </section>
+                    
+                    <div class="flex justify-end gap-md">
+                        <button class="px-lg py-sm bg-primary text-on-primary rounded-lg font-label-md hover:opacity-90 transition-opacity shadow-sm" aria-label="Save Changes">Save Changes</button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </main>
-    <!-- Mobile Bottom Nav -->
-    <nav
-        class="md:hidden fixed bottom-0 left-0 w-full h-16 bg-surface-container-lowest border-t border-outline-variant flex justify-around items-center z-50">
-        <button class="flex flex-col items-center gap-1 text-on-surface-variant">
-            <span class="material-symbols-outlined" data-icon="dynamic_feed">dynamic_feed</span>
-            <span class="text-[10px] font-label-md">Discovery</span>
-        </button>
-        <button class="flex flex-col items-center gap-1 text-on-surface-variant">
-            <span class="material-symbols-outlined" data-icon="group">group</span>
-            <span class="text-[10px] font-label-md">Analysis</span>
-        </button>
-        <button class="flex flex-col items-center gap-1 text-on-surface-variant">
-            <span class="material-symbols-outlined" data-icon="lightbulb">lightbulb</span>
-            <span class="text-[10px] font-label-md">Opps</span>
-        </button>
-        <button class="flex flex-col items-center gap-1 text-primary">
-            <span class="material-symbols-outlined" data-icon="settings" data-weight="fill">settings</span>
-            <span class="text-[10px] font-label-md font-bold">Settings</span>
-        </button>
+        </main>
+    </div>
+
+    <!-- BottomNavBar (Mobile Only) -->
+    <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 md:hidden bg-surface-bright border-t border-outline-variant rounded-t-xl">
+        <a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="first.html" data-nav="discovery">
+            <span class="material-symbols-outlined">explore</span>
+            <span class="font-label-sm text-label-sm">Discovery</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="smart.html" data-nav="analysis">
+            <span class="material-symbols-outlined">dashboard</span>
+            <span class="font-label-sm text-label-sm">Analysis</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="collab.html" data-nav="collab">
+            <span class="material-symbols-outlined">diversity_3</span>
+            <span class="font-label-sm text-label-sm">Collab Hub</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="prf.html" data-nav="profile">
+            <span class="material-symbols-outlined">person</span>
+            <span class="font-label-sm text-label-sm">Profile</span>
+        </a>
     </nav>
     <script type="module" src="./app.js"></script>
 </body>
