@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>SwipeSync Onboarding - Skills</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&amp;family=Atkinson+Hyperlegible+Next:wght@600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    
+    
+</head>
+
+<body class="font-body-md text-on-surface bg-background min-h-screen flex flex-col">
+    <!-- Header / TopAppBar -->
+    <header class="bg-background docked full-width top-0 border-b border-outline-variant z-50">
+        <div class="flex justify-between items-center h-16 px-md max-w-container-max mx-auto w-full">
+            <div class="flex items-center gap-2">
+                <span class="font-display text-headline-md font-bold text-primary tracking-tight">SwipeSync</span>
+            </div>
+            <div class="flex items-center gap-base">
+                <span class="material-symbols-outlined text-primary" data-icon="account_circle">account_circle</span>
+            </div>
+        </div>
+    </header>
+    <!-- Main Content Canvas -->
+    <main class="flex-grow flex flex-col items-center justify-center p-md sm:p-lg">
+        <!-- Onboarding Card -->
+        <div
+            class="bg-surface-container-lowest w-full max-w-[560px] border border-outline-variant rounded-xl p-md md:p-lg flex flex-col gap-lg">
+            <!-- Progress Indicator -->
+            <div class="flex flex-col gap-xs">
+                <div class="flex justify-between items-center">
+                    <span class="font-label-sm text-label-sm text-on-surface-variant">Step 3 of 3</span>
+                    <span class="font-label-sm text-label-sm text-primary">Final Step</span>
+                </div>
+                <div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+                    <div class="h-full bg-primary w-full rounded-full"></div>
+                </div>
+            </div>
+            <!-- Title & Subtitle -->
+            <div class="space-y-base">
+                <h1 class="font-headline-md text-headline-md text-on-surface">What are your core skills?</h1>
+                <p class="font-body-md text-body-md text-on-surface-variant">This helps us match you with the right
+                    mentors, teammates, and opportunities.</p>
+            </div>
+            <!-- Skill Input Section -->
+            <div class="flex flex-col gap-sm">
+                <label class="font-label-md text-label-md text-on-surface" for="skill-search">Search or add a
+                    skill</label>
+                <div class="relative group">
+                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline"
+                        data-icon="search">search</span>
+                    <input
+                        class="w-full bg-surface-container-low border border-outline rounded-lg py-3 pl-12 pr-4 focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:outline-none transition-all placeholder:text-outline"
+                        id="skill-search" placeholder="e.g., UI Design, Python, Strategic Planning" type="text" />
+                </div>
+                <!-- Selected Chips (Active UI State Demo) -->
+                <div class="flex flex-wrap gap-xs mt-2">
+                    <span
+                        class="inline-flex items-center gap-1 px-3 py-1 bg-primary-fixed text-on-primary-fixed rounded-full font-label-sm text-label-sm">
+                        Product Management
+                        <span class="material-symbols-outlined text-[16px] cursor-pointer"
+                            data-icon="close">close</span>
+                    </span>
+                    <span
+                        class="inline-flex items-center gap-1 px-3 py-1 bg-primary-fixed text-on-primary-fixed rounded-full font-label-sm text-label-sm">
+                        UI Design
+                        <span class="material-symbols-outlined text-[16px] cursor-pointer"
+                            data-icon="close">close</span>
+                    </span>
+                </div>
+            </div>
+            <!-- Suggested Skills -->
+            <div class="flex flex-col gap-sm">
+                <h3 class="font-label-md text-label-md text-on-surface-variant">Suggested for you</h3>
+                <div class="flex flex-wrap gap-xs">
+                    <button
+                        class="px-4 py-2 bg-tertiary-fixed text-on-tertiary-fixed-variant border border-transparent rounded-full font-label-sm text-label-sm hover:border-tertiary transition-colors active:scale-95">
+                        Data Analysis
+                    </button>
+                    <button
+                        class="px-4 py-2 bg-tertiary-fixed text-on-tertiary-fixed-variant border border-transparent rounded-full font-label-sm text-label-sm hover:border-tertiary transition-colors active:scale-95">
+                        Project Management
+                    </button>
+                    <button
+                        class="px-4 py-2 bg-tertiary-fixed text-on-tertiary-fixed-variant border border-transparent rounded-full font-label-sm text-label-sm hover:border-tertiary transition-colors active:scale-95">
+                        Public Speaking
+                    </button>
+                    <button
+                        class="px-4 py-2 bg-tertiary-fixed text-on-tertiary-fixed-variant border border-transparent rounded-full font-label-sm text-label-sm hover:border-tertiary transition-colors active:scale-95">
+                        Team Leadership
+                    </button>
+                    <button
+                        class="px-4 py-2 bg-tertiary-fixed text-on-tertiary-fixed-variant border border-transparent rounded-full font-label-sm text-label-sm hover:border-tertiary transition-colors active:scale-95">
+                        Marketing Strategy
+                    </button>
+                    <button
+                        class="px-4 py-2 bg-tertiary-fixed text-on-tertiary-fixed-variant border border-transparent rounded-full font-label-sm text-label-sm hover:border-tertiary transition-colors active:scale-95">
+                        Graphic Design
+                    </button>
+                </div>
+            </div>
+            <!-- Visual Decorative Element (Quiet Background) -->
+            <div class="mt-4 opacity-10">
+                <img alt="Abstract connectivity pattern" class="w-full h-12 object-cover rounded-lg"
+                    data-alt="A serene and abstract network of interconnected dots and thin lines, rendered in a minimalist 3D space with a soft sage green and warm grey palette. The lighting is ethereal and diffused, creating a calm, high-end professional atmosphere. There is a sense of digital harmony and organized connectivity, perfectly embodying a low-anxiety networking platform for professionals."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJHpDhftrlGherOHln3z0VmrmINT_SMueP_Xox0KPbLiP0aGI6ihiV7fbzfH4rD-tRTIekxoanCO654A5ZwYCYJsjyI-5bb97eri12D2OK8xGv2OgeOmLDDS1mUCZm_AgTGVWvMWFu5hztU7MNlOuYTyZQaFVhVIAWd7eAZgGlBQb9PVoPggQB9iMWl7--6F2a387ZpPrJ0Rq38v1IJDWcpl7rDX_luT_G9Zn1UaYMQB9yBEvlhR6Vg3KtsM4vRS4aYWS2E-7gRho" />
+            </div>
+            <!-- Navigation Actions -->
+            <div class="flex flex-col gap-sm mt-md">
+                <button
+                    class="w-full bg-primary text-on-primary font-label-md text-label-md py-4 rounded-lg shadow-sm hover:bg-primary-container transition-all active:scale-[0.98] flex justify-center items-center gap-2">
+                    Continue
+                    <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+                </button>
+                <button
+                    class="w-full bg-transparent text-secondary font-label-md text-label-md py-3 rounded-lg border border-secondary hover:bg-surface-container-high transition-all active:scale-[0.98]">
+                    Skip for now
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- Suppressed Nav Shell for Onboarding Context -->
+    <!-- The BottomNavBar and SideNavBar are omitted to prioritize the focused onboarding task as per the Semantic Shell Mandate -->
+    <!-- Focus Indicator Styles -->
+    
+    <script type="module" src="./app.js"></script>
+</body>
+
+</html>
