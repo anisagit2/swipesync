@@ -16,16 +16,18 @@ function ThirdPage() {
             <Link className="font-label-sm text-label-sm text-primary-fixed-dim hover:text-primary-container transition-colors duration-200"
                 to="/fourth">Match</Link>
             <Link className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-container transition-colors duration-200"
-                to="/">Insights</Link>
+                to="/insights">Insights</Link>
             <Link className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-container transition-colors duration-200"
-                to="/second">Graph</Link>
+                to="/home">Home</Link>
             <Link className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-container transition-colors duration-200"
                 to="/third">Admin</Link>
         </nav>
         <div className="flex items-center gap-4">
+            <Link to="/profile" aria-label="Open profile">
             <img alt="User profile photo" className="w-10 h-10 rounded-full border border-white/10"
                 data-alt="A professional studio portrait of a technology executive with soft, cinematic side-lighting. The background is a deep charcoal indigo with a subtle blur, creating a high-end corporate aesthetic. The subject has a confident expression, reflecting intelligence and leadership in the AI space."
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbxlE8vXYQ8mAHgRrAboRBcgwNH7nfnwfQZtdl999-8gTywRzQvCeQ3I3iChrX7YaXPAiu_SFG7bN5I51OJPVfew__JdGjGt0aiWNxd0xbAvCI0rKr6c3U6WP-KCygenQ8P8HVNhI_lX2usYiYW9ZpK68JYL_585jLOyqG3g9kqQEeC5BGs7lFRRPZ-fn2bO7MUtw_rvMpk5VJe8fqyQnQKbd7Eot6kKZy-8FolZTtxDP-TLKvrYCMy2yfMdv8EKeS8i5rMw1Tb38" />
+            </Link>
         </div>
     </header>
     <main className="relative">
@@ -56,7 +58,7 @@ function ThirdPage() {
                     potential with machine precision in a seamless fluid interface.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <Link to="/fourth"
+                    <Link to="/auth"
                         className="bg-gradient-to-r from-primary-container/80 to-secondary-container/80 text-on-primary-container px-8 py-4 rounded-xl font-headline-md text-label-sm font-bold neon-glow hover:scale-105 transition-transform active:scale-95">
                         Get Started
                     </Link>
@@ -210,22 +212,22 @@ function ThirdPage() {
             <span className="material-symbols-outlined" data-icon="swipe">swipe</span>
             <span className="font-label-sm text-label-sm">Match</span>
         </Link>
-        <Link to="/"
+        <Link to="/insights"
             className="flex flex-col items-center justify-center text-on-surface-variant/80 px-4 py-1.5 hover:bg-white/5 transition-all">
             <span className="material-symbols-outlined" data-icon="analytics">analytics</span>
             <span className="font-label-sm text-label-sm">Insights</span>
         </Link>
-        <Link to="/second"
+        <Link to="/home"
             className="flex flex-col items-center justify-center text-on-surface-variant/80 px-4 py-1.5 hover:bg-white/5 transition-all">
             <span className="material-symbols-outlined" data-icon="hub">hub</span>
-            <span className="font-label-sm text-label-sm">Graph</span>
+            <span className="font-label-sm text-label-sm">Home</span>
         </Link>
         <Link to="/third"
             className="flex flex-col items-center justify-center text-on-surface-variant/80 px-4 py-1.5 hover:bg-white/5 transition-all">
             <span className="material-symbols-outlined" data-icon="query_stats">query_stats</span>
             <span className="font-label-sm text-label-sm">Admin</span>
         </Link>
-        <Link to="/"
+        <Link to="/profile"
             className="flex flex-col items-center justify-center text-on-surface-variant/80 px-4 py-1.5 hover:bg-white/5 transition-all">
             <span className="material-symbols-outlined" data-icon="person">person</span>
             <span className="font-label-sm text-label-sm">Profile</span>

@@ -21,11 +21,11 @@ function FirstPage() {
             >
                 notifications
             </Link>
-            <div className="w-10 h-10 rounded-full border border-primary-container/30 p-0.5">
+            <Link to="/profile" aria-label="Open profile" className="w-10 h-10 rounded-full border border-primary-container/30 p-0.5">
                 <img alt="User Profile" className="w-full h-full rounded-full object-cover"
                     data-alt="A high-end professional headshot of a person with a futuristic, clean aesthetic. The lighting is soft and cinematic, with subtle cyan and purple rim lighting that matches a dark, tech-oriented UI. The background is a blurred, deep charcoal office environment with glowing data interfaces."
                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsXk0RiVtKR9J0rCtDosiomt5qtX2fl8epdra4OEoJgp08LDzJssNXg7fR273iaXHeeHDY-OmEJVXepLjd972SJaCGa0ncAw-aKTj9GeacZYx9qz3856jXmf7YXBQaWpiD1Rlc6RcIFNdbd8l73xUxvSOjfjb3kp6YoTxfDO7LZHg9ER05qY1zJ4tpqzaYoJktQMabR9KKZ-QkZuCvO5i7dlhPt6aQmctlezWMssn5StEEEfrMqH6JhbXMjXivkqdtLiNJTaPEiWA" />
-            </div>
+            </Link>
         </div>
     </header>
     <main className="max-w-container-max mx-auto px-gutter py-8 space-y-8 pb-32">
@@ -236,14 +236,14 @@ function FirstPage() {
         </div>
         <nav className="space-y-2 flex-grow">
             <Link className="flex items-center gap-4 px-4 py-3 rounded-xl bg-primary-container/10 text-primary-fixed-dim font-bold border-l-4 border-primary-container transition-transform translate-x-1"
-                to="/">
+                to="/insights">
                 <span className="material-symbols-outlined">analytics</span>
                 <span className="font-body-md">Insights</span>
             </Link>
             <Link className="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all"
-                to="/second">
+                to="/home">
                 <span className="material-symbols-outlined">dashboard</span>
-                <span className="font-body-md">Ecosystem Overview</span>
+                <span className="font-body-md">Home</span>
             </Link>
             <Link className="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all"
                 to="/fourth">
@@ -275,16 +275,16 @@ function FirstPage() {
             <span className="material-symbols-outlined">swipe</span>
             <span className="font-label-sm text-label-sm">Match</span>
         </Link>
-        <Link to="/"
+        <Link to="/insights"
             className="flex flex-col items-center justify-center bg-secondary-container/30 text-secondary-fixed-dim rounded-xl px-4 py-1.5 shadow-[0_0_15px_rgba(220,184,255,0.2)] scale-90">
             <span className="material-symbols-outlined">analytics</span>
             <span className="font-label-sm text-label-sm">Insights</span>
         </Link>
-        <Link to="/second" className="flex flex-col items-center justify-center text-on-surface-variant/80 px-4 py-1.5">
+        <Link to="/home" className="flex flex-col items-center justify-center text-on-surface-variant/80 px-4 py-1.5">
             <span className="material-symbols-outlined">hub</span>
-            <span className="font-label-sm text-label-sm">Graph</span>
+            <span className="font-label-sm text-label-sm">Home</span>
         </Link>
-        <Link to="/third" className="flex flex-col items-center justify-center text-on-surface-variant/80 px-4 py-1.5">
+        <Link to="/profile" className="flex flex-col items-center justify-center text-on-surface-variant/80 px-4 py-1.5">
             <span className="material-symbols-outlined">person</span>
             <span className="font-label-sm text-label-sm">Profile</span>
         </Link>

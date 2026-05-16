@@ -62,14 +62,16 @@ function FourthPage() {
             <div className="hidden md:flex gap-6 items-center">
                 <Link to="/fourth"
                     className="font-label-sm text-label-sm text-primary-fixed-dim hover:text-primary-container transition-colors duration-200 cursor-pointer">Match</Link>
-                <Link to="/"
+                <Link to="/insights"
                     className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-container transition-colors duration-200 cursor-pointer">Insights</Link>
-                <Link to="/second"
-                    className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-container transition-colors duration-200 cursor-pointer">Graph</Link>
+                <Link to="/home"
+                    className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-container transition-colors duration-200 cursor-pointer">Home</Link>
             </div>
+            <Link to="/profile" aria-label="Open profile">
             <img alt="User profile photo" className="w-10 h-10 rounded-full border-2 border-primary-container/30"
                 data-alt="A professional headshot of a modern user with a clean, tech-focused aesthetic. The person is set against a blurred background of a high-tech office with cool blue and deep charcoal lighting. The lighting is soft and professional, emphasizing a sophisticated, expert persona that aligns with the premium futuristic minimalist UI style."
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeoPztYuDGLc9lKCH8oa9Bs9beKItPBVJnZyu9ZrejFRhpzh8X2vAMdLsLAFFJyGAiZe_mEFZL37vQ4Cyh5Y9aT9jHBCcHkcEKwq-ZKI5zjqaj1GJgwyTSCQjXXtwY-FRWnxVFr3eOYvpsH9-sXW06lX4af3otd9p1Qe5ci5XhTdCNQvunOpULO9h8OHOZgyQl18kjM10eTmUDowDxUK7BCynBgXVfEEnfOjKSay2oZV3rZRcWGi2ae3ppFT8rZRm7hbFNF0fQw6Y" />
+            </Link>
         </div>
     </header>
     <main
@@ -186,22 +188,22 @@ function FourthPage() {
             <span className="material-symbols-outlined">swipe</span>
             <span className="font-label-sm text-label-sm mt-0.5">Match</span>
         </Link>
-        <Link to="/"
+        <Link to="/insights"
             className="flex flex-col items-center justify-center text-on-surface-variant/80 px-4 py-1.5 hover:bg-white/5 transition-all">
             <span className="material-symbols-outlined">analytics</span>
             <span className="font-label-sm text-label-sm mt-0.5">Insights</span>
         </Link>
-        <Link to="/second"
+        <Link to="/home"
             className="flex flex-col items-center justify-center text-on-surface-variant/80 px-4 py-1.5 hover:bg-white/5 transition-all">
             <span className="material-symbols-outlined">hub</span>
-            <span className="font-label-sm text-label-sm mt-0.5">Graph</span>
+            <span className="font-label-sm text-label-sm mt-0.5">Home</span>
         </Link>
         <Link to="/third"
             className="flex flex-col items-center justify-center text-on-surface-variant/80 px-4 py-1.5 hover:bg-white/5 transition-all">
             <span className="material-symbols-outlined">query_stats</span>
             <span className="font-label-sm text-label-sm mt-0.5">Admin</span>
         </Link>
-        <Link to="/"
+        <Link to="/profile"
             className="flex flex-col items-center justify-center text-on-surface-variant/80 px-4 py-1.5 hover:bg-white/5 transition-all">
             <span className="material-symbols-outlined">person</span>
             <span className="font-label-sm text-label-sm mt-0.5">Profile</span>
@@ -215,12 +217,12 @@ function FourthPage() {
             <span className="font-headline-md text-primary-container font-bold tracking-tighter">SwipeSync</span>
         </div>
         <div className="space-y-2">
-            <Link to="/second"
+            <Link to="/home"
                 className="bg-primary-container/10 text-primary-fixed-dim font-bold border-l-4 border-primary-container flex items-center gap-4 py-3 px-4 rounded-r-lg transition-transform translate-x-1 cursor-pointer">
                 <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>dashboard</span>
-                <span className="font-body-md text-body-md">Ecosystem Overview</span>
+                <span className="font-body-md text-body-md">Home</span>
             </Link>
-            <Link to="/"
+            <Link to="/insights"
                 className="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high flex items-center gap-4 py-3 px-4 rounded-lg transition-all cursor-pointer">
                 <span className="material-symbols-outlined">trending_up</span>
                 <span className="font-body-md text-body-md">Trend Analysis</span>
