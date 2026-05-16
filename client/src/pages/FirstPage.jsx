@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 function FirstPage() {
   return (
     <div className="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden dark min-h-screen md:pl-72">
@@ -12,8 +14,13 @@ function FirstPage() {
                 SwipeSync AI</h1>
         </div>
         <div className="flex items-center gap-4">
-            <button
-                className="material-symbols-outlined text-on-surface-variant hover:text-primary-container transition-colors">notifications</button>
+            <Link
+                to="/third"
+                aria-label="Open notifications"
+                className="material-symbols-outlined text-on-surface-variant hover:text-primary-container transition-colors"
+            >
+                notifications
+            </Link>
             <div className="w-10 h-10 rounded-full border border-primary-container/30 p-0.5">
                 <img alt="User Profile" className="w-full h-full rounded-full object-cover"
                     data-alt="A high-end professional headshot of a person with a futuristic, clean aesthetic. The lighting is soft and cinematic, with subtle cyan and purple rim lighting that matches a dark, tech-oriented UI. The background is a blurred, deep charcoal office environment with glowing data interfaces."
@@ -142,7 +149,7 @@ function FirstPage() {
                 </div>
                 <div className="space-y-4">
                     {/*  Rec 1  */}
-                    <div className="group p-4 glass-panel rounded-lg hover:bg-white/5 transition-all cursor-pointer">
+                    <Link to="/fourth" className="group block p-4 glass-panel rounded-lg hover:bg-white/5 transition-all cursor-pointer">
                         <div className="flex items-center gap-4 mb-3">
                             <img alt="Rec 1" className="w-12 h-12 rounded-full border border-secondary-container/30"
                                 data-alt="A portrait of a male data scientist with a modern, high-tech aesthetic. The setting is a darkened laboratory space filled with floating holographic charts. The color palette is deep indigo and vibrant magenta, with clean studio lighting highlighting professional features."
@@ -157,9 +164,9 @@ function FirstPage() {
                             <span
                                 className="material-symbols-outlined text-primary-container text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
                         </div>
-                    </div>
+                    </Link>
                     {/*  Rec 2  */}
-                    <div className="group p-4 glass-panel rounded-lg hover:bg-white/5 transition-all cursor-pointer">
+                    <Link to="/fourth" className="group block p-4 glass-panel rounded-lg hover:bg-white/5 transition-all cursor-pointer">
                         <div className="flex items-center gap-4 mb-3">
                             <img alt="Rec 2" className="w-12 h-12 rounded-full border border-primary-container/30"
                                 data-alt="A portrait of a female creative director specializing in AI systems. She is wearing sleek, minimalist glasses that reflect a high-tech UI environment. The background is a soft, dark space with glowing cyan lines of network connections, conveying a sophisticated and intelligent mood."
@@ -174,11 +181,11 @@ function FirstPage() {
                             <span
                                 className="material-symbols-outlined text-primary-container text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
                         </div>
-                    </div>
+                    </Link>
                 </div>
-                <button
-                    className="w-full py-4 glass-panel rounded-xl font-label-sm text-on-surface uppercase tracking-widest hover:bg-primary-container hover:text-on-primary-container transition-all active:scale-95">Explore
-                    All Matches</button>
+                <Link to="/fourth"
+                    className="block text-center w-full py-4 glass-panel rounded-xl font-label-sm text-on-surface uppercase tracking-widest hover:bg-primary-container hover:text-on-primary-container transition-all active:scale-95">Explore
+                    All Matches</Link>
             </div>
         </div>
         {/*  Detail Insights  */}
@@ -228,26 +235,26 @@ function FirstPage() {
             <span className="font-headline-md text-primary-container font-bold">SwipeSync</span>
         </div>
         <nav className="space-y-2 flex-grow">
-            <a className="flex items-center gap-4 px-4 py-3 rounded-xl bg-primary-container/10 text-primary-fixed-dim font-bold border-l-4 border-primary-container transition-transform translate-x-1"
-                href="/second">
+            <Link className="flex items-center gap-4 px-4 py-3 rounded-xl bg-primary-container/10 text-primary-fixed-dim font-bold border-l-4 border-primary-container transition-transform translate-x-1"
+                to="/">
                 <span className="material-symbols-outlined">analytics</span>
                 <span className="font-body-md">Insights</span>
-            </a>
-            <a className="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all"
-                href="/second">
+            </Link>
+            <Link className="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all"
+                to="/second">
                 <span className="material-symbols-outlined">dashboard</span>
                 <span className="font-body-md">Ecosystem Overview</span>
-            </a>
-            <a className="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all"
-                href="/second">
+            </Link>
+            <Link className="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all"
+                to="/fourth">
                 <span className="material-symbols-outlined">groups</span>
                 <span className="font-body-md">Member Directory</span>
-            </a>
-            <a className="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all"
-                href="/second">
+            </Link>
+            <Link className="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all"
+                to="/third">
                 <span className="material-symbols-outlined">psychology</span>
                 <span className="font-body-md">AI Calibration</span>
-            </a>
+            </Link>
         </nav>
         <div className="px-4 py-6 border-t border-white/5">
             <div className="flex items-center gap-4">
@@ -264,23 +271,23 @@ function FirstPage() {
     {/*  Bottom Navigation (Mobile Only)  */}
     <nav
         className="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe pt-2 bg-surface-container-highest/60 backdrop-blur-2xl border-t border-white/10 shadow-[0_-8px_32px_rgba(0,0,0,0.3)] rounded-t-xl">
-        <div className="flex flex-col items-center justify-center text-on-surface-variant/80 px-4 py-1.5">
+        <Link to="/fourth" className="flex flex-col items-center justify-center text-on-surface-variant/80 px-4 py-1.5">
             <span className="material-symbols-outlined">swipe</span>
             <span className="font-label-sm text-label-sm">Match</span>
-        </div>
-        <div
+        </Link>
+        <Link to="/"
             className="flex flex-col items-center justify-center bg-secondary-container/30 text-secondary-fixed-dim rounded-xl px-4 py-1.5 shadow-[0_0_15px_rgba(220,184,255,0.2)] scale-90">
             <span className="material-symbols-outlined">analytics</span>
             <span className="font-label-sm text-label-sm">Insights</span>
-        </div>
-        <div className="flex flex-col items-center justify-center text-on-surface-variant/80 px-4 py-1.5">
+        </Link>
+        <Link to="/second" className="flex flex-col items-center justify-center text-on-surface-variant/80 px-4 py-1.5">
             <span className="material-symbols-outlined">hub</span>
             <span className="font-label-sm text-label-sm">Graph</span>
-        </div>
-        <div className="flex flex-col items-center justify-center text-on-surface-variant/80 px-4 py-1.5">
+        </Link>
+        <Link to="/third" className="flex flex-col items-center justify-center text-on-surface-variant/80 px-4 py-1.5">
             <span className="material-symbols-outlined">person</span>
             <span className="font-label-sm text-label-sm">Profile</span>
-        </div>
+        </Link>
     </nav>
     {/*  Footer  */}
     <footer
@@ -291,14 +298,14 @@ function FirstPage() {
                 Connections Secured.</p>
         </div>
         <div className="flex gap-6">
-            <a className="text-on-surface-variant hover:text-primary-fixed transition-colors font-label-sm text-label-sm"
-                href="/second">Terms</a>
-            <a className="text-on-surface-variant hover:text-primary-fixed transition-colors font-label-sm text-label-sm"
-                href="/second">Privacy</a>
-            <a className="text-on-surface-variant hover:text-primary-fixed transition-colors font-label-sm text-label-sm"
-                href="/second">Network Stats</a>
-            <a className="text-on-surface-variant hover:text-primary-fixed transition-colors font-label-sm text-label-sm"
-                href="/second">Contact AI</a>
+            <Link className="text-on-surface-variant hover:text-primary-fixed transition-colors font-label-sm text-label-sm"
+                to="/second">Terms</Link>
+            <Link className="text-on-surface-variant hover:text-primary-fixed transition-colors font-label-sm text-label-sm"
+                to="/third">Privacy</Link>
+            <Link className="text-on-surface-variant hover:text-primary-fixed transition-colors font-label-sm text-label-sm"
+                to="/fourth">Network Stats</Link>
+            <Link className="text-on-surface-variant hover:text-primary-fixed transition-colors font-label-sm text-label-sm"
+                to="/">Contact AI</Link>
         </div>
     </footer>
 

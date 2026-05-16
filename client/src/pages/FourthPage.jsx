@@ -1,4 +1,51 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 function FourthPage() {
+  const matches = [
+    {
+      name: 'Sarah Chen',
+      role: 'Tech Architect',
+      score: '98%',
+      tags: ['AI Engineering', 'Scaling Systems', 'Advisory'],
+      why: "Sarah's expertise in distributed AI matches your current infrastructure bottleneck. Her advisory goal aligns with your Q4 roadmap for scaling neural nodes.",
+      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC700oOcxS4eZQn89s6pYX5FptpOuJO8Uj08LWt6vO0C0s66oONftLGlD3na1QOS3zwzN1kI7Gg52j9wsOrU-9WtNEV_Id6MkZDpoFn_WazFVsg3QLwCSmXkk1nPW8tTGtMyiQyPcm1QgqJFL_SoPtQK-DDZSspqfIvu-i_-ttcALl-PknTZ_c7xAX_UPZrDlrhjih6kQW-PVc1RsnPf1L3rumtbl6x6qHF_dSeZAI51YXw-CW5TeFd0snWvcjv_kNafIaiBfsq_-Y',
+    },
+    {
+      name: 'Vector Prime',
+      role: 'Data Orchestrator',
+      score: '96%',
+      tags: ['Data Pipelines', 'MLOps', 'Reliability'],
+      why: 'Vector Prime closes the analytics gap in your network with production data experience and a strong async collaboration style.',
+      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA-nFv9_FL2pw9YXDd0KyG5Qed0IY4i1HGHNLRVMaUiODlM5znti4Qh52dsXtz-JmVas3qSLWRv_FMoTbzoEsL2ifj21Ceef3u6rU-1a_LUvy6dMOb0k4c6t3eMjLcKnrPeBpeurTXzzTeVDxoN3hKHWyc1GlF38z6GvUm-H2N-ioP-3RZRvDwjpe8J6sG44bKHNx6RVT6yjr4-DN5o_1KDeFy5NsdyxTU-w6vajB6x4-MCYfqlI_F1VCJ8shPXz4FtTs8ILu0f5iw',
+    },
+    {
+      name: 'Neural Nexus',
+      role: 'Creative Systems Lead',
+      score: '92%',
+      tags: ['Creative Logic', 'UX Strategy', 'AI Workflows'],
+      why: 'Neural Nexus balances technical vision with product intuition, making this match strong for interface strategy and AI-assisted workflows.',
+      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCaHIU4RwJtd_kXKTAim-jlKKHfbQRutecQwphlkJps-yR9inGg__6PWqtw3ZUtSXTtIqca0r9VdVr0mNfeyq3j-2hFBcXWm4sRvquC-YBZu8MiTJvIz8BAfQepb84vci7SPaTOnusKAh1S6iXjdDvpAJu3sXcZm9BAestT1QT3EPDPCRau8qhQVsW3-xzcv2NnUe-E7e45pxQsUZyyUDgCXmrhbRAb1XISXTDKy4CAzsZho4wCkXfvLMJJxMYHJYqSzbd17iEueMg',
+    },
+  ];
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [showDetails, setShowDetails] = useState(true);
+  const [matchStatus, setMatchStatus] = useState('Use the controls below to review this match.');
+  const currentMatch = matches[activeIndex];
+  const nextMatch = () => setActiveIndex((index) => (index + 1) % matches.length);
+  const skipMatch = () => {
+    setMatchStatus(`${currentMatch.name} skipped. Loading the next best match.`);
+    setShowDetails(true);
+    nextMatch();
+  };
+  const syncMatch = () => {
+    setMatchStatus(`Sync request sent to ${currentMatch.name}.`);
+  };
+  const toggleDetails = () => {
+    setShowDetails((visible) => !visible);
+    setMatchStatus(showDetails ? 'Match details hidden.' : 'Match details expanded.');
+  };
+
   return (
     <div className="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden dark min-h-screen lg:pl-72">
       
@@ -13,12 +60,12 @@ function FourthPage() {
         </div>
         <div className="flex items-center gap-4">
             <div className="hidden md:flex gap-6 items-center">
-                <span
-                    className="font-label-sm text-label-sm text-primary-fixed-dim hover:text-primary-container transition-colors duration-200 cursor-pointer">Match</span>
-                <span
-                    className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-container transition-colors duration-200 cursor-pointer">Insights</span>
-                <span
-                    className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-container transition-colors duration-200 cursor-pointer">Graph</span>
+                <Link to="/fourth"
+                    className="font-label-sm text-label-sm text-primary-fixed-dim hover:text-primary-container transition-colors duration-200 cursor-pointer">Match</Link>
+                <Link to="/"
+                    className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-container transition-colors duration-200 cursor-pointer">Insights</Link>
+                <Link to="/second"
+                    className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-container transition-colors duration-200 cursor-pointer">Graph</Link>
             </div>
             <img alt="User profile photo" className="w-10 h-10 rounded-full border-2 border-primary-container/30"
                 data-alt="A professional headshot of a modern user with a clean, tech-focused aesthetic. The person is set against a blurred background of a high-tech office with cool blue and deep charcoal lighting. The lighting is soft and professional, emphasizing a sophisticated, expert persona that aligns with the premium futuristic minimalist UI style."
@@ -51,23 +98,22 @@ function FourthPage() {
                 <div className="absolute inset-0 glass-panel rounded-2xl overflow-hidden shadow-2xl border-white/10 group">
                     {/*  Profile Image  */}
                     <div className="relative h-2/3 w-full">
-                        <img alt="Sarah Chen" className="w-full h-full object-cover"
-                            data-alt="A portrait of Sarah Chen, a professional tech architect with an intelligent and approachable expression. She is in a sleek, modern architectural space with glass and steel elements. The lighting is cinematic with subtle cyan and purple rim lights, creating a high-tech developer environment aesthetic. The overall mood is one of leadership and innovation."
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC700oOcxS4eZQn89s6pYX5FptpOuJO8Uj08LWt6vO0C0s66oONftLGlD3na1QOS3zwzN1kI7Gg52j9wsOrU-9WtNEV_Id6MkZDpoFn_WazFVsg3QLwCSmXkk1nPW8tTGtMyiQyPcm1QgqJFL_SoPtQK-DDZSspqfIvu-i_-ttcALl-PknTZ_c7xAX_UPZrDlrhjih6kQW-PVc1RsnPf1L3rumtbl6x6qHF_dSeZAI51YXw-CW5TeFd0snWvcjv_kNafIaiBfsq_-Y" />
+                        <img alt={currentMatch.name} className="w-full h-full object-cover"
+                            src={currentMatch.image} />
                         {/*  Overlay Info  */}
                         <div
                             className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-background via-background/80 to-transparent">
                             <div className="flex justify-between items-end">
                                 <div>
-                                    <h2 className="font-headline-md text-white text-3xl font-bold">Sarah Chen</h2>
-                                    <p className="text-primary-container font-medium">Tech Architect</p>
+                                    <h2 className="font-headline-md text-white text-3xl font-bold">{currentMatch.name}</h2>
+                                    <p className="text-primary-container font-medium">{currentMatch.role}</p>
                                 </div>
                                 <div
                                     className="bg-primary-container/20 backdrop-blur-md border border-primary-container/40 rounded-xl p-3 text-center">
                                     <p
                                         className="text-[10px] font-label-sm text-on-primary-container uppercase tracking-tighter">
                                         Match Score</p>
-                                    <p className="text-2xl font-bold text-primary-container leading-none">98%</p>
+                                    <p className="text-2xl font-bold text-primary-container leading-none">{currentMatch.score}</p>
                                 </div>
                             </div>
                         </div>
@@ -75,16 +121,13 @@ function FourthPage() {
                     {/*  Profile Details  */}
                     <div className="p-6 space-y-4">
                         <div className="flex flex-wrap gap-2">
-                            <span
-                                className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[12px] font-label-sm text-on-surface-variant">AI
-                                Engineering</span>
-                            <span
-                                className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[12px] font-label-sm text-on-surface-variant">Scaling
-                                Systems</span>
-                            <span
-                                className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[12px] font-label-sm text-on-surface-variant">Advisory</span>
+                            {currentMatch.tags.map((tag) => (
+                                <span
+                                    key={tag}
+                                    className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[12px] font-label-sm text-on-surface-variant">{tag}</span>
+                            ))}
                         </div>
-                        <div className="glass-panel p-4 rounded-xl border-secondary-container/20 bg-secondary-container/5">
+                        {showDetails && <div className="glass-panel p-4 rounded-xl border-secondary-container/20 bg-secondary-container/5">
                             <div className="flex items-center gap-2 mb-2">
                                 <span className="material-symbols-outlined text-secondary-fixed-dim text-sm"
                                     style={{ fontVariationSettings: "'FILL' 1" }}>psychology</span>
@@ -92,10 +135,9 @@ function FourthPage() {
                                     Why You Match</p>
                             </div>
                             <p className="text-sm text-on-surface-variant leading-relaxed">
-                                Sarah's expertise in distributed AI matches your current infrastructure bottleneck. Her
-                                advisory goal aligns with your Q4 roadmap for scaling neural nodes.
+                                {currentMatch.why}
                             </p>
-                        </div>
+                        </div>}
                     </div>
                 </div>
             </div>
@@ -103,12 +145,18 @@ function FourthPage() {
             <div className="mt-12 flex items-center gap-12">
                 {/*  Skip Button  */}
                 <button
+                    type="button"
+                    aria-label="Skip match"
+                    onClick={skipMatch}
                     className="w-16 h-16 rounded-full glass-panel border-error/30 flex items-center justify-center group hover:bg-error/10 hover:border-error transition-all active:scale-90 glow-magenta">
                     <span
                         className="material-symbols-outlined text-error text-3xl group-hover:rotate-12 transition-transform">close</span>
                 </button>
                 {/*  Sync Button  */}
                 <button
+                    type="button"
+                    aria-label="Sync match"
+                    onClick={syncMatch}
                     className="w-24 h-24 rounded-full bg-gradient-to-br from-primary-container/80 to-secondary-container/80 flex items-center justify-center group hover:scale-105 transition-all shadow-[0_0_40px_rgba(0,242,255,0.3)] active:scale-95 glow-cyan">
                     <div className="flex flex-col items-center">
                         <span className="material-symbols-outlined text-on-primary-container text-4xl"
@@ -118,40 +166,46 @@ function FourthPage() {
                 </button>
                 {/*  Info Button  */}
                 <button
+                    type="button"
+                    aria-label="Toggle match info"
+                    onClick={toggleDetails}
                     className="w-16 h-16 rounded-full glass-panel border-primary-container/30 flex items-center justify-center group hover:bg-primary-container/10 hover:border-primary-container transition-all active:scale-90 glow-cyan">
                     <span className="material-symbols-outlined text-primary-container text-3xl">info</span>
                 </button>
             </div>
+            <p className="mt-6 glass-panel px-6 py-3 rounded-xl text-center text-sm text-primary-fixed-dim border border-primary-container/20">
+                {matchStatus}
+            </p>
         </div>
     </main>
     {/*  BottomNavBar  */}
     <nav
         className="fixed bottom-0 left-0 w-full z-50 bg-surface-container-highest/60 backdrop-blur-2xl border-t border-white/10 flex justify-around items-center px-4 pb-safe pt-2 md:hidden shadow-[0_-8px_32px_rgba(0,0,0,0.3)]">
-        <div
+        <Link to="/fourth"
             className="flex flex-col items-center justify-center bg-secondary-container/30 text-secondary-fixed-dim rounded-xl px-4 py-1.5 shadow-[0_0_15px_rgba(220,184,255,0.2)]">
             <span className="material-symbols-outlined">swipe</span>
             <span className="font-label-sm text-label-sm mt-0.5">Match</span>
-        </div>
-        <div
+        </Link>
+        <Link to="/"
             className="flex flex-col items-center justify-center text-on-surface-variant/80 px-4 py-1.5 hover:bg-white/5 transition-all">
             <span className="material-symbols-outlined">analytics</span>
             <span className="font-label-sm text-label-sm mt-0.5">Insights</span>
-        </div>
-        <div
+        </Link>
+        <Link to="/second"
             className="flex flex-col items-center justify-center text-on-surface-variant/80 px-4 py-1.5 hover:bg-white/5 transition-all">
             <span className="material-symbols-outlined">hub</span>
             <span className="font-label-sm text-label-sm mt-0.5">Graph</span>
-        </div>
-        <div
+        </Link>
+        <Link to="/third"
             className="flex flex-col items-center justify-center text-on-surface-variant/80 px-4 py-1.5 hover:bg-white/5 transition-all">
             <span className="material-symbols-outlined">query_stats</span>
             <span className="font-label-sm text-label-sm mt-0.5">Admin</span>
-        </div>
-        <div
+        </Link>
+        <Link to="/"
             className="flex flex-col items-center justify-center text-on-surface-variant/80 px-4 py-1.5 hover:bg-white/5 transition-all">
             <span className="material-symbols-outlined">person</span>
             <span className="font-label-sm text-label-sm mt-0.5">Profile</span>
-        </div>
+        </Link>
     </nav>
     {/*  NavigationDrawer (Desktop Only Hidden by default, shown for structure)  */}
     <aside
@@ -161,26 +215,26 @@ function FourthPage() {
             <span className="font-headline-md text-primary-container font-bold tracking-tighter">SwipeSync</span>
         </div>
         <div className="space-y-2">
-            <div
+            <Link to="/second"
                 className="bg-primary-container/10 text-primary-fixed-dim font-bold border-l-4 border-primary-container flex items-center gap-4 py-3 px-4 rounded-r-lg transition-transform translate-x-1 cursor-pointer">
                 <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>dashboard</span>
                 <span className="font-body-md text-body-md">Ecosystem Overview</span>
-            </div>
-            <div
+            </Link>
+            <Link to="/"
                 className="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high flex items-center gap-4 py-3 px-4 rounded-lg transition-all cursor-pointer">
                 <span className="material-symbols-outlined">trending_up</span>
                 <span className="font-body-md text-body-md">Trend Analysis</span>
-            </div>
-            <div
+            </Link>
+            <Link to="/fourth"
                 className="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high flex items-center gap-4 py-3 px-4 rounded-lg transition-all cursor-pointer">
                 <span className="material-symbols-outlined">groups</span>
                 <span className="font-body-md text-body-md">Member Directory</span>
-            </div>
-            <div
+            </Link>
+            <Link to="/third"
                 className="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high flex items-center gap-4 py-3 px-4 rounded-lg transition-all cursor-pointer">
                 <span className="material-symbols-outlined">psychology</span>
                 <span className="font-body-md text-body-md">AI Calibration</span>
-            </div>
+            </Link>
         </div>
         <div className="absolute bottom-10 left-4 right-4 glass-panel p-4 rounded-xl">
             <div className="flex items-center gap-3">
@@ -203,14 +257,14 @@ function FourthPage() {
                 Secured.</span>
         </div>
         <div className="flex gap-6">
-            <a className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed transition-colors"
-                href="#">Terms</a>
-            <a className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed transition-colors"
-                href="#">Privacy</a>
-            <a className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed transition-colors"
-                href="#">Network Stats</a>
-            <a className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed transition-colors"
-                href="#">Contact AI</a>
+            <Link className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed transition-colors"
+                to="/second">Terms</Link>
+            <Link className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed transition-colors"
+                to="/third">Privacy</Link>
+            <Link className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed transition-colors"
+                to="/fourth">Network Stats</Link>
+            <Link className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed transition-colors"
+                to="/">Contact AI</Link>
         </div>
     </footer>
 

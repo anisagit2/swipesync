@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 function SecondPage() {
   return (
     <div className="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden dark min-h-screen">
@@ -11,14 +13,14 @@ function SecondPage() {
                 SwipeSync AI</h1>
         </div>
         <nav className="hidden md:flex items-center gap-8">
-            <a className="font-label-sm text-label-sm text-primary-fixed-dim hover:text-primary-container transition-colors duration-200"
-                href="/third">Match</a>
-            <a className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-container transition-colors duration-200"
-                href="/third">Insights</a>
-            <a className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-container transition-colors duration-200"
-                href="/third">Graph</a>
-            <a className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-container transition-colors duration-200"
-                href="/third">Admin</a>
+            <Link className="font-label-sm text-label-sm text-primary-fixed-dim hover:text-primary-container transition-colors duration-200"
+                to="/fourth">Match</Link>
+            <Link className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-container transition-colors duration-200"
+                to="/">Insights</Link>
+            <Link className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-container transition-colors duration-200"
+                to="/second">Graph</Link>
+            <Link className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-container transition-colors duration-200"
+                to="/third">Admin</Link>
         </nav>
         <div className="flex items-center gap-4">
             <img alt="User profile photo" className="w-10 h-10 rounded-full border border-white/10"
@@ -54,14 +56,14 @@ function SecondPage() {
                     potential with machine precision in a seamless fluid interface.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <button
+                    <Link to="/fourth"
                         className="bg-gradient-to-r from-primary-container/80 to-secondary-container/80 text-on-primary-container px-8 py-4 rounded-xl font-headline-md text-label-sm font-bold neon-glow hover:scale-105 transition-transform active:scale-95">
                         Get Started
-                    </button>
-                    <button
+                    </Link>
+                    <Link to="/fourth"
                         className="px-8 py-4 rounded-xl border border-white/10 glass-panel font-headline-md text-label-sm font-bold hover:bg-white/5 transition-colors">
                         View Demo
-                    </button>
+                    </Link>
                 </div>
                 {/*  Social Proof Overlay  */}
                 <div className="mt-20 flex flex-col items-center">
@@ -148,10 +150,10 @@ function SecondPage() {
                             chambers to foster a truly global and equitable ecosystem.
                         </p>
                     </div>
-                    <button
+                    <Link to="/fourth"
                         className="whitespace-nowrap px-8 py-3 rounded-xl border border-tertiary-fixed-dim/30 text-tertiary-fixed-dim font-bold hover:bg-tertiary-container/5 transition-colors">
                         Learn More
-                    </button>
+                    </Link>
                 </div>
             </div>
         </section>
@@ -190,44 +192,44 @@ function SecondPage() {
                 Secured.</p>
         </div>
         <div className="flex gap-8">
-            <a className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed transition-colors"
-                href="/third">Terms</a>
-            <a className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed transition-colors"
-                href="/third">Privacy</a>
-            <a className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed transition-colors"
-                href="/third">Network Stats</a>
-            <a className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed transition-colors"
-                href="/third">Contact AI</a>
+            <Link className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed transition-colors"
+                to="/second">Terms</Link>
+            <Link className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed transition-colors"
+                to="/third">Privacy</Link>
+            <Link className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed transition-colors"
+                to="/fourth">Network Stats</Link>
+            <Link className="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed transition-colors"
+                to="/">Contact AI</Link>
         </div>
     </footer>
     {/*  BottomNavBar (Mobile Only)  */}
     <div
         className="md:hidden bg-surface-container-highest/60 backdrop-blur-2xl text-primary-fixed-dim border-t border-white/10 docked full-width bottom-0 rounded-t-xl shadow-[0_-8px_32px_rgba(0,0,0,0.3)] fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe pt-2">
-        <div
+        <Link to="/fourth"
             className="flex flex-col items-center justify-center bg-secondary-container/30 text-secondary-fixed-dim rounded-xl px-4 py-1.5 shadow-[0_0_15px_rgba(220,184,255,0.2)] scale-90">
             <span className="material-symbols-outlined" data-icon="swipe">swipe</span>
             <span className="font-label-sm text-label-sm">Match</span>
-        </div>
-        <div
+        </Link>
+        <Link to="/"
             className="flex flex-col items-center justify-center text-on-surface-variant/80 px-4 py-1.5 hover:bg-white/5 transition-all">
             <span className="material-symbols-outlined" data-icon="analytics">analytics</span>
             <span className="font-label-sm text-label-sm">Insights</span>
-        </div>
-        <div
+        </Link>
+        <Link to="/second"
             className="flex flex-col items-center justify-center text-on-surface-variant/80 px-4 py-1.5 hover:bg-white/5 transition-all">
             <span className="material-symbols-outlined" data-icon="hub">hub</span>
             <span className="font-label-sm text-label-sm">Graph</span>
-        </div>
-        <div
+        </Link>
+        <Link to="/third"
             className="flex flex-col items-center justify-center text-on-surface-variant/80 px-4 py-1.5 hover:bg-white/5 transition-all">
             <span className="material-symbols-outlined" data-icon="query_stats">query_stats</span>
             <span className="font-label-sm text-label-sm">Admin</span>
-        </div>
-        <div
+        </Link>
+        <Link to="/"
             className="flex flex-col items-center justify-center text-on-surface-variant/80 px-4 py-1.5 hover:bg-white/5 transition-all">
             <span className="material-symbols-outlined" data-icon="person">person</span>
             <span className="font-label-sm text-label-sm">Profile</span>
-        </div>
+        </Link>
     </div>
 
     </div>
