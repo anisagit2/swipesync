@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Geist:wght@400;600&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .network-grid {
+            background-image:
+                radial-gradient(circle at 2px 2px, rgba(0, 219, 231, 0.05) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+
+        .glow-cyan {
+            box-shadow: 0 0 30px rgba(0, 219, 231, 0.15);
+        }
+
+        .glow-magenta {
+            box-shadow: 0 0 30px rgba(224, 0, 224, 0.15);
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#00dbe7",
+                        "inverse-surface": "#e4e1e9",
+                        "surface-container-high": "#2a292f",
+                        "surface-dim": "#131318",
+                        "on-surface": "#e4e1e9",
+                        "on-secondary-container": "#dcb7ff",
+                        "error": "#ffb4ab",
+                        "surface-container": "#1f1f25",
+                        "secondary-fixed-dim": "#dcb8ff",
+                        "secondary-container": "#7701d0",
+                        "inverse-on-surface": "#303036",
+                        "tertiary-fixed-dim": "#ffabf3",
+                        "tertiary": "#fff4f9",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-primary": "#00363a",
+                        "on-secondary-fixed": "#2c0051",
+                        "primary-container": "#00f2ff",
+                        "on-error-container": "#ffdad6",
+                        "primary": "#e1fdff",
+                        "surface-container-low": "#1b1b20",
+                        "outline-variant": "#3a494b",
+                        "primary-fixed": "#74f5ff",
+                        "tertiary-container": "#ffcbf4",
+                        "outline": "#849495",
+                        "tertiary-fixed": "#ffd7f5",
+                        "on-error": "#690005",
+                        "surface-variant": "#35343a",
+                        "on-primary-fixed": "#002022",
+                        "on-secondary": "#480081",
+                        "surface-container-lowest": "#0e0e13",
+                        "on-tertiary-fixed-variant": "#810081",
+                        "surface-container-highest": "#35343a",
+                        "on-tertiary-fixed": "#380038",
+                        "on-background": "#e4e1e9",
+                        "secondary": "#dcb8ff",
+                        "surface-bright": "#39383e",
+                        "on-tertiary-container": "#ab00aa",
+                        "background": "#131318",
+                        "on-primary-container": "#006a71",
+                        "secondary-fixed": "#efdbff",
+                        "primary-fixed-dim": "#00dbe7",
+                        "inverse-primary": "#00696f",
+                        "on-secondary-fixed-variant": "#6700b5",
+                        "surface": "#131318",
+                        "on-surface-variant": "#b9cacb",
+                        "on-tertiary": "#5b005b",
+                        "error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "container-max": "1440px",
+                        "margin-desktop": "48px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Geist"],
+                        "display-lg-mobile": ["Sora"],
+                        "body-md": ["Geist"],
+                        "headline-md": ["Sora"],
+                        "code": ["Geist"],
+                        "display-lg": ["Sora"],
+                        "label-sm": ["Geist"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "code": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+    <!-- TopAppBar -->
+    <header
+        class="bg-surface/50 backdrop-blur-xl border-b border-white/5 shadow-[0_4px_30px_rgba(0,0,0,0.1)] flex justify-between items-center px-gutter py-4 w-full sticky top-0 z-50">
+        <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-primary-fixed-dim text-3xl">bubble_chart</span>
+            <span
+                class="font-headline-md text-headline-md-mobile font-bold tracking-tighter text-primary-container">SwipeSync
+                AI</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="hidden md:flex gap-6 items-center">
+                <span
+                    class="font-label-sm text-label-sm text-primary-fixed-dim hover:text-primary-container transition-colors duration-200 cursor-pointer">Match</span>
+                <span
+                    class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-container transition-colors duration-200 cursor-pointer">Insights</span>
+                <span
+                    class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-container transition-colors duration-200 cursor-pointer">Graph</span>
+            </div>
+            <img alt="User profile photo" class="w-10 h-10 rounded-full border-2 border-primary-container/30"
+                data-alt="A professional headshot of a modern user with a clean, tech-focused aesthetic. The person is set against a blurred background of a high-tech office with cool blue and deep charcoal lighting. The lighting is soft and professional, emphasizing a sophisticated, expert persona that aligns with the premium futuristic minimalist UI style."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeoPztYuDGLc9lKCH8oa9Bs9beKItPBVJnZyu9ZrejFRhpzh8X2vAMdLsLAFFJyGAiZe_mEFZL37vQ4Cyh5Y9aT9jHBCcHkcEKwq-ZKI5zjqaj1GJgwyTSCQjXXtwY-FRWnxVFr3eOYvpsH9-sXW06lX4af3otd9p1Qe5ci5XhTdCNQvunOpULO9h8OHOZgyQl18kjM10eTmUDowDxUK7BCynBgXVfEEnfOjKSay2oZV3rZRcWGi2ae3ppFT8rZRm7hbFNF0fQw6Y" />
+        </div>
+    </header>
+    <main
+        class="min-h-[calc(100vh-160px)] relative network-grid pt-8 pb-32 md:pb-8 flex flex-col items-center justify-center">
+        <!-- Abstract Background Elements -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-container/5 rounded-full blur-[120px]"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary-container/5 rounded-full blur-[120px]">
+            </div>
+        </div>
+        <!-- Matching Interface Content -->
+        <div class="container-max mx-auto px-gutter relative z-10 flex flex-col items-center">
+            <!-- Compatibility Highlight (Floating Badge) -->
+            <div
+                class="mb-8 glass-panel px-6 py-2 rounded-full border-primary-container/20 flex items-center gap-2 animate-pulse">
+                <span class="w-2 h-2 bg-primary-container rounded-full shadow-[0_0_8px_#00f2ff]"></span>
+                <span class="font-label-sm text-label-sm text-primary-container tracking-widest">NEURAL ALIGNMENT
+                    DETECTED</span>
+            </div>
+            <!-- Card Stack Container -->
+            <div class="relative w-full max-w-[480px] aspect-[3/4.5] md:aspect-[3/4]">
+                <!-- Background Shadow Cards -->
+                <div class="absolute inset-0 translate-y-4 scale-95 glass-panel rounded-2xl opacity-40"></div>
+                <div class="absolute inset-0 translate-y-2 scale-[0.975] glass-panel rounded-2xl opacity-70"></div>
+                <!-- Primary Active Card -->
+                <div class="absolute inset-0 glass-panel rounded-2xl overflow-hidden shadow-2xl border-white/10 group">
+                    <!-- Profile Image -->
+                    <div class="relative h-2/3 w-full">
+                        <img alt="Sarah Chen" class="w-full h-full object-cover"
+                            data-alt="A portrait of Sarah Chen, a professional tech architect with an intelligent and approachable expression. She is in a sleek, modern architectural space with glass and steel elements. The lighting is cinematic with subtle cyan and purple rim lights, creating a high-tech developer environment aesthetic. The overall mood is one of leadership and innovation."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC700oOcxS4eZQn89s6pYX5FptpOuJO8Uj08LWt6vO0C0s66oONftLGlD3na1QOS3zwzN1kI7Gg52j9wsOrU-9WtNEV_Id6MkZDpoFn_WazFVsg3QLwCSmXkk1nPW8tTGtMyiQyPcm1QgqJFL_SoPtQK-DDZSspqfIvu-i_-ttcALl-PknTZ_c7xAX_UPZrDlrhjih6kQW-PVc1RsnPf1L3rumtbl6x6qHF_dSeZAI51YXw-CW5TeFd0snWvcjv_kNafIaiBfsq_-Y" />
+                        <!-- Overlay Info -->
+                        <div
+                            class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-background via-background/80 to-transparent">
+                            <div class="flex justify-between items-end">
+                                <div>
+                                    <h2 class="font-headline-md text-white text-3xl font-bold">Sarah Chen</h2>
+                                    <p class="text-primary-container font-medium">Tech Architect</p>
+                                </div>
+                                <div
+                                    class="bg-primary-container/20 backdrop-blur-md border border-primary-container/40 rounded-xl p-3 text-center">
+                                    <p
+                                        class="text-[10px] font-label-sm text-on-primary-container uppercase tracking-tighter">
+                                        Match Score</p>
+                                    <p class="text-2xl font-bold text-primary-container leading-none">98%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Profile Details -->
+                    <div class="p-6 space-y-4">
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[12px] font-label-sm text-on-surface-variant">AI
+                                Engineering</span>
+                            <span
+                                class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[12px] font-label-sm text-on-surface-variant">Scaling
+                                Systems</span>
+                            <span
+                                class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[12px] font-label-sm text-on-surface-variant">Advisory</span>
+                        </div>
+                        <div class="glass-panel p-4 rounded-xl border-secondary-container/20 bg-secondary-container/5">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="material-symbols-outlined text-secondary-fixed-dim text-sm"
+                                    style="font-variation-settings: 'FILL' 1;">psychology</span>
+                                <p class="text-[11px] font-label-sm text-secondary-fixed-dim uppercase tracking-widest">
+                                    Why You Match</p>
+                            </div>
+                            <p class="text-sm text-on-surface-variant leading-relaxed">
+                                Sarah's expertise in distributed AI matches your current infrastructure bottleneck. Her
+                                advisory goal aligns with your Q4 roadmap for scaling neural nodes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Control Actions -->
+            <div class="mt-12 flex items-center gap-12">
+                <!-- Skip Button -->
+                <button
+                    class="w-16 h-16 rounded-full glass-panel border-error/30 flex items-center justify-center group hover:bg-error/10 hover:border-error transition-all active:scale-90 glow-magenta">
+                    <span
+                        class="material-symbols-outlined text-error text-3xl group-hover:rotate-12 transition-transform">close</span>
+                </button>
+                <!-- Sync Button -->
+                <button
+                    class="w-24 h-24 rounded-full bg-gradient-to-br from-primary-container/80 to-secondary-container/80 flex items-center justify-center group hover:scale-105 transition-all shadow-[0_0_40px_rgba(0,242,255,0.3)] active:scale-95 glow-cyan">
+                    <div class="flex flex-col items-center">
+                        <span class="material-symbols-outlined text-on-primary-container text-4xl"
+                            style="font-variation-settings: 'FILL' 1;">sync</span>
+                        <span class="text-[10px] font-bold text-on-primary-container tracking-widest mt-1">SYNC</span>
+                    </div>
+                </button>
+                <!-- Info Button -->
+                <button
+                    class="w-16 h-16 rounded-full glass-panel border-primary-container/30 flex items-center justify-center group hover:bg-primary-container/10 hover:border-primary-container transition-all active:scale-90 glow-cyan">
+                    <span class="material-symbols-outlined text-primary-container text-3xl">info</span>
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- BottomNavBar -->
+    <nav
+        class="fixed bottom-0 left-0 w-full z-50 bg-surface-container-highest/60 backdrop-blur-2xl border-t border-white/10 flex justify-around items-center px-4 pb-safe pt-2 md:hidden shadow-[0_-8px_32px_rgba(0,0,0,0.3)]">
+        <div
+            class="flex flex-col items-center justify-center bg-secondary-container/30 text-secondary-fixed-dim rounded-xl px-4 py-1.5 shadow-[0_0_15px_rgba(220,184,255,0.2)]">
+            <span class="material-symbols-outlined">swipe</span>
+            <span class="font-label-sm text-label-sm mt-0.5">Match</span>
+        </div>
+        <div
+            class="flex flex-col items-center justify-center text-on-surface-variant/80 px-4 py-1.5 hover:bg-white/5 transition-all">
+            <span class="material-symbols-outlined">analytics</span>
+            <span class="font-label-sm text-label-sm mt-0.5">Insights</span>
+        </div>
+        <div
+            class="flex flex-col items-center justify-center text-on-surface-variant/80 px-4 py-1.5 hover:bg-white/5 transition-all">
+            <span class="material-symbols-outlined">hub</span>
+            <span class="font-label-sm text-label-sm mt-0.5">Graph</span>
+        </div>
+        <div
+            class="flex flex-col items-center justify-center text-on-surface-variant/80 px-4 py-1.5 hover:bg-white/5 transition-all">
+            <span class="material-symbols-outlined">query_stats</span>
+            <span class="font-label-sm text-label-sm mt-0.5">Admin</span>
+        </div>
+        <div
+            class="flex flex-col items-center justify-center text-on-surface-variant/80 px-4 py-1.5 hover:bg-white/5 transition-all">
+            <span class="material-symbols-outlined">person</span>
+            <span class="font-label-sm text-label-sm mt-0.5">Profile</span>
+        </div>
+    </nav>
+    <!-- NavigationDrawer (Desktop Only Hidden by default, shown for structure) -->
+    <aside
+        class="fixed left-0 top-0 h-full z-[60] py-gutter px-4 bg-surface-dim/95 backdrop-blur-md border-r border-white/10 shadow-2xl shadow-surface-container-lowest h-full w-72 rounded-r-2xl hidden lg:block">
+        <div class="flex items-center gap-3 mb-10 px-2">
+            <span class="material-symbols-outlined text-primary-container text-3xl">bubble_chart</span>
+            <span class="font-headline-md text-primary-container font-bold tracking-tighter">SwipeSync</span>
+        </div>
+        <div class="space-y-2">
+            <div
+                class="bg-primary-container/10 text-primary-fixed-dim font-bold border-l-4 border-primary-container flex items-center gap-4 py-3 px-4 rounded-r-lg transition-transform translate-x-1 cursor-pointer">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                <span class="font-body-md text-body-md">Ecosystem Overview</span>
+            </div>
+            <div
+                class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high flex items-center gap-4 py-3 px-4 rounded-lg transition-all cursor-pointer">
+                <span class="material-symbols-outlined">trending_up</span>
+                <span class="font-body-md text-body-md">Trend Analysis</span>
+            </div>
+            <div
+                class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high flex items-center gap-4 py-3 px-4 rounded-lg transition-all cursor-pointer">
+                <span class="material-symbols-outlined">groups</span>
+                <span class="font-body-md text-body-md">Member Directory</span>
+            </div>
+            <div
+                class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high flex items-center gap-4 py-3 px-4 rounded-lg transition-all cursor-pointer">
+                <span class="material-symbols-outlined">psychology</span>
+                <span class="font-body-md text-body-md">AI Calibration</span>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-4 right-4 glass-panel p-4 rounded-xl">
+            <div class="flex items-center gap-3">
+                <img alt="Admin Avatar" class="w-10 h-10 rounded-full"
+                    data-alt="A professional avatar of a senior system administrator. The image features a man with glasses in a dark tech studio. The lighting is moody with purple and indigo hues, maintaining the futuristic aesthetic of the AI platform."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCS2gs9s-ZiEDL1PXoU96-bp3lk1KxFKT3dfWVTSm6ATKWzxURN3QUCrg0Ca2Av2oCVqJaaoOgzcY7lSfuRZM8N0L4iaMCV0Sy4Ntd_Irt6v_DfVb8b5OA96004HC1d9llN9I2_abTYkHJoGJ7Umw_OTKOU0S78vok31UsvCFkUSb5ME__CEemz1ajTW8EBJVKMLGM7uomVD-yYl581So2i0cmUTiFyMUOtvrNOOxKrkN-ZO_JJBwM9KJ1da-afuGybLZ28-Lh-ZQw" />
+                <div>
+                    <p class="text-sm font-bold text-primary-fixed-dim">Ecosystem Admin</p>
+                    <p class="text-[10px] text-on-surface-variant uppercase tracking-widest">Superuser Access</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <!-- Footer -->
+    <footer
+        class="w-full py-12 px-gutter flex flex-col md:flex-row justify-between items-center gap-4 bg-surface-container-lowest border-t border-white/5 relative z-10">
+        <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary-fixed-dim">bubble_chart</span>
+            <span class="font-label-sm text-label-sm text-primary-fixed-dim">© 2024 SwipeSync AI. Neural Connections
+                Secured.</span>
+        </div>
+        <div class="flex gap-6">
+            <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed transition-colors"
+                href="#">Terms</a>
+            <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed transition-colors"
+                href="#">Privacy</a>
+            <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed transition-colors"
+                href="#">Network Stats</a>
+            <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed transition-colors"
+                href="#">Contact AI</a>
+        </div>
+    </footer>
+</body>
+
+</html>
